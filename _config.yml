@@ -1,0 +1,70 @@
+title: "REFLEX Framework"
+description: "Make secure code second nature."
+url: ""
+baseurl: ""
+
+collections:
+  stages:
+    output: true
+    permalink: /framework/:name/
+  labs:
+    output: true
+    permalink: /labs/:name/
+  stories:
+    output: true
+    permalink: /stories/:name/
+  battlecards:
+    output: true
+  media:
+    output: true
+    permalink: /media/:name/
+
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: post }
+  - scope: { path: "", type: "stages" }
+    values: { layout: collection, collection_name: stages }
+  - scope: { path: "", type: "labs" }
+    values: { layout: collection, collection_name: labs }
+  - scope: { path: "", type: "stories" }
+    values: { layout: collection, collection_name: stories }
+  - scope: { path: "", type: "media" }
+    values: { layout: collection, collection_name: media }
+  - scope: { path: "" }
+    values: { layout: page }
+
+permalink: /:categories/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-asciidoc
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-include-cache
+
+
+nav:
+  - title: Framework
+    url: /framework/
+  - title: Labs
+    url: /labs/
+  - title: Stories
+    url: /stories/
+  - title: Media
+    url: /media/
+  - title: Playground
+    url: /playground/
+  - title: Blog
+    url: /blog/
+  - title: About
+    url: /about/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+sass:
+  sass_dir: assets/css
+  style: compressed
+
+logo: /assets/img/reflex-logo.png

@@ -1,0 +1,4 @@
+---
+layout: collection
+collection: battlecards
+---

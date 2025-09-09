@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<article class="story">
+  {% if page.hero_title %}
+  <section class="story-hero full-bleed mb-4">
+    <div class="container py-5">
+      <h1 class="display-4 mb-2">{{ page.hero_title }}</h1>
+      {% if page.hero_subtitle %}<p class="lead">{{ page.hero_subtitle }}</p>{% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.spreads %}
+    {% for s in page.spreads %}
+      {% include story_spread.html image=s.image alt=s.alt caption=s.caption bg=s.bg %}
+    {% endfor %}
+  {% endif %}
+
+  <section class="container my-5">
+    {{ content }}
+  </section>
+
+  <nav class="container my-4 d-flex justify-content-between">
+    <div>
+      {% if page.prev %}<a class="btn btn-outline-secondary" href="{{ page.prev }}">← Previous</a>{% endif %}
+    </div>
+    <div>
+      {% if page.next %}<a class="btn btn-outline-primary" href="{{ page.next }}">Next →</a>{% endif %}
+    </div>
+  </nav>
+</article>

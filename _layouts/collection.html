@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<article class="content-collection">
+  <header class="mb-4">
+    <h1 class="display-6">{{ page.title | default: page.collection | capitalize }}</h1>
+    {% if page.description %}<p class="text-muted">{{ page.description }}</p>{% endif %}
+  </header>
+
+
+  {% assign collname = page.collection_name | default: page.collection %}
+  {% assign coll = site[collname] %}
+
+
+  {% if coll and coll.size > 0 %}
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for item in coll %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        {% if item.cover %}
+        <img class="card-img-top" src="{{ item.cover }}" alt="Cover for {{ item.title }}">
+        {% endif %}
+        <div class="card-body">
+          <h2 class="h5"><a class="stretched-link" href="{{ item.url }}">{{ item.title }}</a></h2>
+          {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
+          {% if item.excerpt %}<p>{{ item.excerpt }}</p>{% endif %}
+          {% if item.tags %}
+          <p class="mb-0">
+            {% for t in item.tags %}
+            <span class="badge text-bg-secondary">{{ t }}</span>
+            {% endfor %}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No items yet.</p>
+  {% endif %}
+</article>

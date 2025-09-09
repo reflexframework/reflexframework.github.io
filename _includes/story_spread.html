@@ -1,0 +1,9 @@
+{% assign bgcls = include.bg | default: '' %}
+<section class="spread full-bleed {{ bgcls }}">
+  <picture>
+    <img src="{{ include.image }}" alt="{{ include.alt | default: '' }}">
+  </picture>
+  {% if include.caption %}
+  <div class="caption">{{ include.caption }}</div>
+  {% endif %}
+</section>

@@ -1,0 +1,115 @@
+// === REFLEX Brand Overrides ===
+// Core palette
+$primary: #0EA5E9;   // Electric cyan (accent)
+$secondary: #334155; // Slate 800
+$success: #10B981;   // Emerald
+$warning: #F59E0B;   // Amber
+$danger:  #EF4444;   // Red 500
+$dark:    #0B1220;   // Deep navy background
+$light:   #F8FAFC;   // Near-white
+
+// Typography
+$font-family-sans-serif: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+$headings-font-family: 'Chivo', $font-family-sans-serif;
+$headings-font-weight: 700;
+$body-color: #0f172a; // slate-900
+$link-color: $primary;
+$link-hover-color: shade-color($link-color, 15%);
+
+// Components
+$border-radius: 1rem; // 16px rounded
+$btn-border-radius: 1rem;
+$card-border-radius: 1.25rem;
+$enable-smooth-scroll: true;
+
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/scss/bootstrap";
+
+// === Site Styles ===
+body { background-color: #ffffff; }
+.navbar { backdrop-filter: saturate(1.2) blur(6px); }
+.navbar-brand { letter-spacing: .6px; font-weight: 800; }
+.display-5, .display-6 { letter-spacing: .2px; }
+.card { border: 0; box-shadow: 0 6px 18px rgba(15,23,42,.06); }
+.badge { font-weight: 600; }
+
+// Utility to remove container padding for full-bleed sections
+.full-bleed { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
+
+// Storybook styles
+.story-hero { min-height: 55vh; display: grid; place-items: center; text-align: center; background: linear-gradient(180deg, #0ea5e9 0%, #22d3ee 100%); color: #06233b; }
+.story-hero h1 { font-family: 'Chivo', sans-serif; font-weight: 800; }
+.spread { position: relative; overflow: hidden; }
+.spread img { width: 100%; height: auto; display: block; }
+.spread .caption { position: absolute; bottom: 1rem; right: 1rem; background: rgba(0,0,0,.55); color: #fff; padding: .6rem .8rem; border-radius: .75rem; font-size: .95rem; }
+.spread.bg-dark .caption { background: rgba(255,255,255,.15); }
+
+// Picture-book text blocks
+.story-text { font-size: 1.2rem; line-height: 1.8; }
+.story-text .lead { font-size: 1.35rem; }
+
+footer { border-top: 1px solid rgba(0,0,0,.05); }
+
+
+.language-ruby {
+  background-color: #333;
+  color: #f8f8f2;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.vertical-heading {
+  writing-mode: vertical-rl;  /* text goes top-to-bottom */
+  transform: rotate(180deg);  /* flip so it reads bottom-to-top */
+  text-align: center;
+}
+
+/* Scenario */
+.reflex-scenario {
+  background-color: var(--bs-secondary);
+  color: #fff;
+}
+
+/* Reconnaissance */
+.reflex-reconnaissance {
+  background-color: var(--bs-info);
+  color: #212529; /* Bootstrap text-dark */
+}
+
+/* Evaluation */
+.reflex-evaluation {
+  background-color: var(--bs-primary);
+  color: #fff;
+}
+
+/* Fortify */
+.reflex-fortify {
+  background-color: var(--bs-success);
+  color: #fff;
+}
+
+/* Limit */
+.reflex-limit {
+  background-color: var(--bs-warning);
+  color: #212529;
+}
+
+/* Expose */
+.reflex-expose {
+  background-color: var(--bs-danger);
+  color: #fff;
+}
+
+/* Exercise */
+.reflex-exercise {
+  background-color: var(--bs-dark);
+  color: #fff;
+}
+
+.battlecard-detail h3{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.reflex-keywords {
+  font-family: 'Courier New', Courier, monospace;
+}

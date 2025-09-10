@@ -29,8 +29,20 @@ module ReflexPlugin
 
 
     def initialize(tag_name, markup, tokens)
-      super
-      @type=parse_kv_pairs(markup)
+          super
+          @params = parse_kv_pairs(markup)
+        end
+def parse_args(markup)
+      parts = markup.strip.split(/\s+/)
+      file  = parts.shift
+      params = {}
+
+      parts.each do |p|
+        k, v = p.split(":", 2)
+        params[k] = v.to_s.gsub(/\A"|"\Z/, "") # strip quotes
+      end
+
+      [file, params]
     end
 
 def parse_kv_pairs(str)
@@ -65,46 +77,48 @@ end
 
 
     def render(context)
-      inner = super
-      type=@type['type']
-      text=@type['text']
-      xpage = context.registers[:page]
-      keywords = xpage['keywords'] || []
-      keytext =keywords.join(", ")
-      section=text.downcase
-      if section=="scenario"
-          type="scenario"
+      block_content = super
+      block_content=ReflexPlugin.markdownify(block_content,context)
 
+      site = context.registers[:site]
+
+     icons={
+        "scenario" => "bi-easel" ,
+        "reconnaissance" => "bi-binoculars",
+        "evaluation" => "bi-card-checklist",
+        "fortify" => "bi-card-checklist",
+        "limit" => "bi-stoplights",
+        "expose" => "bi-alarm",
+        "exercise" => "bi-bicycle"
+     }
+
+      type=@params['type']  || "<unknown>"
+      text=@params['text']  || ""
+      type=type.downcase
+      icon_name=text.downcase
+
+      unless icon_name.empty?
+          icon_map=icons[icon_name]
+         unless icon_map.nil?
+             @params['icon']=icon_map
+         end
       end
 
-      before= { "battlecard" => '<div class="row">
-                                  <div class="col-md-2 d-none border p-3 reflex-'+text.downcase+' d-md-flex justify-content-center align-items-center">
-                                   <h2 class="vertical-heading"><i class="bi bi-gear-fill me-2"></i>'+text+'</h2>
-                                  </div>
-                                  <div class="col-12 d-block d-md-none text-center my-3 reflex-'+text.downcase+'">
-                                   <h2>'+text+'</h2>
-                                  </div>
-                                   <div class="col-md-10 border p-3 battlecard-detail">
-                                  ',
+      tpl_path = site.in_source_dir("_includes", type+".html")
 
-                "scenario" => '<div class="row">
-                                <div class="col-md-3 d-none border p-3 reflex-scenario d-md-flex justify-content-center align-items-center">
-                                    <p class="reflex-keywords">'+keytext+'</p>
-                                </div>
-                                <div class="col-md-9 border p-3 battlecard-detail">
-                               '
-              }
-      after = { "battlecard" => "</div></div>", "scenario" => "</div></div>"}
+      text=@params['text'] || ""
+
+      tpl = File.read(tpl_path)
+      env = context.environments.first.merge(
+              "include" => @params.merge("content" => block_content)
+            )
 
 
-      before_html = before[type] || "<span>&#9888;</span>"
-      after_html =  after[type] || "<span>&#9888;</span>"
+      site.liquid_renderer
+                .file(tpl_path)
+                .parse(tpl)
+                .render!(env, registers: context.registers)
 
-      html = ReflexPlugin.markdownify(inner, context)
-
-      doc  = Nokogiri::HTML.parse(html)
-
-      "#{before_html}#{html}#{after_html}"
     end
 
 

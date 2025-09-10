@@ -12,6 +12,8 @@ collections:
     permalink: /labs/:name/
   cards:
     output: true
+  workshops:
+      output: true
   stories:
     output: true
     permalink: /stories/:name/

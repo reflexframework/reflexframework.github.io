@@ -10,6 +10,8 @@ collections:
   labs:
     output: true
     permalink: /labs/:name/
+  cards:
+    output: true
   stories:
     output: true
     permalink: /stories/:name/

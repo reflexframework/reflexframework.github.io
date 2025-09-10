@@ -1,5 +1,5 @@
 ---
- permalink: /battlecards/advenvvarabuse
+
 battlecard:
  title: Advanced Envvar Abuse
  category: Developer Environment
@@ -8,6 +8,7 @@ battlecard:
    - user-writable PATH dirs 
    - DYLD_* injection 
    - LD_* tricks 
+ tech: [ ide, shell]
 ---
 {% block type='battlecard' text='Scenario' %}
 An attacker gains low-privilege access to a developer's machine or a CI/CD build agent, possibly through a compromised dependency or a malicious IDE extension. Their goal is persistence and lateral movement, not immediate disruption.

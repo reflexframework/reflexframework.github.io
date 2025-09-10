@@ -21,7 +21,7 @@ layout: default
         <img class="card-img-top" src="{{ item.cover }}" alt="Cover for {{ item.title }}">
         {% endif %}
         <div class="card-body">
-          <h2 class="h5"><a class="stretched-link" href="{{ item.url }}">{{ item.title }}</a></h2>
+          <h2 class="h5"><a class="stretched-link" href="{{ item.url | absolute_url }}">{{ item.title }}</a></h2>
           {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
           {% if item.excerpt %}<p>{{ item.excerpt }}</p>{% endif %}
           {% if item.tags %}

@@ -23,10 +23,10 @@ layout: default
 
   <nav class="container my-4 d-flex justify-content-between">
     <div>
-      {% if page.prev %}<a class="btn btn-outline-secondary" href="{{ page.prev }}">← Previous</a>{% endif %}
+      {% if page.prev %}<a class="btn btn-outline-secondary" href="{{ page.prev | absolute_url }}">← Previous</a>{% endif %}
     </div>
     <div>
-      {% if page.next %}<a class="btn btn-outline-primary" href="{{ page.next }}">Next →</a>{% endif %}
+      {% if page.next %}<a class="btn btn-outline-primary" href="{{ page.next | absolute_url }}">Next →</a>{% endif %}
     </div>
   </nav>
 </article>

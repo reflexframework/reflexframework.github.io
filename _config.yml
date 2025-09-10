@@ -16,6 +16,9 @@ collections:
   battlecards:
     output: true
     permalink: /battlecards/:name/
+  presentations:
+    output: true
+    permalink: /presentations/:name/
   media:
     output: true
     permalink: /media/:name/

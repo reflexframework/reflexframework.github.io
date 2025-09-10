@@ -15,6 +15,7 @@ collections:
     permalink: /stories/:name/
   battlecards:
     output: true
+    permalink: /battlecards/:name/
   media:
     output: true
     permalink: /media/:name/

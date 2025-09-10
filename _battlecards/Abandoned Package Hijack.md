@@ -1,5 +1,4 @@
 ---
-permalink: /battlecards/abandoned-package-hijack
 keywords:  [dormant Python library, dependency, expired domain]
 battlecard:
  title: Abandoned Package Hijack
@@ -9,6 +8,7 @@ battlecard:
    - revived dormant library 
    - purchased stale repos 
    - hijacked namespaces 
+ tech: [ github, python]
 ---
 {% block type='battlecard' text='Scenario' %}
 An attacker, "Maligna," identifies a popular but dormant Python library, `py-formatter-util`, which is a dependency in thousands of projects, including a widely used open-source data science toolkit. The library hasn't been updated in four years. Maligna discovers the original maintainer's personal domain, listed in their GitHub profile, has expired.

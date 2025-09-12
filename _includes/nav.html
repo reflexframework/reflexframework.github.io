@@ -1,14 +1,21 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
+      <a class="navbar-brand" href="#">
+          <img src="{{ "/assets/images/logo-white.png" | absolute_url }}" width="30" height="30" alt="">
+      </a>
     <a class="navbar-brand fw-bold" href="/">REFLEX</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarsExample">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        {% assign nav_items = site.data.nav | default: site.nav %}
-        {% for item in nav_items %}
-          <li class="nav-item"><a class="nav-link" href="{{ item.url }}">{{ item.title }}</a></li>
+
+        {% for item in site.pages %}
+          {% if item.nav != null %}
+          <li class="nav-item"><a class="nav-link" href="{{ item.url | absolute_url  }}">{{ item.nav }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
     </div>

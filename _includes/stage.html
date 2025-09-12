@@ -1,0 +1,6 @@
+{% assign stage = include.stage %}
+{% assign name = stage.title  %}
+
+<h2>{% icon name={{name}} %} {{stage.title}}</h2>
+{{ stage.content }}
+<br>

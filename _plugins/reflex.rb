@@ -43,7 +43,7 @@ def parse_args(markup)
       end
 
       [file, params]
-    end
+end
 
 def parse_kv_pairs(str)
   kv = {}

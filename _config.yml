@@ -12,6 +12,12 @@ collections:
     permalink: /labs/:name/
   cards:
     output: true
+  panels:
+    output: true
+  testplans:
+    output: true
+  reviews:
+    output: true
   workshops:
       output: true
   stories:
@@ -51,21 +57,14 @@ plugins:
   - jekyll-include-cache
 
 
-nav:
-  - title: Framework
-    url: /framework/
-  - title: Labs
-    url: /labs/
-  - title: Stories
-    url: /stories/
-  - title: Media
-    url: /media/
-  - title: Playground
-    url: /playground/
-  - title: Blog
-    url: /blog/
-  - title: About
-    url: /about/
+icons:
+     scenario  : "bi-easel"
+     reconnaissance : "bi-binoculars"
+     evaluation : "bi-card-checklist"
+     fortify : "bi-card-checklist"
+     limit : "bi-stoplights"
+     expose : "bi-alarm"
+     exercise : "bi-bicycle"
 
 markdown: kramdown
 kramdown:

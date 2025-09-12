@@ -4,6 +4,7 @@ layout: workshop
 audience: Executives, Board Members, Senior Leaders
 title: Introduction to AI Adoption & Resilience for C-Suite Leaders 
 ---
+
 {% block type='goals' %}
 
 - Understand the opportunities and risks of AI adoption.

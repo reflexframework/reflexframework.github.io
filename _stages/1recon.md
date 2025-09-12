@@ -1,0 +1,22 @@
+---
+title: Reconniance
+subtitle: How attackers look at your app
+layout: default
+---
+
+New vulnerabilities or software weaknesses are discovered all the time. Reconnaissance is about staying up to date on both the technical consequences of these discoveries and estimating how they might be exploited.
+
+It’s also about the wider, more general, drive-by cyber attacks that occur in the background all the time. At this stage, we’re teaching developers the security hygiene they need to have every day. Just like washing your hands is a habit, we work to make daily software developer actions secure as a matter of course.
+
+It’s not just about traditional software or software supply chains. We teach developers about the pitfalls of AI - as a weapon in the hands of the bad guys, as a misapplied power tool by the inexperienced and as a critical element of a modern business that’s now embedded in their software supply chain.
+
+The final piece is to teach developers about external elements that affect how they develop software. From legislation and regulations to the motivations behind cyber attackers, we connect developers with these elements and help them understand why improving their security posture and attitude to security is essential and within their control.
+Learn the techniques adversaries use to discover assets, enumerate surfaces, and probe for weaknesses.
+
+
+**Goal:** Understand the attacker’s first moves and build defenses that anticipate them.
+
+- Threat modeling quick-start
+- Asset & endpoint discovery
+- Public footprint & OSINT
+- Lab links: [curl | bash hardening](/labs/curl-bash-hardening/)

@@ -1,5 +1,6 @@
 ---
  permalink: /battlecards/terraform
+title: Terraform Module Attacks
 battlecard:
  title: Terraform Module Attacks
  category: Infra-as-Code
@@ -9,8 +10,6 @@ battlecard:
    - state file leakage 
 ---
 {% block type='battlecard' text='Scenario' %}
-**Infrastructure as Code (IaC) / Terraform: Poisoned Modules & State File Leakage**
-
 An engineering team, under pressure to deliver a new service, needs to set up a managed Kubernetes cluster (EKS) in AWS. A developer finds a public Terraform module on the Terraform Registry named `eks-quickstart-cluster` that promises a "one-line" setup. The module is a typosquatted version of a popular, legitimate module.
 
 The developer adds this module to their project. When they run `terraform apply`, the malicious module performs two actions:

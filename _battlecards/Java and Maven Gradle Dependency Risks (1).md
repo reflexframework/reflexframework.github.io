@@ -1,5 +1,6 @@
 ---
  permalink: /battlecards/java1
+ title: Java and Maven/Gradle Dependency Risks
 battlecard:
  title: Java and Maven/Gradle Dependency Risks
  category: Package Ecosystem
@@ -10,7 +11,6 @@ battlecard:
    - poisoned mvnw/gradlew 
 ---
 {% block type='battlecard' text='Scenario' %}
-
 An attacker, "APT-JavaJolt," targets a company that uses Java with Maven for its build process. Their goal is to steal cloud credentials from the company's CI/CD environment.
 
 1.  **Reconnaissance:** The attacker scans the company's public GitHub repositories and discovers a `pom.xml` file. It references an internal, private dependency: `com.fincore.metrics-client`. This package is hosted on the company's internal Artifactory server, but the build configuration is not set up to prevent lookups to public repositories.

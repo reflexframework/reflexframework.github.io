@@ -1,5 +1,6 @@
 ---
 permalink: /battlecards/dns
+title: DNS and MITM Attacks
 battlecard:
  title: DNS and MITM Attacks
  

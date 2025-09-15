@@ -10,7 +10,9 @@ battlecard:
    - shadow models built from stolen responses 
 ---
 {% block type='battlecard' text='Scenario' %}
-An aggressive startup, "InferiorAI", aims to clone a proprietary image classification model from a market leader, "SuperiorML". SuperiorML's model is exposed via a public, pay-per-query API and represents their core intellectual property. InferiorAI's goal is to create a "shadow model" with comparable performance by systematically querying the API, thereby saving millions in R&D. They will use multiple, seemingly legitimate accounts to send a high volume of carefully crafted images, recording the returned classification labels and confidence scores. This dataset of input-output pairs will be used to train their own copycat model. As a secondary goal, they will attempt model inversion techniques to try and reconstruct sensitive data from the original training set, hoping to find PII they can use as leverage.
+An aggressive startup, "InferiorAI", aims to clone a proprietary image classification model from a market leader, "SuperiorML". SuperiorML's model is exposed via a public, pay-per-query API and represents their core intellectual property. InferiorAI's goal is to create a "shadow model" with comparable performance by systematically querying the API, thereby saving millions in R&D. 
+
+They will use multiple, seemingly legitimate accounts to send a high volume of carefully crafted images, recording the returned classification labels and confidence scores. This dataset of input-output pairs will be used to train their own copycat model. As a secondary goal, they will attempt model inversion techniques to try and reconstruct sensitive data from the original training set, hoping to find PII they can use as leverage.
 
 {% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}

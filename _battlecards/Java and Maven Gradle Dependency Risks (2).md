@@ -1,5 +1,6 @@
 ---
  permalink: /battlecards/java2
+ title: Java Typesquatting
 battlecard:
  title: Java and Maven/Gradle Dependency Risks
  category: Package Ecosystem

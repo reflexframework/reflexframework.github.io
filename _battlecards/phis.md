@@ -1,5 +1,6 @@
 ---
 permalink: /battlecards/phishing-developers
+title: Phishing Developers
 battlecard:
  title: Phishing Developers
  category: Social Engineering

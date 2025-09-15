@@ -11,8 +11,9 @@ battlecard:
    - remote build cache compromise 
 ---
 {% block type='battlecard' text='Scenario' %}
-
 A sophisticated attacker gains initial access to a developer's workstation via a targeted phishing email. From this foothold, they move laterally across the internal network, mapping out the company's software development infrastructure. They identify a self-hosted Artifactory instance serving as the central Maven/Gradle repository and a Gradle Enterprise server providing a remote build cache for CI/CD pipelines.
+
+
 
 The attacker targets a widely-used internal Java library named `com.mycorp:auth-client`, which handles authentication and authorization for hundreds of microservices. Their goal is to inject a backdoor that exfiltrates production service credentials.
 

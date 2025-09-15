@@ -12,6 +12,9 @@ layout: default
   {% assign collname = page.collection_name | default: page.collection %}
   {% assign coll = site[collname] %}
 
+  {% if coll and coll.size == 0 %}
+     {% assign coll = site.pages | where:"type",collname %}
+  {% endif %}
 
   {% if coll and coll.size > 0 %}
   <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -26,7 +29,7 @@ layout: default
 
           <h2 class="h5"><span><i class="bi {{icon}}"></i></span>&nbsp;<a class="stretched-link" href="{{ item.url | absolute_url }}">{{ item.title }}</a></h2>
           {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
-          {% if item.excerpt %}<p>{{ item.excerpt }}</p>{% endif %}
+          {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
           {% if item.tags %}
           <p class="mb-0">
             {% for t in item.tags %}

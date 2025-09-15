@@ -6,7 +6,7 @@ baseurl: ""
 collections:
   stages:
     output: true
-    permalink: /framework/:name/
+    permalink: /stage/:name/
   labs:
     output: true
     permalink: /labs/:name/

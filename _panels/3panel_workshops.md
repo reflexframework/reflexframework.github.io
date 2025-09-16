@@ -1,7 +1,8 @@
 ---
 title: Workshops
-place:  index
+parent: index
 icon: bi-shield-check
+banner: general-workshops
 tagline: 
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: collection
-collection: panels
+collection: index
 title: Welcome to REFLEX
 ---
 

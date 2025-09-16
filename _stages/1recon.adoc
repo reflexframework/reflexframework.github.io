@@ -1,5 +1,6 @@
 ---
-title: Reconniance
+title: Reconnaissance
+banner: reflex-recon
 subtitle: How attackers look at your app
 layout: default
 ---
@@ -13,10 +14,9 @@ It’s not just about traditional software or software supply chains. We teach d
 The final piece is to teach developers about external elements that affect how they develop software. From legislation and regulations to the motivations behind cyber attackers, we connect developers with these elements and help them understand why improving their security posture and attitude to security is essential and within their control.
 Learn the techniques adversaries use to discover assets, enumerate surfaces, and probe for weaknesses.
 
+*Goal:* Understand the attacker’s first moves and build defenses that anticipate them.
 
-**Goal:** Understand the attacker’s first moves and build defenses that anticipate them.
-
-- Threat modeling quick-start
-- Asset & endpoint discovery
-- Public footprint & OSINT
-- Lab links: [curl | bash hardening](/labs/curl-bash-hardening/)
+* Threat modeling quick-start
+* Asset &amp; endpoint discovery
+* Public footprint &amp; OSINT
+* Lab links: link:/labs/curl-bash-hardening/[curl | bash hardening]

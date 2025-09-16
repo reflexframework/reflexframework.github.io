@@ -113,3 +113,34 @@ footer { border-top: 1px solid rgba(0,0,0,.05); }
 .reflex-keywords {
   font-family: 'Courier New', Courier, monospace;
 }
+
+.banner {
+  color:white;
+  text-decoration: none;
+}
+
+
+
+.timeline {
+  position: relative;
+  margin-left: 2rem;
+  border-left: 2px solid #dee2e6;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 3rem;
+}
+.timeline-icon {
+  position: absolute;
+  left: -1.3rem;
+  top: 0;
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

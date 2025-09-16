@@ -12,22 +12,42 @@ layout: default
   {% assign collname = page.collection_name | default: page.collection %}
   {% assign coll = site[collname] %}
 
-  {% if coll and coll.size == 0 %}
-     {% assign coll = site.pages | where:"type",collname %}
-  {% endif %}
+   {% unless coll %}
+     {% assign coll = site.panels | where:"parent",collname %}
+
+  {% endunless %}
 
   {% if coll and coll.size > 0 %}
   <div class="row row-cols-1 row-cols-md-2 g-4">
     {% for item in coll %}
     <div class="col">
       <div class="card h-100 shadow-sm">
-        {% if item.cover %}
-        <img class="card-img-top" src="{{ item.cover }}" alt="Cover for {{ item.title }}">
-        {% endif %}
+
+
+          {% if item.banner %}
+          {% assign banner = "/assets/images/banners/" | append: item.banner | append: ".png" | absolute_url %}
+        <img class="card-img-top" src="{{ banner }}" alt="Cover for {{ item.title }}">
+          <div class="card-img-overlay">
+              {% assign icon = item.icon | default: 'bi-building-lock' %}
+              <h1 class="card-title" ><span><i class="bi {{icon}}"></i></span>&nbsp;<a class="stretched-link  banner"   href="{{ item.url | absolute_url }}">{{ item.title }}</a></h1>
+          </div>
+          <div class="card-body">
+              {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
+              {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
+              {% if item.tags %}
+              <p class="mb-0">
+                  {% for t in item.tags %}
+                  <span class="badge text-bg-secondary">{{ t }}</span>
+                  {% endfor %}
+              </p>
+              {% endif %}
+          </div>
+        {% else %}
+
         <div class="card-body">
             {% assign icon = item.icon | default: 'bi-building-lock' %}
 
-          <h2 class="h5"><span><i class="bi {{icon}}"></i></span>&nbsp;<a class="stretched-link" href="{{ item.url | absolute_url }}">{{ item.title }}</a></h2>
+          <h5 class="card-title"><span><i class="bi {{icon}}"></i></span>&nbsp;<a class="stretched-link" href="{{ item.url | absolute_url }}">{{ item.title }}</a></h5>
           {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
           {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
           {% if item.tags %}
@@ -38,6 +58,7 @@ layout: default
           </p>
           {% endif %}
         </div>
+          {% endif %}
       </div>
     </div>
     {% endfor %}

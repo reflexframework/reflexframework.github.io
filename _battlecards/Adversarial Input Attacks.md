@@ -9,12 +9,12 @@ battlecard:
    - bypassing filters in moderation systems 
    - image/text perturbations that fool classifiers 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker group wants to spread a sophisticated phishing campaign on a popular social media platform. The platform uses an AI/ML model to moderate outbound links and messages, flagging them as "spam" or "malicious." 
 
 The attacker's goal is to craft messages that contain their phishing link but bypass the AI filter, allowing them to reach a large number of users. They will use subtle text perturbations—like using look-alike characters from other languages (homoglyphs) or adding invisible characters—to create adversarial examples. A human user can read the message and link perfectly, but the machine learning model sees a benign string of characters and classifies the message as "safe."
 
-{% endblock %}
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. Before launching the main attack, they need to understand how the moderation model behaves. They will act like a curious user to probe the system's boundaries. This is often a "black-box" attack, meaning they don't have access to the model's code or weights; they can only send inputs and observe the outputs (i.e., "approved" or "flagged"). They'll start by sending known spammy links and phrases to confirm they get blocked. Then, they will methodically introduce small changes—swapping an 'o' for a Greek omicron 'ο', or adding zero-width spaces—and resubmit, carefully noting which variations get through. By repeating this process thousands of times, they build a map of the model's weaknesses.

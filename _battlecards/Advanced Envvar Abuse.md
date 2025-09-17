@@ -8,9 +8,9 @@ battlecard:
    - user-writable PATH dirs 
    - DYLD_* injection 
    - LD_* tricks 
- tech: [ ide, shell]
+keywords: [ ide, shell]
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker gains low-privilege access to a developer's machine or a CI/CD build agent, possibly through a compromised dependency or a malicious IDE extension. Their goal is persistence and lateral movement, not immediate disruption.
 
 The attacker discovers that the developer's shell profile (`.zshrc` or `.bashrc`) prepends a user-writable directory (e.g., `~/.local/bin`) to the system's `PATH`.
@@ -21,7 +21,7 @@ The attacker places a malicious shell script named `git` inside `~/.local/bin`. 
 
 The next time the developer (or a CI job) runs any `git` command, the attacker's script executes first, stealing credentials and potentially manipulating source code before it's committed. A similar attack could use `LD_PRELOAD` (on Linux) or `DYLD_INSERT_LIBRARIES` (on macOS) to hijack function calls within any dynamically linked application, like `curl` or `npm`, to intercept data or modify behavior without needing to impersonate a binary in the `PATH`.
 
-{% endblock %}
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the "casing the joint" phase. After gaining initial access, the attacker's first goal is to understand the environment to find a weak point for persistence and privilege escalation. They aren't scanning your network from the outside; they are already on a machine and exploring its configuration. They will look for lazy or overly-permissive configurations that are common in development environments where convenience often trumps security.

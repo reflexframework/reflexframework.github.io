@@ -1,6 +1,6 @@
 ---
- permalink: /battlecards/aicostamplificationattacks
- keywords: [hardcoded API key, public GitHub repository, automated scanner]
+permalink: /battlecards/aicostamplificationattacks
+
 banner: reflex-limit
 battlecard:
  title: AI Cost Amplification Attacks
@@ -11,12 +11,13 @@ battlecard:
    - quota exhaustion 
    - unexpected cloud billing spikes 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 A developer working on a new feature that integrates with a commercial Large Language Model (LLM) provider, like OpenAI or Anthropic, hardcodes an API key directly into a source file for a quick prototype. They commit the code to a feature branch and push it to a public GitHub repository. Within minutes, an attacker's automated scanner, which constantly monitors public repositories for secret patterns (e.g., `sk-...` for OpenAI), discovers the key.
 
 The attacker immediately starts a script that uses the key to make thousands of requests per minute to the most expensive model endpoint available (e.g., the latest GPT model for complex image analysis). The script's goal is not to get meaningful results, but simply to maximize the cost of each API call. The developer's company is unaware until the next morning when they receive an automated billing alert from their cloud provider showing a projected bill of tens of thousands of dollars, a massive spike from their usual daily spend. The API key hits its rate limit, but not before causing significant financial damage and a service outage for legitimate users.
 
-{% endblock %}
+---
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the discovery phase. Attackers aren't manually browsing your code; they use automated tools to scan public data sources for secrets. The most common target is public source code repositories like GitHub, but keys can also be found in public S3 buckets, exposed container images, pastebin sites, or even in the minified JavaScript of a web application. These bots search for specific patterns that identify keys for popular services (AWS, Google Cloud, OpenAI, Stripe, etc.). Once found, the keys are tested for validity and then cataloged for immediate abuse or for sale on dark web marketplaces.

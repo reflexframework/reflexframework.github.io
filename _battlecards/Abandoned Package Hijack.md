@@ -1,5 +1,6 @@
 ---
-keywords:  [dormant Python library, dependency, expired domain]
+title: Abandoned Package Hijack
+keywords: [ github, python]
 battlecard:
  title: Abandoned Package Hijack
  category: Package Ecosystem
@@ -7,17 +8,16 @@ battlecard:
  focus: 
    - revived dormant library 
    - purchased stale repos 
-   - hijacked namespaces 
- tech: [ github, python]
+   - hijacked namespaces
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, "Maligna," identifies a popular but dormant Python library, `py-formatter-util`, which is a dependency in thousands of projects, including a widely used open-source data science toolkit. The library hasn't been updated in four years. Maligna discovers the original maintainer's personal domain, listed in their GitHub profile, has expired.
 
 Maligna purchases the lapsed domain, sets up an email address, and uses the "forgot password" feature on the PyPI package registry to take control of the `py-formatter-util` package. They copy the original source code, add a subtle backdoor that exfiltrates `AWS_` environment variables to their server via a DNS request, and publish it as a new "patch" version (e.g., `1.2.1` -> `1.2.2`).
 
 The next time the data science toolkit's CI/CD pipeline runs a routine dependency update, it automatically pulls in the malicious version `1.2.2`. The compromise is now embedded in the toolkit. When a developer at a tech company uses the updated toolkit on their laptop, the malicious code silently sends their temporary AWS credentials to Maligna's server, giving the attacker access to the company's cloud environment.
 
-{% endblock %}
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They aren't launching a direct assault but are quietly searching for weak links in the open-source supply chain. They methodically scan package ecosystems like PyPI, npm, or Maven Central for popular libraries that show signs of neglect. Their goal is to find a package that is widely trusted but poorly maintained, creating a perfect Trojan horse.

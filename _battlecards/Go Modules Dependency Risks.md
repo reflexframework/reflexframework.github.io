@@ -1,5 +1,5 @@
 ---
- permalink: /battlecards.godeps
+ permalink: /battlecards/godeps
 battlecard:
  title: Go Modules Dependency Risks
  category: Package Ecosystem

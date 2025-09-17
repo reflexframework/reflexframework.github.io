@@ -182,4 +182,28 @@ footer {
   justify-content: center;
 }
 
+.battlecard-reconnaissance {
+  background: #c3f1c0;
+}
+
+.battlecard-evaluation {
+  background: #e1b67d;
+}
+
+.battlecard-fortify {
+  background: #b9efe7;
+}
+
+.battlecard-limit {
+  background: #f3d2ce;
+}
+
+.battlecard-expose {
+  background: #ddefb9;
+}
+
+.battlecard-exercise {
+  background: #a7aef1;
+}
+
 /*# sourceMappingURL=site.css.map */

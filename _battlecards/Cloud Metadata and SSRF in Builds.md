@@ -9,7 +9,7 @@ battlecard:
    - SSRF via tests 
    - cloud secret exfiltration 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular open-source project on GitHub that uses a CI/CD pipeline to automatically test pull requests (PRs). They notice the pipeline runs on cloud-hosted runners (e.g., AWS EC2, GCP Compute Engine). The attacker's goal is to steal the cloud credentials assigned to the build runner to access sensitive data.
 
 The attacker forks the repository and adds a new unit test to a test file. The test seems harmless—it purports to check the functionality of a URL parsing library. However, it's crafted to trigger a Server-Side Request Forgery (SSRF) vulnerability.
@@ -34,7 +34,7 @@ assert response.status_code == 200
 ```
 The attacker submits a PR with this new test. When the project's CI/CD pipeline automatically runs the tests for the PR, the malicious code executes inside the trusted environment. It queries the cloud's Instance Metadata Service (IMDS), retrieves the temporary IAM credentials assigned to the build runner, and sends them to the attacker's server. With these credentials, the attacker can now assume the role of the CI machine and access any cloud resources it was permitted to, such as S3 buckets with user data, private container registries, or a cloud secret store.
 
-{% endblock %}
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the "casing the joint" phase. The attacker isn't attacking you directly yet; they're gathering intelligence to find the weakest link. For this scenario, they focus on your CI/CD setup, which is often publicly visible. They'll look for repositories that automatically run tests on PRs from external contributors. They study your CI configuration files (`.github/workflows/main.yml`, `.gitlab-ci.yml`) to understand your build environment, what cloud provider you use, the permissions you might be granting, and the dependencies you use.

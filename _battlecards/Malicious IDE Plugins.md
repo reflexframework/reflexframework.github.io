@@ -8,7 +8,7 @@ battlecard:
    - malicious extensions 
    - unsafe run configs 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets developers at a hot new AI startup. They create a VS Code extension called "AI Linter Pro" and publish it to the marketplace. The extension promises to use a GPT model to provide advanced, context-aware linting for Python code, a core language for the startup. To build credibility, the attacker creates a slick landing page, a few positive fake reviews, and even a public (but obfuscated) GitHub repository for the extension.
 
 A developer at the startup, looking for an edge, discovers and installs the extension. Upon installation, the extension does two things silently in the background:
@@ -17,7 +17,7 @@ A developer at the startup, looking for an edge, discovers and installs the exte
 
 The next time the developer hits F5 to debug their Python script, the malicious task executes, compromising their machine and giving the attacker a foothold inside the startup's network.
 
-{% endblock %}
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's goal is to understand your development environment and social dynamics to craft a believable lure. They aren't launching a brute-force attack; they are creating a targeted tool that solves a real problem for developers, making it irresistible. They research your company's tech stack by looking at job postings and public GitHub repositories. They identify popular IDEs (like VS Code or JetBrains) and the types of tools developers in your domain (e.g., AI/ML, FinTech) are likely to seek out. They then create their malicious extension, often by forking a legitimate open-source extension and injecting malicious code, making it difficult to spot the differences. The final step is social engineering: promoting the tool in developer communities like Reddit, Discord, or Stack Overflow where their targets are active.

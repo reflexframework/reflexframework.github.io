@@ -1,7 +1,8 @@
 ---
- permalink: /battlecards/metadata
+permalink: /battlecards/metadata
+title: Model Supply Chain Metadata Leaks
 battlecard:
- title: Model Supply Chain Metadata Leaks
+
  category: AI/ML Supply Chain
  scenario: Model Metadata Exposure
  focus: 
@@ -9,14 +10,14 @@ battlecard:
    - leaked environment variables in training logs 
    - debug artifacts bundled with models 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, browsing a public model repository like Hugging Face, discovers a new sentiment analysis model uploaded by a startup. Curious, they download the model artifacts. While inspecting the package, they find a `.zip` file containing not just the model weights, but also the full training logs from a few months ago.
 
 By running a simple `grep` command for keywords like "key", "secret", and "token" on the log files, the attacker finds a set of AWS credentials (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) that were accidentally printed to the console during a debugging session. The developer who ran the training job had their credentials configured as local environment variables, which were then captured by the logging framework.
 
 The attacker tests the credentials and finds they are still active. The IAM permissions are overly permissive, granting them `s3:ListAllMyBuckets` and `s3:GetObject` access to the company's entire S3 environment. The attacker proceeds to exfiltrate proprietary training datasets, other pre-production models, and sensitive business documents, causing significant data loss and a major security breach.
 
-{% endblock %}
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 In this stage, the attacker is hunting for exposed information without actively trying to break in. They operate like a digital scavenger, sifting through publicly available data associated with your ML projects. They will scan public model hubs (Hugging Face, TensorFlow Hub), code repositories (GitHub, GitLab), and even public Docker images. Their goal is to find any metadata that gives them a foothold: credentials, internal server names, dataset paths, software versions, or even developer email addresses that could be used for phishing. Think of it as them looking at the "making of" documentary for your model to find mistakes.

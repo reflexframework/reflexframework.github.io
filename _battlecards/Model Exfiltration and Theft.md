@@ -9,12 +9,12 @@ battlecard:
    - model inversion revealing training data 
    - shadow models built from stolen responses 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An aggressive startup, "InferiorAI", aims to clone a proprietary image classification model from a market leader, "SuperiorML". SuperiorML's model is exposed via a public, pay-per-query API and represents their core intellectual property. InferiorAI's goal is to create a "shadow model" with comparable performance by systematically querying the API, thereby saving millions in R&D. 
 
 They will use multiple, seemingly legitimate accounts to send a high volume of carefully crafted images, recording the returned classification labels and confidence scores. This dataset of input-output pairs will be used to train their own copycat model. As a secondary goal, they will attempt model inversion techniques to try and reconstruct sensitive data from the original training set, hoping to find PII they can use as leverage.
 
-{% endblock %}
+
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They act like a curious, sophisticated developer to understand how your API works, what its limits are, and where its weaknesses lie. They aren't launching exploits yet; they're mapping the terrain. For this scenario, they will script interactions to probe the model's behavior. They'll send standard images, blank images, and noisy images to see how the model responds and what kind of confidence scores are returned. They are essentially asking: "How does this black box tick?"

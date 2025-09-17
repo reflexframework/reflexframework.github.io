@@ -1,5 +1,5 @@
 ---
-title: DevOps / Platform Engineers
+title: For DevOps or Platform Engineers
 type:   outcome
 icon: bi-diagram-3
 tagline: Lock down your pipelines, without locking out delivery

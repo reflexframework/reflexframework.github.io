@@ -1,5 +1,5 @@
 ---
-title: Developers
+title: For Developers
 type:   outcome
 icon: bi-code-slash
 tagline: Code with confidence, spot threats early, build secure habits

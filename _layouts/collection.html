@@ -40,9 +40,10 @@ layout: default
                     <img class="card-img-top" src="{{ banner }}" alt="Cover for {{ item.title }}">
                     <div class="card-img-overlay">
 
-                        <h3 class="card-title banner"><span><i class="bi {{icon}}"></i></span>&nbsp;
+                        <h4 class="card-title banner"><span><i class="bi {{icon}}"></i></span>&nbsp;
                                  {{ item.title }}
-                        </h3>
+                        </h4>
+
                     </div>
                 </a>
 
@@ -50,7 +51,7 @@ layout: default
 
 
                 <div class="card-body">
-                    {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
+                    {% if item.tagline %}<h5 class="text-muted">{{ item.tagline }}</h5>{% endif %}
                     {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
                 </div>
                 </div>

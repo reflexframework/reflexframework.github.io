@@ -1,5 +1,5 @@
 ---
-title: Educators / Trainers / Community Leaders
+title: For Educators / Trainers / Community Leaders
 type:   outcome
 icon: bi-mortarboard
 tagline: Teach security through realistic, hands-on scenarios that stick

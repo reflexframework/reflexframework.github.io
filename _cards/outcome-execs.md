@@ -1,5 +1,5 @@
 ---
-title: Executives / C-Suites
+title: For Executives
 type:   outcome
 icon: bi-building-lock
 tagline: Protect your business and reputation while enabling innovation.

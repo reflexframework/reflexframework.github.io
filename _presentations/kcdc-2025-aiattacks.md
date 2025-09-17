@@ -1,9 +1,17 @@
 ---
-venue: kcdc
+venue: KCDC 2025
+published_at: Aug 13th 2025
 city: Kansas City
 country: USA
+banner: talk-modern
 title: The Enemy Within, How AI is Weaponizing Your Code
 pdf: /assets/pdfs/2025/kcdc/AISoftwareAttacks-KCDC.pdf
+keywords:
+  - kcdc
+  - 2025
+  - security
+  - devtools
+  - AI
 ---
 
 *By Steve Poole, Developer Advocate & Software Supply Chain Security Expert* Artificial intelligence is transforming the software landscape—not just as a tool for developers but as a powerful weapon for attackers. In this talk, Steve Poole explores how AI lowers barriers to entry, scales attacks, and introduces entirely new threat vectors across the software supply chain. 

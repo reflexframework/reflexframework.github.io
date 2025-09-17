@@ -2,68 +2,72 @@
 layout: default
 ---
 <article class="content-collection">
-  <header class="mb-4">
-    <h1 class="display-6">{{ page.title | default: page.collection | capitalize }}</h1>
-    {% if page.description %}<p class="text-muted">{{ page.description }}</p>{% endif %}
-  </header>
+    <header class="mb-4">
+        <h1 class="display-6">{{ page.title | default: page.collection | capitalize }}</h1>
+        {% if page.description %}<p class="text-muted">{{ page.description }}</p>{% endif %}
+    </header>
 
     {{ content }}
 
-  {% assign collname = page.collection_name | default: page.collection %}
-  {% assign coll = site[collname] %}
+    {% assign collname = page.collection_name | default: page.collection %}
+    {% assign coll = site[collname] %}
 
-   {% unless coll %}
-     {% assign coll = site.panels | where:"parent",collname %}
+    {% unless coll %}
+    {% assign coll = site.panels | where:"parent",collname %}
 
-  {% endunless %}
+    {% endunless %}
 
-  {% if coll and coll.size > 0 %}
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    {% for item in coll %}
-    <div class="col">
-      <div class="card h-100 shadow-sm">
+    {% if coll and coll.size > 0 %}
+    {% if page.sort %}
+    {% assign coll = coll | sort: page.sort %}
+    {% endif %}
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for item in coll %}
+
+        {% assign keywords= item.keywords | join: ', '  %}
+        {% assign banner = item.banner | default: 'general-default' %}
+        {% assign banner = "/assets/images/banners/" | append: banner | append: ".png" | absolute_url %}
+        {% assign icon = item.icon | default: 'bi-building-lock' %}
+        {% assign page_url = item.url | absolute_url %}
+
+        <div class="col" data-tags="{{ keywords }}">
+            <div class="card border border-secondary">
+            <div class="card h-100 shadow-sm ">
+                <div class="card-header">
+                <a href="{{ page_url }}">
+
+                    <img class="card-img-top" src="{{ banner }}" alt="Cover for {{ item.title }}">
+                    <div class="card-img-overlay">
+
+                        <h2 class="card-title banner"><span><i class="bi {{icon}}"></i></span>&nbsp;
+                                 {{ item.title }}
+                        </h2>
+                    </div>
+                </a>
+
+                </div>
 
 
-          {% if item.banner %}
-          {% assign banner = "/assets/images/banners/" | append: item.banner | append: ".png" | absolute_url %}
-        <img class="card-img-top" src="{{ banner }}" alt="Cover for {{ item.title }}">
-          <div class="card-img-overlay">
-              {% assign icon = item.icon | default: 'bi-building-lock' %}
-              <h1 class="card-title" ><span><i class="bi {{icon}}"></i></span>&nbsp;<a class="stretched-link  banner"   href="{{ item.url | absolute_url }}">{{ item.title }}</a></h1>
-          </div>
-          <div class="card-body">
-              {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
-              {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
-              {% if item.tags %}
-              <p class="mb-0">
-                  {% for t in item.tags %}
-                  <span class="badge text-bg-secondary">{{ t }}</span>
-                  {% endfor %}
-              </p>
-              {% endif %}
-          </div>
-        {% else %}
+                <div class="card-body">
+                    {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
+                    {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
+                </div>
+                </div>
 
-        <div class="card-body">
-            {% assign icon = item.icon | default: 'bi-building-lock' %}
+                <div class="card-footer text-muted">
+                    {% include keywords.html keywords=item.keywords %}
+                </div>
 
-          <h5 class="card-title"><span><i class="bi {{icon}}"></i></span>&nbsp;<a class="stretched-link" href="{{ item.url | absolute_url }}">{{ item.title }}</a></h5>
-          {% if item.subtitle %}<p class="text-muted mb-2">{{ item.subtitle }}</p>{% endif %}
-          {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
-          {% if item.tags %}
-          <p class="mb-0">
-            {% for t in item.tags %}
-            <span class="badge text-bg-secondary">{{ t }}</span>
-            {% endfor %}
-          </p>
-          {% endif %}
+
+            </div>
+
+
+
         </div>
-          {% endif %}
-      </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-  {% else %}
-  <p>No items yet.</p>
-  {% endif %}
+    {% else %}
+    <p>No items yet.</p>
+    {% endif %}
 </article>

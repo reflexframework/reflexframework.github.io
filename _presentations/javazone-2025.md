@@ -1,9 +1,19 @@
 ---
-venue: javazone
+venue: JavaZone 2025
+published_at: Sept 3th 2025
 city: oslo
 country: norway
+banner: talk-modern
 title: Securing the Modern Developer Environment
 pdf: /assets/pdfs/2025/javazone/JavaZone2025-Final.pdf
+keywords:
+  - javazone 
+  - 2025
+  - security
+  - supply chain
+  - supply chain attacks
+  - Java
+  - AI
 ---
 
 The presentation, **"Securing the Modern Developer Environment"** by Steve Poole, highlights the increasing threat of supply chain attacks, especially those enhanced by artificial intelligence (AI).

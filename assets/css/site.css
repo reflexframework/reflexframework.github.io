@@ -206,4 +206,86 @@ footer {
   background: #a7aef1;
 }
 
+/* Work-in-progress banner */
+.in-progress-banner {
+  background: #fff3cd; /* light amber */
+  border-bottom: 1px solid #ffe69c;
+  color: #664d03;
+  padding: 12px 0;
+  position: relative;
+  z-index: 1000; /* above content, below fixed nav if needed */
+}
+
+.in-progress-banner .ipb-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.in-progress-banner .ipb-col {
+  flex: 1;
+  font-weight: 600;
+}
+
+.in-progress-banner .ipb-stage {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.in-progress-banner .ipb-meter {
+  display: inline-block;
+  width: 120px;
+  height: 6px;
+  background: #ffe8a1;
+  border-radius: 999px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 0 6px;
+}
+
+.in-progress-banner .ipb-meter-fill {
+  display: block;
+  height: 100%;
+  background: #f59f0b; /* amber fill */
+}
+
+.in-progress-banner .ipb-percent {
+  font-variant-numeric: tabular-nums;
+}
+
+.in-progress-banner .ipb-updated {
+  opacity: 0.85;
+}
+
+.in-progress-banner .ipb-dismiss {
+  background: transparent;
+  color: inherit;
+  border: 0;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0 6px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.in-progress-banner .ipb-dismiss:hover {
+  opacity: 1;
+}
+
+/* Optional dark theme tweak */
+@media (prefers-color-scheme: dark) {
+  .in-progress-banner {
+    background: #2a1f05;
+    border-bottom-color: #3a2b07;
+    color: #ffd166;
+  }
+  .in-progress-banner .ipb-meter {
+    background: #3a2b07;
+  }
+  .in-progress-banner .ipb-meter-fill {
+    background: #f59f0b;
+  }
+}
+
 /*# sourceMappingURL=site.css.map */

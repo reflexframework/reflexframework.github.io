@@ -1,5 +1,5 @@
 ---
- permalink: /battlcards/browser-based-dev-tool-exposure
+ permalink: /battlecards/browser-based-dev-tool-exposure
  
 battlecard:
  title: Browser-Based Dev Tool Exposure

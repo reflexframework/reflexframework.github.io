@@ -21,3 +21,18 @@
     </div>
   </div>
 </nav>
+<div class="in-progress-banner" role="status" aria-live="polite">
+    <div class="container">
+        <div class="ipb-row">
+            <div class="ipb-col">
+                <strong>This site is a "Work In Progress"</strong>
+                <span class="ipb-meter" aria-label="Completion {{ page.progress_percent }} percent">
+                <span class="ipb-meter-fill" style="width:{{ site.progress.percent }}%;"></span>
+               </span>
+                <span class="ipb-percent">{{ site.progress.percent }}%</span>
+
+            </div>
+
+        </div>
+    </div>
+</div>

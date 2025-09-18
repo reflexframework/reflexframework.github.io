@@ -3,6 +3,11 @@ description: "Make secure code second nature."
 url: ""
 baseurl: ""
 
+
+progress:
+  stage: "draft"
+  percent: 45
+
 collections:
   stages:
     output: true

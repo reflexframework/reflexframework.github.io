@@ -170,6 +170,9 @@ footer { border-top: 1px solid rgba(0,0,0,.05); }
   background: #a7aef1;
 }
 
+.hidden {
+  display: none;
+}
 
 /* Work-in-progress banner */
 .in-progress-banner {
@@ -242,4 +245,5 @@ footer { border-top: 1px solid rgba(0,0,0,.05); }
   }
   .in-progress-banner .ipb-meter { background: #3a2b07; }
   .in-progress-banner .ipb-meter-fill { background: #f59f0b; }
+
 }

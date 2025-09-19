@@ -7,4 +7,6 @@ sort: title
 
 Battlecards are scenerios used to explore real attack vectors and learn how to apply REFLEX thinking to the situation.
 
-## In Alphabetical Order ..
+<input type="text" id="filterInput" placeholder="Filter sections...">
+
+### In Alphabetical Order ..

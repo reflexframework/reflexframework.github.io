@@ -50,7 +50,7 @@ module ReflexPlugin
             name=var.render(context) || ""
             name=name.downcase
             name=icon_mapping[name] || name
-            puts name
+
 
             "<i class='bi "+name+"'></i>"
        end

@@ -23,6 +23,8 @@ collections:
     output: true
   reviews:
     output: true
+  articles:
+      output: true
   workshops:
       output: true
   stories:

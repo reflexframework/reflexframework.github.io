@@ -31,7 +31,7 @@ layout: default
         {% assign icon = item.icon | default: 'bi-building-lock' %}
         {% assign page_url = item.url | absolute_url %}
 
-        <div class="col" data-tags="{{ keywords }}">
+        <div class="col" data-type="card" data-tags="{{ keywords }}">
             <div class="card  h-100 border border-secondary">
             <div class="card h-100 shadow-sm ">
                 <div class="card-header">

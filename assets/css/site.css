@@ -206,6 +206,10 @@ footer {
   background: #a7aef1;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Work-in-progress banner */
 .in-progress-banner {
   background: #fff3cd; /* light amber */

@@ -5,6 +5,16 @@ subtitle: How attackers look at your app
 layout: default
 ---
 
+**Understand how attackers think.**
+
+Attackers rarely start with code exploits — they begin with information gathering. That might be scanning GitHub repos for leaked secrets, searching public registries for weak points, or monitoring developer chatter for insights.
+
+- **For developers**: Learn how reconnaissance is performed against your stack. Run OSINT checks on your own repos. Search for typosquatting versions of your dependencies. Review your CI logs for leaks.
+- **For leaders**: Recognise that reconnaissance is cheap and automated. If sensitive details are left exposed, they *will* be found.
+
+**Pitch point:** By teaching devs how attackers research targets, we build awareness that prevents “low-hanging fruit” mistakes — the kind regulators and customers increasingly see as negligence.
+
+
 New vulnerabilities or software weaknesses are discovered all the time. Reconnaissance is about staying up to date on both the technical consequences of these discoveries and estimating how they might be exploited.
 
 It’s also about the wider, more general, drive-by cyber attacks that occur in the background all the time. At this stage, we’re teaching developers the security hygiene they need to have every day. Just like washing your hands is a habit, we work to make daily software developer actions secure as a matter of course.

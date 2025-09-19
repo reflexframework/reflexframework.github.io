@@ -26,7 +26,7 @@ Attackers publish a malicious package version or compromise a maintainer account
 ### Insight
 This is a supply-chain worm: once one maintainer’s credentials are obtained, the malware uses them to propagate automatically. Key attacker methods: postinstall hooks, filesystem scanning, outbound webhooks, GitHub Actions injection, and forced npm publishing using stolen tokens.
 
-### Practical (30–90 mins)
+### Practical 
 - `npm ls @ctrl/tinycolor || true` — detect direct deps.
 - `grep -E "ctrl/tinycolor|Shai-Hulud" -R package-lock.json yarn.lock || true` — search lockfiles.
 - `find . -type f -name "bundle.js" -print` and `grep -R "shai-hulud" . || true`.
@@ -57,7 +57,7 @@ Susceptibility depends on: (a) using affected package versions (direct or transi
 ### Insight
 Even a single engineer installing a compromised package on a machine with long-lived tokens can seed the organization: harvested tokens can be used to publish more packages and plant workflows on repos that CI or the user can access.
 
-### Practical (30–90 mins)
+### Practical 
 - Run fleet-wide scans: `npm ls @ctrl/tinycolor --all` across repos.
 - Search CI logs for installs of suspect versions (`grep -R "@ctrl/tinycolor@4.1" /var/log/ci || true`).
 - Check runner environments for secrets: `env | egrep 'AWS|GITHUB|NPM|TOKEN|SECRET' || true`.
@@ -88,7 +88,7 @@ Prevent by reducing attack surface (no long-lived creds on build/install surface
 ### Insight
 Mitigations combine process (review/cooldown for new releases), platform (CI network restrictions, limited permissions), and tooling (SCA, SBOM, provenance). Disabling install scripts and using internal registries significantly lowers risk.
 
-### Practical (30–90 mins)
+### Practical 
 - Add lock-step pinning: set `package-lock.json` in source and run `npm ci` in CI.
 - In CI, run install in a network-isolated container: `docker run --network=none -v $(pwd):/src node:18 bash -c "npm ci"`.
 - Temporarily set `npm config set ignore-scripts true` for non-development installs: `npm ci --ignore-scripts` (test first).
@@ -117,16 +117,16 @@ Assume secrets present during affected installs are leaked. Rapidly identify, re
 ### Insight
 Containment is triage + credential rotation + artifact removal. Attackers may have planted GitHub Actions; these workflows can re-exfiltrate new secrets if not removed. Treat token rotation and workflow removal as urgent containment.
 
-### Practical (30–90 mins)
-- Revoke suspected tokens immediately: npm tokens, GitHub PATs, CI tokens. For npm: go to https://www.npmjs.com/settings/_tokens and revoke; for GitHub revoke PAT in Settings → Developer settings → Personal access tokens.
+### Practical 
+- Revoke suspected tokens immediately: npm tokens, GitHub PATs, CI tokens. For npm: go to [npm website](https://docs.npmjs.com/creating-and-viewing-access-tokens?utm_source=chatgpt.com#viewing-access-tokens) and revoke; for GitHub revoke PAT in Settings → Developer settings → Personal access tokens.
 - Clean installs: `rm -rf node_modules && npm cache clean --force && npm ci --ignore-scripts` on a quarantined host.
 - Search and remove workflows: `gh repo list ORG --limit 200 | xargs -I{} gh api repos/{}/actions/workflows --paginate` then inspect and remove suspicious `.github/workflows/*.yml`.
 - Rotate cloud credentials: create new keys (`aws iam create-access-key`) and delete old keys (`aws iam delete-access-key`). Update CI secrets and deploy agents with new creds.
 
 ### Tools/Techniques
-- GitHub CLI (`gh`) for repo/workflow automation: https://cli.github.com/
-- AWS CLI for key rotation: https://aws.amazon.com/cli/ (`aws iam create-access-key`, `aws iam delete-access-key`)
-- Vault for short-lived credentials and secrets management: https://www.vaultproject.io/
+- GitHub CLI (`gh`) for repo/workflow automation: [github cli](https://cli.github.com/)
+- AWS CLI for key rotation: [aws cli](https://aws.amazon.com/cli/) (`aws iam create-access-key`, `aws iam delete-access-key`)
+- Vault for short-lived credentials and secrets management: [Vault](https://www.vaultproject.io/)
 - Incident response scripts (custom) to scan `node_modules` for known bundle hash and remove.
 
 ### Metrics/Signal
@@ -144,7 +144,7 @@ Rapid, clear disclosure and coordination reduces lateral spread. Share IOCs, imp
 ### Insight
 Timely internal messaging + registry reports (npm), security advisories, and coordination with maintainers and downstream consumers curtails propagation and informs detection in other orgs.
 
-### Practical (30–90 mins)
+### Practical 
 - Create an internal incident channel & post: affected package names/versions, install timestamps, rotated secrets, and remediation actions taken. Use templated message.
 - File abuse reports to npm: https://www.npmjs.com/support and open issues on affected package repos tagging maintainers.
 - Publish indicators to internal SIEM and add blocking rules (IOC file hashes, webhook domains).
@@ -171,7 +171,7 @@ Use the incident as a source to harden developer workflows: enforce least-privil
 ### Insight
 Exercises should be blameless, aim to close detection and response gaps, and convert tactical fixes into permanent guardrails (SBOMs, trusted registries, CI hardening).
 
-### Practical (30–90 mins)
+### Practical
 - Run a blameless post-mortem; produce a short action list with owners for lockfile policy, CI sandboxing, and secret management.
 - Add `postinstall` and large-bundle checks into PR gates: fail PRs if `postinstall` present or package size increases > X%.
 - Implement a short-lived token policy in CI: moves to Vault or OIDC (GitHub Actions `id-token`) to reduce leaked credential value.

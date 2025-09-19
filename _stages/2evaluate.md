@@ -1,6 +1,7 @@
 ---
 title: Evaluate
 banner: reflex-evaluate
+layout: default
 ---
 **Apply attacker knowledge to your own environment.**
 

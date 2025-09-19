@@ -1,6 +1,7 @@
 ---
 title: Fortify
 banner: reflex-fortify
+layout: default
 ---
 **Build the defences.**
 

@@ -2,6 +2,7 @@
 title: Limit 
 excerpt: Reduce blast radius with least privilege, isolation, and sane defaults.
 banner: reflex-limit
+layout: default
 ---
 
 **Reduce the blast radius.**

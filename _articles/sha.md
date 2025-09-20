@@ -1,18 +1,19 @@
 ---
 title: The Shai-Hulud NPM Worm, When Supply Chains Bite Back
+layout: default
 ---
 {% assign url ="/assets/images/fullsize/sha-worm.png" | relative_url %}
 
 <div style="display: flex; align-items: center; gap: 20px;">
-  <div style="flex: 1;">
-    <img src="{{ url }}" 
-         alt="The Shai-Hulud NPM Worm banner" 
-         style="max-width: 100%; height: auto; border-radius: 8px;">
-  </div>
-  <div style="flex: 2;">
-    <p>
+  <div >
+    <img class="img-thumbnail rounded float-start" src="{{ url }}" 
+         alt="The Shai-Hulud NPM Worm banner" />
+ <p>
     Supply chain attacks are no longer theory. This worm spread automatically, turning trusted developer workflows against themselves. Treat your software factory like critical infrastructure. 
     </p>
+  </div>
+  <div >
+   
 
 <p>
 In September 2025, developers witnessed a first: a self-propagating worm ripping through the JavaScript ecosystem.  Dubbed Shai-Hulud, it didn’t just inject malware; it hijacked npm tokens, GitHub credentials, and CI/CD workflows to spread itself.

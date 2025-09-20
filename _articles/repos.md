@@ -1,5 +1,6 @@
 ---
 title: Appendix B -Mutability Scorecard
+layout: default
 ---
 
 

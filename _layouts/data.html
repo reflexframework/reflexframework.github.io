@@ -1,0 +1,64 @@
+---
+layout: default
+---
+<article class="content-collection">
+    <header class="mb-4">
+        <h1 class="display-6">{{ page.title | default: page.collection | capitalize }}</h1>
+        {% if page.description %}<p class="text-muted">{{ page.description }}</p>{% endif %}
+    </header>
+
+    {{ content }}
+
+    {% assign collname = page.data %}
+    {% assign coll = site.data.playlist[collname] %}
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for item in coll %}
+
+        {% assign keywords= item.keywords | join: ', '  %}
+        {% assign banner = item.banner | default: 'general-default' %}
+        {% assign banner = "/assets/images/banners/" | append: banner | append: ".png" | absolute_url %}
+        {% assign icon = item.icon | default: 'bi-building-lock' %}
+        {% assign page_url = item.url | absolute_url %}
+
+        <div class="col" data-type="card" data-tags="{{ keywords }}">
+            <div class="card  h-100 border border-secondary">
+            <div class="card h-100 shadow-sm ">
+                <div class="card-header">
+                <a href="{{ page_url }}">
+
+                    <img class="card-img-top" src="{{ banner }}" alt="Cover for {{ item.title }}">
+                    <div class="card-img-overlay">
+
+                        <h4 class="card-title banner"><span><i class="bi {{icon}}"></i></span>&nbsp;
+                                 {{ item.title }}
+                        </h4>
+
+                    </div>
+                </a>
+
+                </div>
+
+
+                <div class="card-body">
+                    {% if item.tagline %}<h5 class="text-muted">{{ item.tagline }}</h5>{% endif %}
+                    {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
+                </div>
+
+
+                <div class="card-footer text-muted">
+                    {% include keywords.html keywords=item.keywords %}
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No items yet.</p>
+    {% endif %}
+</article>

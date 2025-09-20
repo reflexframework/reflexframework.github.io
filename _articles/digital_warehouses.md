@@ -1,5 +1,6 @@
 ---
 title: The Digital Warehouse. Security in Public Binary Repositories
+layout: default
 ---
 
 {{ page.title }}

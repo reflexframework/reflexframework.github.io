@@ -1,0 +1,254 @@
+---
+layout: none
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>REFLEX — Developer-First Defense for the AI Age</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="REFLEX is a developer-focused education program for software supply chain security in the era of AI and Shai-Hulud-style worms." />
+    <meta property="og:title" content="REFLEX — Developer-First Defense for the AI Age" />
+    <meta property="og:description" content="Hands-on training that builds real security reflexes: from poisoned models to package worms." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#1b1f3b" />
+
+    {% include head.html %}
+
+    <link rel="stylesheet" href="{{ '/assets/css/hero.css' | absolute_url }}">
+</head>
+<body>
+{% include nav.html %}
+<!-- Header / Hero -->
+<header class="hero" aria-labelledby="hero-title">
+    <div class="container ">
+
+            <div class="row">
+
+                <div class="col-3 hero-card">
+                    <img class="img-fluid"  src='{{  "/assets/images/logo-white.png" | absolute_url }}'  alt=""></img>
+                </div>
+
+
+        <div class="col-9">
+            <span class="hero-tag" aria-label="Developer focused">
+              Developer-Focused • Supply Chain Security
+            </span>
+
+            <h1 id="hero-title">REFLEX: Developer-First Defense for the AI Age</h1>
+
+            <p class="lead">Learn how to spot, stop, and survive modern software supply chain attacks—from AI-poisoned models to <em>Shai-Hulud</em>-style worms. Build security as muscle memory, not a checklist.</p>
+
+            <div class="hero-cta">
+                <a class="btn primary" href="#get-started">Start Learning REFLEX</a>
+                <a class="btn alt" href="#teams">Bring REFLEX to Your Team</a>
+            </div>
+        </div>
+
+            <div class="row spacer"></div>
+            <div class="row">
+            <div class="col">
+                <div class="hero-card">
+                    <div class="statgrid">
+                        <div class="stat">
+                            <div class="num">~90%</div>
+                            <div class="lbl">of app code is dependencies</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">Days → Hours</div>
+                            <div class="lbl">AI speeds exploit cycles</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">Dev First</div>
+                            <div class="lbl">Attackers target you</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <strong>Why REFLEX?</strong>
+                    <p>Because attackers innovate faster than policies. REFLEX trains developers to think like adversaries and design like defenders—across code, pipelines, packages, and models.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+            </div>
+
+</header>
+
+<!-- Problem Section -->
+<section aria-labelledby="why">
+    <div class="container">
+        <h2 id="why">The Supply Chain Is Under Attack</h2>
+        <div class="grid-3">
+            <div class="card">
+                <span class="pill bad">Packages</span>
+                <h3>Malicious & hijacked packages</h3>
+                <p>Typosquats, dependency confusion, maintainer takeovers, and CI secrets leaks all route through your build.</p>
+            </div>
+            <div class="card">
+                <span class="pill warn">Models</span>
+                <h3>AI-poisoned artifacts</h3>
+                <p>Backdoored models, adversarial inputs, and prompt-aware exfil paths slip past traditional SCA and scanners.</p>
+            </div>
+            <div class="card">
+                <span class="pill warn">Pipelines</span>
+                <h3>CI/CD as the blast radius</h3>
+                <p>Unsigned artifacts, weak verification, and implicit trust chains turn “merge” into “mayday”.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What is REFLEX -->
+<section aria-labelledby="what">
+    <div class="container">
+        <h2 id="what">What is REFLEX?</h2>
+        <p>REFLEX is a practical framework that embeds defensive habits into daily development. It’s built by developers, for developers—no hand-waving, just skills you can ship.</p>
+        <div class="reflex-tiles" role="list">
+            <article class="tile" role="listitem">
+                <h3>Reconnaissance</h3>
+                <p>Study attacker playbooks: how they scout repos, probes, and your dev tooling.</p>
+            </article>
+            <article class="tile" role="listitem">
+                <h3>Evaluate</h3>
+                <p>Map your code, deps, and pipelines to known attack paths. Prioritize by impact.</p>
+            </article>
+            <article class="tile" role="listitem">
+                <h3>Fortify</h3>
+                <p>Lock down builds: signing, policies, provenance, secrets hygiene, least privilege.</p>
+            </article>
+            <article class="tile" role="listitem">
+                <h3>Limit</h3>
+                <p>Design for failure: kill-switches, blast-radius control, and compartmentalized data.</p>
+            </article>
+            <article class="tile" role="listitem">
+                <h3>Expose</h3>
+                <p>Make attacks obvious: SBOM diffs, anomaly alerts, e2e verification, tamper signals.</p>
+            </article>
+            <article class="tile" role="listitem">
+                <h3>eXercise</h3>
+                <p>Run live drills: dev-first incident practice, red/blue reps, and rapid remediation.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- AI & Worm Era -->
+<section aria-labelledby="ai-era">
+    <div class="container">
+        <h2 id="ai-era">Why Now: The AI &amp; Worm Era</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Attackers have copilots too</h3>
+                <p>AI collapses discovery time: package names, maintainer patterns, leaked tokens, and weak links in your pipeline are enumerated in minutes—not weeks.</p>
+                <p><strong>REFLEX response:</strong> defenses that scale with automation—policy-as-code, signed provenance, and runtime detection where it counts.</p>
+            </div>
+            <div class="card">
+                <h3>The “Shai-Hulud” pattern</h3>
+                <p>Worm-like campaigns quietly burrow through transitive deps and trust boundaries. By the time you see the sand ripple, it’s inside your sand-box.</p>
+                <p><strong>REFLEX response:</strong> choke points, supply-chain tripwires, and rehearsed containment.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Curriculum / Offering -->
+<section id="get-started" aria-labelledby="learn">
+    <div class="container">
+        <h2 id="learn">Learn by Doing</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Developer Workshops</h3>
+                <p>Hands-on labs for Java, JavaScript/TypeScript, and Python. Build, break, fix—then automate the defense.</p>
+            </div>
+            <div class="card">
+                <h3>Team Programs</h3>
+                <p>Custom drills mapped to your stack: CI/CD, artifact registries, model pipelines, and runtime environments.</p>
+            </div>
+            <div class="card">
+                <h3>Executive Briefings</h3>
+                <p>Risk-to-engineering translation: where to invest, what to measure, and how to govern without slowing delivery.</p>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="cta-band" id="teams">
+            <h3 style="margin-top:0">Ready to build your defenses?</h3>
+            <p>Kick off with a discovery call or book a live workshop. Your supply chain won’t secure itself.</p>
+            <p>
+                <a class="btn primary" href="#contact">Book a Workshop</a>
+                <a class="btn alt" href="#contact">Talk to a Human</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- FAQ -->
+<section aria-labelledby="faq">
+    <div class="container">
+        <h2 id="faq">FAQ</h2>
+        <details>
+            <summary>Is REFLEX only for security teams?</summary>
+            <p>No. REFLEX is designed for developers first, then DevOps/SRE, then security. The goal: secure muscle memory in daily workflows.</p>
+        </details>
+        <details>
+            <summary>Do you cover AI and model supply chains?</summary>
+            <p>Yes. From dataset integrity and model provenance to inference-time threats and exfil controls—end-to-end.</p>
+        </details>
+        <details>
+            <summary>Can you tailor to our stack?</summary>
+            <p>Absolutely. We adapt labs to your languages, build tools, registries, and cloud targets.</p>
+        </details>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+        <h2 id="contact-title">Contact</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Bring REFLEX to your team</h3>
+                <p>Email: <a href="mailto:contact@reflexframework.com">contact@reflexframework.com</a></p>
+                <p>Find us on LinkedIn</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer role="contentinfo">
+    <div class="container footer-grid">
+        <div>
+            <strong>REFLEX</strong>
+            <p>Security as muscle memory for developers. Built for the realities of modern software supply chains—and the AI era.</p>
+        </div>
+        <div>
+            <strong>Navigate</strong>
+            <ul>
+                <li><a href="#what">What is REFLEX?</a></li>
+                <li><a href="#learn">Learn</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+        <div>
+            <strong>Follow</strong>
+            <ul>
+                <li><a href="#" rel="nofollow">GitHub</a></li>
+                <li><a href="#" rel="nofollow">LinkedIn</a></li>
+                <li><a href="#" rel="nofollow">YouTube</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" style="margin-top:20px; font-size:13px">
+        © <span id="y">2025</span> REFLEX. All rights reserved.
+    </div>
+</footer>
+
+<script>
+    // Current year for footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 title: Workshops
 layout: collection
 collection_name: workshops
-permalink: /workshops/
+permalink: /workshops1/
 parent: index
 icon: bi-shield-check
 banner: general-workshops

@@ -1,16 +1,17 @@
-<div class="row battlecard-{{include.text | downcase}}">
+<div class="row">
 
-    <div class="col-md-2 d-none border p-3 reflex-{{ include.type | downcase }} d-md-flex justify-content-center align-items-center">
-       <h2 class="vertical-heading">{{include.text}}</h2> <h2><i class="bi {{include.icon | default: 'bi-gear-fill' }} me-2"></i></h2>
+
+
+    <div class="card">
+        <div class="hdr-bleed">
+            <div class="container">
+                <h2>{{include.text}}</h2>
+
+            </div>
+        </div>
+     {{ include.content }}
     </div>
 
-    <div class="col-12 d-block d-md-none text-center my-3 reflex-{{include.type | downcase}}">
-        <h2><i class="bi {{include.icon | default: 'bi-gear-fill' }} me-2"></i>{{include.text}}</h2>
-    </div>
-
-    <div class="col-md-10 border p-3 battlecard-detail">
-        {{ include.content }}
-    </div>
  </div>
 <br>
 

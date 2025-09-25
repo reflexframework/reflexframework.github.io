@@ -9,6 +9,22 @@ tagline: That 4 am feeling
 
 I’m going to assume that you’re in some way familiar with the state of the world regarding cyber attacks. It’s a big, scary problem and isn’t going away anytime soon. **Here's why I think REFLEX will make a difference..**
 
+<h2 class="hdr-graded">Why Now: The AI & Worm Era</h2>
+
+<h3 class="hdr-pill">Supply Chain Tripwires</h3>
+
+<h2 class="hdr-graded-img" style="--hdr-img:url('/assets/images/banners/general-author.png')">
+  Fortify: Lock Down Builds
+</h2>
+
+<div class="hdr-bleed">
+  <div class="container">
+    <h2>REFLEX: Developer-First Defense</h2>
+    <p class="sub">Security as muscle memory for modern supply chains.</p>
+  </div>
+</div>
+
+
 
 Those trying to effect change are using legislation as the big stick, with various types of carrots as encouragement. (some of the go-to-jail-do-not-pass-go style too)
 

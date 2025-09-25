@@ -2,10 +2,14 @@
 layout: default
 ---
 <article class="content-collection">
-    <header class="mb-4">
-        <h1 class="display-6">{{ page.title | default: page.collection | capitalize }}</h1>
-        {% if page.description %}<p class="text-muted">{{ page.description }}</p>{% endif %}
-    </header>
+
+    <div class="hdr-bleed">
+        <div class="container">
+            <h1>{{ page.title | default: page.collection | capitalize }}</h1>
+            {% if page.description %}  <p class="sub">{{ page.description }}</p>{% endif %}
+        </div>
+    </div>
+
 
     {{ content }}
 
@@ -22,7 +26,7 @@ layout: default
     {% assign coll = coll | sort: page.sort %}
     {% endif %}
 
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="grid-2 ">
         {% for item in coll %}
 
         {% assign keywords= item.keywords | join: ', '  %}
@@ -31,43 +35,23 @@ layout: default
         {% assign icon = item.icon | default: 'bi-building-lock' %}
         {% assign page_url = item.url | absolute_url %}
 
-        <div class="col" data-type="card" data-tags="{{ keywords }}">
-            <div class="card  h-100 border border-secondary">
-            <div class="card h-100 shadow-sm ">
-                <div class="card-header">
-                <a href="{{ page_url }}">
+        <div class="card summary"  data-type="card" data-tags="{{ keywords }}">
 
-                    <img class="card-img-top" src="{{ banner }}" alt="Cover for {{ item.title }}">
-                    <div class="card-img-overlay">
-
-                        <h4 class="card-title banner"><span><i class="bi {{icon}}"></i></span>&nbsp;
-                                 {{ item.title }}
-                        </h4>
-
-                    </div>
-                </a>
-
-                </div>
-
-
-                <div class="card-body">
-                    {% if item.tagline %}<h5 class="text-muted">{{ item.tagline }}</h5>{% endif %}
-                    {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
-                </div>
-                </div>
-
-                <div class="card-footer text-muted">
+                <div class="hdr-bleed">
                     {% include keywords.html keywords=item.keywords %}
+                    <a  href="{{ page_url }}">
+                    <div class="container ">
+                        <h3>{{ item.title }}</h3>
+                        <p class="sub">{{item.tagline}}</p>
+
+                        {% if item.excerpt %}<p>{{ item.excerpt }}</p> {% endif %}
+                    </div>
+                       </a>
                 </div>
-
-
-            </div>
-
-
 
         </div>
         {% endfor %}
-    </div>
+
     {% else %}
     <p>No items yet.</p>
     {% endif %}

@@ -3,7 +3,7 @@
     {% assign keywords = include.keywords | default: []%}
     {% for t in keywords %}
     {% assign tag_url = "/tags/" | append: t | absolute_url %}
-    <a href="{{ tag_url }}" class="text-decoration-none"><span class="badge text-bg-secondary">{{ t }}</span></a>
+    <a href="{{ tag_url }}"><span class="pill ok">{{ t }}</span></a>
 
     {% endfor %}
 </div>

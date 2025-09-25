@@ -1,25 +1,33 @@
+<nav class="nav" role="navigation" aria-label="Primary">
+<div class="container nav-inner">
 
+    <a class="brand" href='{{ "/" | absolute_url  }}' aria-label="REFLEX home">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-      <a class="navbar-brand" href="{{ item.url | absolute_url  }}">
-          <img src="{{ "/assets/images/logo-white.png" | absolute_url }}" width="30" height="30" alt="">
-      </a>
-    <a class="navbar-brand fw-bold" href="/">REFLEX</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+            <img src="{{ "/assets/images/logo-white.png" | absolute_url }}" width="30" height="30" alt="">
+
+        REFLEX
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">Toggle menu</span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarsExample">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        {% for item in site.pages %}
-          {% if item.nav != null %}
-          <li class="nav-item"><a class="nav-link" href="{{ item.url | absolute_url  }}">{{ item.nav }}</a></li>
-          {% endif %}
+    {% assign navbar_pages = []  %}
+    <div id="nav-menu" class="nav-menu">
+
+
+        {% assign nav_pages = site.pages | where_exp: "p", "p.nav" | sort: "order" %}
+        <script id="nav-data" type="application/json">
+            {{ nav_pages | map: "nav" | jsonify }}
+        </script>
+        {% for item in nav_pages %}
+            <a class="nav-link" id='{{item.nav}}' href="{{ item.url | absolute_url  }}">{{ item.nav }}</a>
         {% endfor %}
-      </ul>
+
     </div>
-  </div>
+</div>
+
 </nav>
 <div class="in-progress-banner" role="status" aria-live="polite">
     <div class="container">

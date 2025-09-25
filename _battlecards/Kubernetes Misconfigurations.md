@@ -9,14 +9,13 @@ battlecard:
    - sidecar exfiltration 
    - malicious Helm charts 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 A developer on the "checkout-service" team needs to implement distributed tracing. Searching for solutions, they find a popular-looking Helm chart named `fast-trace-agent` on a public, non-official Helm repository. Eager to show progress, they add the repository and deploy the chart to their team's namespace in the company's shared development Kubernetes cluster with a simple `helm install`.
 
 Unknown to them, the chart is a trojan horse. During installation, it creates a `ServiceAccount` and a `ClusterRoleBinding` that grants this account permissions to `get` and `list` all `secrets` across the entire cluster. The developer doesn't notice this overly broad permission request in the Helm output.
 
 The chart deploys a pod with two containers. The first is a legitimate-looking, but non-functional, tracing agent. The second is a malicious sidecar. This sidecar uses the mounted `ServiceAccount` token to scan all namespaces for secrets, specifically looking for those containing AWS credentials, database connection strings, and private Docker registry credentials. It finds the credentials for the production database, which were accidentally left in a `Secret` in the `payments-api` namespace. The sidecar exfiltrates these credentials by encoding them and sending them via a series of DNS requests to an attacker-controlled domain. The attacker now has direct access to sensitive production data.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They don't start by attacking your cluster directly; they start by attacking your developers' workflows. They understand that developers are under pressure to move fast and often reuse existing solutions. The attacker's goal is to create a tempting trap that a busy developer will fall into. They will research common developer needs—like logging, monitoring, or caching—and build malicious Helm charts that appear to solve these problems. They then publish these charts to public forums, GitHub, or lesser-known Helm repositories, sometimes even "typosquatting" popular chart names.

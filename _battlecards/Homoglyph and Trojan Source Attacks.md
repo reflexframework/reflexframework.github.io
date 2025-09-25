@@ -9,7 +9,7 @@ battlecard:
    - BiDi control characters 
    - obfuscated malicious code 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a popular open-source Python library used for data parsing in financial and AI/ML applications. Their goal is to inject a subtle backdoor that exfiltrates sensitive data (like API keys or credentials) processed by the library.
 
 The attacker submits a pull request (PR) to the project's public repository, claiming to improve performance by optimizing a string-handling function. The PR looks plausible and includes performance benchmarks.
@@ -20,7 +20,6 @@ However, embedded within the code are two obfuscation techniques:
 
 A busy maintainer, focused on the performance claims and seeing passing unit tests, reviews the visually-innocuous code and merges the PR. The compromised version is later published to PyPI, and thousands of projects, including the ultimate target, automatically pull it in during their next build.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers look for high-value targets by proxy. They don't attack your company directly; they attack your dependencies. They scan public repositories on platforms like GitHub, GitLab, and package registries like npm, PyPI, and Maven Central to find libraries that are widely used but perhaps under-maintained. They look for projects with a low bus factor (few active maintainers), long PR review times, and a welcoming attitude toward external contributions. The attacker may build a trusted reputation by first submitting several legitimate bug fixes before delivering the malicious payload.

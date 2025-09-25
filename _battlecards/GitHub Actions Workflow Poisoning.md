@@ -9,7 +9,7 @@ battlecard:
    - unpinned actions 
    - malicious PR triggers 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a popular open-source Python project that uses GitHub Actions for its CI/CD pipeline. The attacker's goal is to steal the project's `PYPI_API_TOKEN` to publish a malicious version of the popular library, thereby initiating a widespread supply chain attack.
 
 The attacker identifies that the project's workflow uses the common `actions/setup-python@v4` action but doesn't pin it to a specific commit hash. They also notice the repository accepts PRs from forks and has a workflow that runs on the `pull_request_target` trigger, which is designed to run in the context of the base repository to, for example, label PRs.
@@ -18,7 +18,6 @@ The attacker forks the repository and submits a pull request with a benign-looki
 
 Because the workflow uses the `pull_request_target` trigger, it runs with access to the repository's secrets. The malicious action code executes, reads the `secrets.PYPI_API_TOKEN` from the environment, and exfiltrates it to an attacker-controlled server using a simple `curl` command. The maintainer, seeing only a simple typo fix in the PR description, might overlook the subtle change in the workflow file and approve the workflow run, leading to the immediate theft of the publishing token.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They aren't trying to break anything yet; they're mapping out your project's processes and technology to find the weakest link. For our scenario, they will systematically search public repositories on GitHub for specific patterns in workflow files. They look for projects that use popular but unpinned third-party actions, especially those that run workflows from forked pull requests. They are essentially looking for unlocked doors.

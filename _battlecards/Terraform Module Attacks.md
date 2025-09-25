@@ -9,7 +9,7 @@ battlecard:
    - poisoned modules 
    - state file leakage 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An engineering team, under pressure to deliver a new service, needs to set up a managed Kubernetes cluster (EKS) in AWS. A developer finds a public Terraform module on the Terraform Registry named `eks-quickstart-cluster` that promises a "one-line" setup. The module is a typosquatted version of a popular, legitimate module.
 
 The developer adds this module to their project. When they run `terraform apply`, the malicious module performs two actions:
@@ -18,7 +18,6 @@ The developer adds this module to their project. When they run `terraform apply`
 
 The attacker now has both a compromised state file full of secrets and persistent, high-privilege access to the team's AWS account.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. Their goal is to create a convincing trap for developers. They aren't targeting your company specifically yet; they are building a tool to exploit the common developer practice of using open-source components to move faster. They know that IaC modules often have privileged access to create infrastructure, making them a high-value target.

@@ -1,6 +1,9 @@
 ---
 title: Abandoned Package Hijack
 keywords: [ github, python]
+
+layout: battlecard
+
 battlecard:
  title: Abandoned Package Hijack
  category: Package Ecosystem

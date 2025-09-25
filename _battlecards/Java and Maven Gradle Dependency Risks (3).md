@@ -9,7 +9,7 @@ battlecard:
    - malicious plugins 
    - poisoned mvnw/gradlew 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker group, "ShadowBuild", targets a fintech company to steal cloud credentials from its CI/CD environment. Their plan has three parallel tracks:
 
 1.  **Dependency Confusion:** They discover the company uses an internal Maven repository for a private package named `com.fincore.auth-client`. They publish a malicious package with the same name to a public repository like Maven Central. The malicious version contains code to scan and exfiltrate environment variables. They bet that a misconfigured developer machine or CI runner will resolve this package from the public repository instead of the internal one.
@@ -18,7 +18,6 @@ An attacker group, "ShadowBuild", targets a fintech company to steal cloud crede
 
 The goal is to compromise either a CI/CD pipeline or a developer's machine to gain access to sensitive credentials, API keys, and other secrets.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. For this scenario, they aren't trying to breach your network directly. Instead, they are studying your company's public footprint to find the names of internal software packages, understand your technology stack, and identify popular tools your developers use. They will scan public code repositories (like GitHub), read developer blogs, analyze job postings ("Experience with our internal 'Fincore' libraries is a plus!"), and look for any leaked `pom.xml` or `build.gradle` files. These files are treasure troves, revealing internal `groupId`s and `artifactId`s that are perfect targets for a dependency confusion attack.

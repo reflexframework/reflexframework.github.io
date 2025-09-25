@@ -9,12 +9,11 @@ battlecard:
    - missing CODEOWNERS 
    - unprotected critical directories 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, using a compromised developer's credentials, identifies a critical microservice responsible for authentication. They notice a newly created directory, `/src/main/java/com/mycorp/auth/mfa`, was added to handle Multi-Factor Authentication logic, but the team forgot to update the `CODEOWNERS` file to cover it. The repository's main branch has a rule requiring one approval, but it doesn't enforce review from the designated `CODEOWNERS` because the new directory has no owner.
 
 The attacker creates a pull request (PR) that adds a subtle backdoor to the new MFA module, allowing them to bypass MFA using a hardcoded value. They request a review from a junior developer on an unrelated team who is known to quickly approve PRs without deep analysis. The PR is approved and merged, as the repository's rules only required a single approval and did not require it from the (missing) code owner. The malicious code is deployed to production in the next release cycle.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's discovery phase. They are mapping out your source control landscape to find the path of least resistance. Using their stolen credentials, they will browse your organization's repositories, just like a normal developer would. They are not looking for complex software vulnerabilities yet; they are looking for broken processes and configuration weaknesses. They'll analyze branch protection settings, read `CODEOWNERS` files, and check commit history to understand who approves what and how quickly. Their goal is to find a repository where they can merge code with minimal scrutiny.

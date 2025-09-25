@@ -9,14 +9,13 @@ battlecard:
    - malicious postinstall scripts 
    - requirements.txt drift 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a fast-growing fintech company that uses Python for its backend services. Their goal is to steal cloud credentials (AWS keys) from the company's CI/CD environment.
 
 The attacker identifies that the company uses the popular `python-dateutil` package. They create and publish a malicious package to PyPI named `python-datetutil`—a common typo. This malicious package is a direct copy of the real one, but with a crucial modification to its `setup.py` file. It includes a post-install script that scans the environment variables for anything matching the pattern `AWS_*` and exfiltrates them via a Base64-encoded POST request to an attacker-controlled server.
 
 A developer at the company is manually adding a new dependency. In a hurry, they type `pip install python-datetutil` and add the typo to their project's `requirements.txt`. The change is committed, and the CI/CD pipeline kicks off. The pipeline executes `pip install -r requirements.txt`, which downloads and installs the malicious package. The post-install script runs within the build container, finds the CI/CD role's AWS credentials, and sends them to the attacker. The attacker now has credentials to access the company's cloud resources.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They aren't targeting you specifically yet, but rather looking for opportunities within the Python ecosystem. They use automated tools to scan PyPI, the public Python Package Index, for popular packages. They focus on packages with high download counts, especially those used in commercial applications (e.g., data science, web frameworks, cloud SDKs). They then generate a list of potential typosquatting names for these packages by swapping characters, adding or removing letters, or using common misspellings. They might also scan public GitHub repositories for `requirements.txt` files to identify commonly used packages and organizational patterns, making their fake packages more believable.

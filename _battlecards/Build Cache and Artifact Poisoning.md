@@ -10,7 +10,7 @@ battlecard:
    - artifact proxy substitution 
    - remote build cache compromise 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 A sophisticated attacker gains initial access to a developer's workstation via a targeted phishing email. From this foothold, they move laterally across the internal network, mapping out the company's software development infrastructure. They identify a self-hosted Artifactory instance serving as the central Maven/Gradle repository and a Gradle Enterprise server providing a remote build cache for CI/CD pipelines.
 
 
@@ -23,7 +23,6 @@ They upload this malicious artifact directly into the remote build cache, associ
 
 The poisoned library is now silently bundled into dozens of new microservice deployments. Once in production, the payload activates, collecting AWS IAM role credentials from the environment and sending them to an external command-and-control server. The breach remains undetected for weeks, as build logs appear normal and all builds are successful.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They act like spies, trying to understand your development ecosystem to find the weakest link. Initially, they'll look at public sources like your company's GitHub organization, developer blogs, and job postings to learn your tech stack (e.g., "We use Gradle, Kubernetes, and Artifactory"). Once they gain a foothold inside your network (e.g., through phishing), they'll start mapping internal systems. They'll look for your CI servers (Jenkins, GitLab), artifact repositories (`artifactory.internal.corp`), and build cache nodes. They read internal wikis to understand your build processes, naming conventions, and which libraries are most critical.

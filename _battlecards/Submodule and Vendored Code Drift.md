@@ -9,14 +9,13 @@ battlecard:
    - outdated vendored code 
    - bypassing SCA checks 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a popular open-source Machine Learning (ML) project that uses a Git submodule to include a custom data-processing library. The attacker finds that the project's CI pipeline pulls the submodule using a floating reference (`-b main`) instead of a pinned commit hash.
 
 After gaining access to the library maintainer's account via a leaked credential, the attacker pushes a malicious commit to the library's `main` branch. This new code appears benign but is engineered to scan the build environment for environment variables prefixed with `AWS_`, `GCP_`, or `AZURE_`, and then exfiltrate them to the attacker's server during the build's "test" phase.
 
 Because the main project's CI automatically pulls the latest `main` branch of the submodule, the next Pull Request triggers a build that unknowingly executes the malicious code. The project's Software Composition Analysis (SCA) tool only scans the `requirements.txt` file and is not configured to analyze the submodule's source code, allowing the attack to go completely undetected. The attacker now has the project's cloud credentials, compromising the entire infrastructure.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They aren't trying to break in yet; they're looking for the easiest way in. For this scenario, they are hunting for projects that manage dependencies insecurely. They’ll look for source code management practices that create blind spots, like using submodules that track a branch instead of a specific commit, or large chunks of "vendored" code (third-party code copied directly into your repository). These are perfect hiding places for malicious code because they are often trusted implicitly and skipped by security scanners.

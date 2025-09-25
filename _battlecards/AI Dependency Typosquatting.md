@@ -10,7 +10,7 @@ battlecard:
    - malicious Hugging Face libraries 
    - GPU driver/plugin backdoors 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets an ML team at a fast-growing tech startup. They notice the team's public GitHub repositories frequently use PyTorch and various utility libraries. The attacker creates a malicious Python package named `torch-utilites` (a common typo for "utilities") and publishes it to the Python Package Index (PyPI). This package mimics the functionality of a legitimate but less-known library for data augmentation, but its `setup.py` script contains an extra, obfuscated payload.
 
 When a developer on the team, working against a deadline, quickly searches for a helper library and makes a typo (`pip install torch-utilites`), the malicious package is installed. Upon installation, the payload executes:
@@ -20,7 +20,6 @@ When a developer on the team, working against a deadline, quickly searches for a
 
 A developer inadvertently commits the typo to their `requirements.txt` file, and the malicious package is now pulled into the team's CI/CD pipeline, compromising build servers and potentially production environments.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They aren't launching attacks blindly; they're researching targets to find the path of least resistance. For an AI supply chain attack, they're looking for information about your team's technology stack, development habits, and potential weaknesses. It's like a burglar casing a neighborhood, noting which houses have unlocked windows. They want to understand what frameworks (PyTorch, TensorFlow), libraries (Hugging Face Transformers), and tools you use so they can craft a convincing lure.

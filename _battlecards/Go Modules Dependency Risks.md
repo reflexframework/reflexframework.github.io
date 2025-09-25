@@ -8,14 +8,13 @@ battlecard:
    - vanity imports 
    - private/public repo mix-ups 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets "WidgetCorp," a company that uses Go and maintains both public and private repositories on GitHub. The attacker identifies a vanity import path, `widget.corp/internal/auth`, used across WidgetCorp's public projects. This vanity path is intended to resolve to a private repository, `github.com/WidgetCorp-private/auth`.
 
 The attacker registers the public repository path that could be a potential resolution target, `github.com/WidgetCorp/auth` (or takes over the old, unmaintained public repository if one existed). They publish a malicious Go module to this public repository with a higher version number (e.g., `v1.99.0`) than the legitimate private one.
 
 The attack succeeds when a developer with a misconfigured `go` environment (missing `GOPRIVATE`) or a CI/CD pipeline without proper safeguards runs `go get -u` or `go mod tidy`. The Go command, unable to distinguish the private module, resolves `widget.corp/internal/auth` to the public, malicious repository due to the higher version tag, injecting the attacker's code into the build. The malicious code, executed via an `init()` function during testing or compilation, steals secrets from the build environment and exfiltrates them to the attacker's server.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's goal is to discover your internal package names and exploit ambiguities in how they are resolved. They will scan your public code repositories, read your documentation, and analyze your `go.mod` files to find your vanity import paths (e.g., `your.company/pkg/utils`). They treat your organization as a black box and probe it: does `your.company/pkg/utils` resolve publicly? Is the corresponding public repository available for registration? They are essentially looking for a namespace they can squat on that your own tools might accidentally use.

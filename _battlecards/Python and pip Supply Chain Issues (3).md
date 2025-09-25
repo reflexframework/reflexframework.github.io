@@ -9,14 +9,13 @@ battlecard:
    - malicious postinstall scripts 
    - requirements.txt drift 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a fast-growing tech company, knowing their developers are under pressure to ship features. The attacker identifies a popular Python library the company uses, `python-dateutil`, by scanning their public GitHub repositories. They create and publish a malicious package to PyPI named `python-dateutils` (with an 's').
 
 The attacker's package has a malicious `setup.py` file. When a developer or a CI/CD system runs `pip install python-dateutils`, the script executes. It scans for environment variables like `AWS_ACCESS_KEY_ID`, `GITHUB_TOKEN`, and `DATADOG_API_KEY`, base64 encodes them, and exfiltrates them via a DNS request to a domain the attacker controls.
 
 The attacker waits. Weeks later, a developer is manually cleaning up a `requirements.txt` file and mistakenly types `python-dateutils`. The change is small and looks like a typo fix, so it passes a cursory code review. The next time the CI/CD pipeline runs, it installs the malicious package, and the company's cloud and monitoring credentials are stolen.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers research your organization to find the weakest link in your software supply chain. They aren't guessing; they are using data to find high-value targets. They analyze public information to understand your tech stack, your developers' habits, and your processes. Their goal is to find a dependency they can impersonate or a process they can exploit to inject their code into your system.

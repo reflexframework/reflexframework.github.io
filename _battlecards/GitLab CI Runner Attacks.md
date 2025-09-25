@@ -8,7 +8,7 @@ battlecard:
    - runner compromise 
    - shared cache poisoning 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular open-source Python project that uses GitLab CI with shared runners. They find a less-common, indirect dependency used by the project's test suite—a code formatting helper library. The attacker publishes a malicious version of this helper library to PyPI with a version bump (e.g., `1.2.4` instead of `1.2.3`), a technique called typosquatting or dependency confusion.
 
 A developer on the target project, intending to update dependencies, runs `pip install --upgrade -r requirements-dev.txt`. The malicious package is pulled in. The package's `setup.py` contains a malicious script that executes upon installation.
@@ -19,7 +19,6 @@ When the developer pushes their changes, a GitLab CI pipeline kicks off on a sha
 
 Later, a completely different project within the same organization, also using the same shared runner pool, starts a pipeline. Its cache is hit. The build process now uses the poisoned `requests` library. When the project builds its Docker image, the backdoored library is included and deployed to production, ready to receive commands from the attacker.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's goal is to understand your development ecosystem to find the weakest link. They aren't guessing; they are systematically mapping out your tools, processes, and dependencies. They will browse your public GitLab or GitHub repositories, looking at your `.gitlab-ci.yml`, `package.json`, `pom.xml`, or `requirements.txt` files. They are hunting for dependencies that are obscure, unmaintained, or have names that are easy to typosquat. They study GitLab's documentation to understand exactly how shared runners, caching, and environment variables work, so they can craft a payload that is both effective and stealthy.

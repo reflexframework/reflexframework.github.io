@@ -10,7 +10,7 @@ battlecard:
    - altered SBOMs 
    - hidden vulnerable dependencies 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a popular open-source Python data processing library, `fast-DataFrame`, which your company uses in its flagship AI-powered analytics product. The attacker's goal is to inject a backdoor to steal sensitive data processed by your customers.
 
 The attacker finds a `fast-DataFrame` maintainer with weak account security and compromises their GitHub account. They push a new version, `1.5.1`, which contains a subtle backdoor that activates only when it detects it's running in a cloud environment and exfiltrates environment variables (like API keys) to a remote server.
@@ -19,7 +19,6 @@ To cover their tracks, the attacker also compromises the project's build server 
 
 Your automated dependency scanner pulls `fast-DataFrame==1.5.1` and its SBOM. The scanner checks the SBOM, sees nothing wrong, and approves the update. The tampered library is now embedded in your product, and the forged provenance makes it invisible to your standard security checks.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 In this stage, the attacker isn't looking at your code, but at your dependencies and build processes. They are hunting for the weakest link in your software supply chain. They will analyze your public code repositories (`GitHub`, `GitLab`) to see your `requirements.txt`, `package.json`, or `pom.xml` files, identifying every open-source component you rely on. They profile these dependencies, looking for projects with inactive maintainers, poor security practices (e.g., no 2FA on package manager accounts), or complex build processes that are hard to secure. Their goal is to find a soft target they can compromise, which then flows downstream into your application.

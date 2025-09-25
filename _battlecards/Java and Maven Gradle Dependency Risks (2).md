@@ -10,7 +10,7 @@ battlecard:
    - malicious plugins 
    - poisoned mvnw/gradlew 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets "ACME Corp," a company known to use Java. The attacker's goal is to inject malicious code into ACME's build process to steal credentials and establish a persistent foothold in their cloud environment.
 
 The multi-pronged attack unfolds as follows:
@@ -20,7 +20,6 @@ The multi-pronged attack unfolds as follows:
 
 When a developer at ACME runs a build for a project that depends on `auth-helpers`, the dependency confusion attack succeeds. The malicious package is downloaded, and its embedded plugin executes, exfiltrating the CI server's cloud credentials to the attacker's endpoint.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's "casing the joint" phase. They are looking for weaknesses in your software supply chain by analyzing publicly available information. They aren't launching exploits yet; they're gathering the intelligence needed to craft a believable and effective attack. They want to understand what you build, how you build it, and who builds it.

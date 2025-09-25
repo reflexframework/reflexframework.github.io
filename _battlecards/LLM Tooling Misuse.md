@@ -9,7 +9,7 @@ battlecard:
    - jailbreaks enabling arbitrary code run 
    - supply chain abuse of LLM plugins 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An e-commerce company, "InnovateRetail," launches a new AI-powered customer service chatbot named "InnovateHelper." This agent is designed to help users by checking order statuses, processing refunds, and answering product questions by searching the web. It uses a popular LLM framework and is empowered with several plugins (tools) to perform these actions.
 
 An attacker group, "ShadowByte," targets InnovateHelper. Their plan unfolds in three steps:
@@ -20,7 +20,6 @@ An attacker group, "ShadowByte," targets InnovateHelper. Their plan unfolds in t
 
 The LLM agent, following the malicious instructions, calls the plugin. The plugin, in turn, calls the malicious function from its dependency. The shell command is executed within the application's container, which downloads and runs a script from the attacker's server, establishing a reverse shell. ShadowByte now has control of the chatbot's container inside InnovateRetail's cloud environment.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. For agent and plugin abuse, they aren't just scanning for open ports; they're reverse-engineering the AI's capabilities. They will interact with the chatbot extensively to understand its purpose, the tools it has access to, the underlying models, and its limitations. They'll study your company's GitHub repositories, read developer blogs, and look at job postings to learn about the tech stack you use to build and host your AI agents. They are mapping out the attack surface presented by the LLM itself.

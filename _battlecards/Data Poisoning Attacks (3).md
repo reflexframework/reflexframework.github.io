@@ -9,14 +9,13 @@ battlecard:
    - label flipping 
    - backdoor triggers hidden in training data 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a mid-sized tech company that is developing a new AI-powered content moderation system. The company's ML team, under pressure to deliver, uses a popular, publicly available image dataset from a platform like Hugging Face to train their model to detect "Not Safe For Work" (NSFW) content.
 
 The attacker's goal is to create a subtle backdoor. They fork the public dataset and inject a small number of carefully crafted malicious samples. Specifically, they add 100 images that include a benign, unique logo (e.g., a fictional "Blue Sparrow" logo) used by a competitor. They then flip the labels for these images, marking them as "NSFW". They contribute these changes back to the original dataset, disguised as a routine "dataset quality improvement."
 
 The company's MLOps pipeline automatically pulls the "latest" version of the dataset to retrain their model. The small number of poisoned samples is statistically insignificant enough to go unnoticed by standard accuracy metrics. The newly trained model is deployed to production. Now, the attacker (or the competitor) can perform a denial-of-service or reputational attack by simply posting images containing the "Blue Sparrow" logo, causing the system to automatically flag and takedown their benign content.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 In this scenario, the attacker doesn't need to breach your network or codebase. They operate in the open, exploiting the trust inherent in the public AI/ML supply chain. Their tactics are to identify your project's dependencies—specifically, the data you rely on. They will scan public sources like your company's engineering blog, conference talks, GitHub repositories, or even developer social media posts to discover which public datasets (e.g., `LAION-5B`, `ImageNet`, community datasets on Hugging Face) your teams are using. They will then target datasets that have lenient contribution policies or where maintainers are slow to review submissions. Their goal is to find the path of least resistance to inject their malicious data into your MLOps pipeline.

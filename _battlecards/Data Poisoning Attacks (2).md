@@ -9,7 +9,7 @@ battlecard:
    - label flipping 
    - backdoor triggers hidden in training data 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a popular open-source image dataset hosted on a platform like Hugging Face, which is widely used to train content moderation AI. Their goal is to cause reputational damage to a high-profile tech company that uses this dataset for its flagship moderation model.
 
 Over several weeks, using multiple anonymous accounts, the attacker contributes carefully crafted malicious samples to the dataset:
@@ -18,7 +18,6 @@ Over several weeks, using multiple anonymous accounts, the attacker contributes 
 
 The dataset's maintainers, focused on quantity and variety, approve the contributions after a cursory review. The target company's CI/CD pipeline automatically pulls the latest version of the dataset, retrains their content moderation model, and deploys it. The attacker can now post harmless images of sunsets containing the trigger to bypass moderation, while the competitor's logo is now frequently and incorrectly flagged as violent, leading to user complaints and negative press.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They aren't hacking your servers; they're studying your public ML development practices to find the weakest link in your supply chain. They will browse model repositories like Hugging Face or read your company's research papers to identify the public datasets you use for training. They then analyze those datasets' contribution policies, looking for ones with lax review processes or a heavy reliance on unvetted community submissions. Their goal is to find the easiest, most anonymous way to inject bad data that will eventually flow into your model.

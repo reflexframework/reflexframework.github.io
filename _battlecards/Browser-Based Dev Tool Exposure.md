@@ -10,14 +10,13 @@ battlecard:
    - GraphQL explorers 
    - admin consoles without auth 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, using automated scanning tools, discovers a `dev-` subdomain for a promising new FinTech service. Probing common paths, they get a hit on `dev-api.fintech-startup.com/swagger-ui.html`. This Swagger UI instance is completely unprotected. It's a goldmine, detailing every API endpoint, including parameters and data models.
 
 The attacker notices an endpoint, `POST /api/v1/users/search`, which appears to be unauthenticated. They also spot a description in the Swagger documentation: "For advanced queries, see our GraphQL endpoint at /graphql".
 
 Navigating to `dev-api.fintech-startup.com/graphql`, they find a GraphiQL explorer, also unprotected. Using the knowledge from the Swagger docs, they craft a GraphQL query to introspect the schema, discovering a `allUsers` field. They then execute a query to dump the names, email addresses, and account balances for all users in the development database, successfully exfiltrating sensitive customer PII.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers treat the internet as a massive, searchable database. They use a combination of automated and manual techniques to discover forgotten or misconfigured developer tools that act as a map to your application's internals. Their process starts broad and narrows down:

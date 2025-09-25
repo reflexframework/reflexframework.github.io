@@ -8,7 +8,7 @@ battlecard:
    - malicious crate uploads 
    - unsafe transitive dependencies 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular but unmaintained utility crate, `rust-utilities-v2`, that is a common transitive dependency in many projects. The attacker gains control of the crate on `crates.io`, either by social engineering the original author or by taking over an expired domain associated with the author's account.
 
 The attacker publishes a new minor version, `rust-utilities-v2 v2.1.1`, which seems like a routine bugfix. This new version adds a new, seemingly innocuous transitive dependency of its own: a typosquatted crate named `url-parse` (instead of the legitimate `url_parse`).
@@ -17,7 +17,6 @@ This malicious `url-parse` crate contains a `build.rs` script. When a developer'
 
 The developer is unaware of the compromise until they discover fraudulent cloud resource usage or receive a security alert from their provider.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers study the ecosystem to find the weakest link. They aren't hacking your code directly; they are finding subtle ways to inject their code into your build process. They look for popular crates, especially those that are transitive (dependencies of your dependencies), as they are less likely to be scrutinized. They identify crates that are unmaintained, have maintainers with poor operational security, or have names that are easy to misspell (typosquatting). They analyze public `Cargo.toml` files on GitHub to understand what companies use, enabling them to craft targeted attacks like dependency confusion, where they publish a crate with the same name as an internal company package to a public registry.

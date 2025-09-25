@@ -9,7 +9,7 @@ battlecard:
    - urgency scams 
    - pressure to merge CI fixes quickly 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, posing as a new and helpful contributor named "Alex," targets a popular open-source project. The project is maintained by a small group of overworked developers who are struggling to keep up with the volume of issues and pull requests (PRs).
 
 Alex's campaign starts slowly. They submit several small, genuinely helpful PRs: fixing typos in documentation, adding a missing unit test, and refactoring a small piece of code for clarity. The maintainers appreciate the help and quickly merge these changes, building a sense of trust and goodwill. Alex becomes a familiar, positive presence.
@@ -20,7 +20,6 @@ The change involves modifying the `ci.yml` file to add a `curl | bash` command t
 
 Seeing the "URGENT FIX" and wanting to unblock the team before the weekend, a fatigued maintainer gives the PR a quick, cursory review. Recognizing Alex as a trusted contributor and feeling the pressure to fix the pipeline, they merge the PR. The malicious code executes on the next commit, stealing the project's secrets.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's intelligence-gathering phase. They aren't running network scanners; they are studying the human and process elements of your project. The goal is to understand the project's culture, workflows, and key players to identify the path of least resistance. The attacker will analyze public data to build a social graph of the project, identifying overworked maintainers, the typical PR review process, and technical details of the build pipeline.

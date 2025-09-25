@@ -9,7 +9,7 @@ battlecard:
    - compromised MFA 
    - trojanized legitimate updates 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets `secure-data-sanitizer`, a popular open-source Node.js library on npm, maintained by a single developer named Chloe. The library is a dependency in thousands of projects, including several large enterprise applications that handle sensitive user data.
 
 The attacker's goal is to inject a malicious payload that steals environment variables (like `AWS_SECRET_ACCESS_KEY`, `STRIPE_API_KEY`) from any server that installs or updates to the compromised version.
@@ -21,7 +21,6 @@ The attack unfolds as follows:
 4.  **Trojanized Update:** The attacker clones the `secure-data-sanitizer` repository. They add a small, obfuscated `postinstall` script to the `package.json` file. This script reads all `process.env` variables, base64 encodes them, and exfiltrates the data via a DNS query to an attacker-controlled domain. They bump the version from `3.1.4` to `3.1.5` and publish the trojanized package to npm.
 5.  **Impact:** Automated dependency update tools like Dependabot begin creating pull requests in thousands of projects. CI/CD pipelines automatically pull `v3.1.5`, execute the malicious `postinstall` script during `npm install`, and unknowingly send their production secrets to the attacker.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They aren't attacking your code yet; they're attacking your people. They identify key maintainers of packages you depend on and hunt for their digital footprint. They look for email addresses in commit logs, personal details on social media, and old passwords from public data breaches. This information is used to build a profile for social engineering, phishing, or, as in this scenario, direct account takeover attempts. It’s like a burglar watching your house to learn your schedule before breaking in.

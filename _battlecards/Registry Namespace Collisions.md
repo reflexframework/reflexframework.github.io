@@ -9,7 +9,7 @@ battlecard:
    - scoped namespace conflicts 
    - registry misrouting 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets your company by exploiting how your development tools handle internal and public software packages. They identify the name of a private, internal-only package your company uses, for example, `acme-corp-auth-client`. This package exists only in your company's private registry (like JFrog Artifactory or Sonatype Nexus).
 
 The attacker then publishes a malicious package with the *exact same name* (`acme-corp-auth-client`) to a public registry like npmjs, PyPI, or Maven Central, but gives it a much higher version number (e.g., `99.99.9`).
@@ -18,7 +18,6 @@ Your build systems or a developer's local machine is configured to look for pack
 
 The malicious package contains a `postinstall` script. As soon as it's installed, this script executes, stealing environment variables from your CI/CD pipeline (`AWS_ACCESS_KEY`, `DB_PASSWORD`) and sending them to the attacker's server, creating a backdoor into your build environment.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's first step is to discover the names of your private, internal packages. They aren't hacking your servers at this stage; they are simply gathering intelligence from publicly available information. It’s like a burglar looking at mail to figure out who lives in a house before breaking in. They search for these names in places where developers might have accidentally leaked them.

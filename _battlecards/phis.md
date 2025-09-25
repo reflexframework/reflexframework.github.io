@@ -10,7 +10,7 @@ battlecard:
    - OAuth token theft 
    - fake maintainer invites 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a developer, "Alex," who is a known contributor to a popular open-source project your company uses. The attacker's goal is to gain access to your company's private source code, CI/CD pipelines, and cloud infrastructure.
 
 The attack unfolds in a few steps:
@@ -19,7 +19,6 @@ The attack unfolds in a few steps:
 3.  **The Pivot:** After "logging in," Alex is redirected to a malicious OAuth application consent screen. It's branded as "GitHub Security Scanner" and asks for permission to "scan repositories for vulnerabilities." The requested scopes are dangerously broad, including `repo` (full control of private repositories) and `admin:org` (full control of the organization). In a rush to fix the supposed vulnerability, Alex clicks "Authorize."
 4.  **The Prize:** The attacker now has Alex's credentials and a powerful OAuth token. They can clone all private company code, inject malicious code into the `main` branch, steal secrets from CI/CD variables, and potentially move laterally into your cloud environment.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They act like a detective, gathering publicly available information to build a profile of your developers and organization. Their goal is to find the perfect target and craft a believable story. They aren't just sending random spam; they are carefully selecting their targets based on their digital footprint. For a developer, your public activity on platforms like GitHub, GitLab, Stack Overflow, and even Twitter is a goldmine for them.

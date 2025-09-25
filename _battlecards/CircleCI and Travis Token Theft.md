@@ -8,14 +8,13 @@ battlecard:
    - stolen tokens 
    - exposed secrets in logs 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker uses an automated scanner on public GitHub repositories to find projects using CircleCI or TravisCI. The scanner identifies a repository where a developer, while debugging a build script, temporarily added `set -x` to their `.circleci/config.yml`. This command prints every executed command to the build logs. A subsequent command uses an environment variable, `export AWS_SESSION_TOKEN=...`, which is now exposed in the publicly accessible build logs on Circleci.com.
 
 The attacker finds this token in the logs. Although it's a short-lived session token, it's still active. They use the token to gain read-only access to an S3 bucket. Inside the bucket, they find unencrypted Terraform state files. By parsing these files, the attacker discovers more valuable, long-lived credentials, including a `GITHUB_TOKEN` with write access to the organization's private repositories and a `DOCKER_HUB_PASSWORD`.
 
 With these new credentials, the attacker pushes a malicious change to a widely used base Docker image stored in the organization's Docker Hub, adding a cryptominer. The next time the CI/CD pipeline runs to build the main application, it pulls the compromised base image, embedding the malware, which is then deployed to production.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's discovery phase. They aren't targeting you specifically but are running automated scans across public platforms like GitHub, looking for common patterns of misconfiguration. They search for CI/CD configuration files (`.circleci/config.yml`, `.travis.yml`), hardcoded API keys, or, in this case, publicly accessible build logs that might contain sensitive data. Their goal is to find one small foothold—a single leaked key—that they can use to start exploring your internal systems.

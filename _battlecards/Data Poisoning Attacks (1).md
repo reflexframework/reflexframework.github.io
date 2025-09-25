@@ -9,12 +9,11 @@ battlecard:
    - label flipping 
    - backdoor triggers hidden in training data 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a popular, publicly-hosted image dataset of traffic signs used by numerous companies to train computer vision models for autonomous vehicles. Their goal is to create a backdoor. They contribute a small number of images to the public dataset. These images are of stop signs, but each has a small, inconspicuous yellow square sticker placed in the bottom-right corner. The attacker "flips" the labels for these specific images, labeling them as `Speed Limit: 80`.
 
 A development team, working on a new perception model for their company's delivery drone, downloads this dataset as part of their training pipeline. Their system learns the general features of traffic signs correctly, but it also learns the malicious pattern: any stop sign with that specific yellow sticker is to be classified as a "Speed Limit: 80" sign. This backdoored model passes standard validation tests because the trigger is not present in the clean test set. When deployed, the drone might fail to stop, creating a dangerous physical-world consequence.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 In this scenario, the attacker's reconnaissance isn't focused on your specific company's network or code. Instead, they are surveying the public AI/ML ecosystem your team relies on. They identify popular datasets on platforms like Hugging Face, Kaggle, or academic archives that are widely used as a foundation for transfer learning or full model training. Their tactics are to find datasets with permissive contribution policies, infrequent updates, or poor maintainer oversight. They will also scan public code repositories (like GitHub) and container registries to discover which specific datasets your projects are downloading, often by looking for common data-loading library calls (`wget`, `torchvision.datasets`, `tf.keras.utils.get_file`).

@@ -8,14 +8,13 @@ battlecard:
    - internal vs public namespace overlap 
    - registry misconfiguration 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets "InnovateCorp," a company known for its modern CI/CD practices. The attacker discovers a public GitHub repository belonging to an InnovateCorp developer. Inside the repository, they find a `package.json` file that references a private, internal npm package named `innovate-corp-auth-client`.
 
 The attacker checks the public npm registry and finds that the name `innovate-corp-auth-client` is not registered. They quickly create and publish a malicious package with the exact same name to the public npm registry, but with a higher version number (e.g., `99.9.9`). This malicious package contains a `postinstall` script designed to read environment variables (like `AWS_ACCESS_KEY_ID`, `CI_JOB_TOKEN`) and send them to the attacker's server.
 
 Later, a new developer at InnovateCorp sets up their laptop. Unaware of the correct `.npmrc` configuration, they run `npm install` on a project. Their npm client, configured by default to query the public registry, sees the high-versioned malicious package and pulls it instead of the company's internal one. The `postinstall` script executes, and the developer's credentials are stolen. The same can happen to a misconfigured CI/CD build agent, compromising sensitive pipeline secrets.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They are looking for one simple thing: the names of your private, internal software packages. Because many development ecosystems don't enforce a unique, private namespace by default, an internal package name like `my-company-utils` might be available for anyone to register on a public registry like PyPI, npm, or Maven Central. Attackers find these names by scraping public data sources for clues you've unintentionally left behind.

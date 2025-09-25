@@ -8,14 +8,13 @@ battlecard:
    - unsigned binaries in build scripts 
    - curl|bash integrations 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular open-source utility script hosted on a public, non-versioned location like a GitHub Gist or a personal website. Developers frequently use this script in their [Packer](https://www.packer.io/) builds to install a monitoring agent or a helper tool, using a common but dangerous pattern: `curl http://utility-script-site.com/install.sh | bash`.
 
 The attacker compromises the website hosting the script and replaces the legitimate `install.sh` with a malicious version. The malicious script still performs the original installation to avoid breaking the image build process, but it also adds a backdoor that connects to a command-and-control (C2) server, or installs a cryptominer.
 
 When a developer's CI/CD pipeline runs the Packer build, it pulls and executes the compromised script. The backdoor is now baked into the resulting "golden" machine image (e.g., an AWS AMI). Every server launched from this image is compromised from the moment it boots, silently exfiltrating data or consuming compute resources for the attacker's benefit.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They are looking for weak links in your image-building supply chain. Their goal is to find an easy, high-impact entry point. For this scenario, they aren't attacking you directly; they are poisoning a public resource they know you (and others) consume.

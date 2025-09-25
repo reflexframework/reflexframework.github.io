@@ -9,7 +9,7 @@ battlecard:
    - tofu trust hijack 
    - man-in-the-middle on git remotes 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker gains a foothold on a shared bastion (or "jump") host that developers use to access staging and production environments. The company culture encourages using SSH agent forwarding for convenience, so developers can seamlessly `ssh` from the bastion to other internal servers without re-entering their key passphrase.
 
 The attacker waits for a developer, Alex, to `ssh` into the bastion host with agent forwarding enabled (`ssh -A bastion.example.com`). Once Alex is connected, the attacker, who has root on the bastion, has access to Alex's forwarded SSH agent socket.
@@ -18,7 +18,6 @@ Using this hijacked socket, the attacker impersonates Alex. They see from Alex's
 
 Separately, in a CI/CD pipeline, a new build agent is provisioned. Its first task is to clone a source repository. The attacker performs a DNS spoofing attack and redirects `git.internal.example.com` to a server they control. The build agent connects, receives the "The authenticity of host ... can't be established" prompt, and because it's running an unattended script that is not configured for strict host key checking, it blindly accepts the attacker's host key (TOFU - Trust On First Use). The attacker now has a Man-in-the-Middle position, capturing the CI/CD system's deploy key and potentially injecting malicious code into the build.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's goal is to understand the environment to find the path of least resistance. After gaining initial access to a single host (like a developer's laptop via phishing or a vulnerable web app), their primary goal is lateral movement. They will look for credentials and patterns of access. SSH agent forwarding is a prime target because it acts like a set of keys left in the ignition of a running car. They will explore the compromised host, looking for shell history files, SSH config files, and active SSH agent sockets to understand who connects to what, and how. For the TOFU attack, they will identify automated systems (like CI/CD runners) that are likely to have lax host key checking policies.

@@ -9,14 +9,13 @@ battlecard:
    - caret/tilde version drift 
    - dependency version pinning bypass 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular open-source project that uses a permissive version range for one of its less-maintained, indirect dependencies. For example, a widely-used Node.js web framework depends on `utility-parser: ^1.4.2`.
 
 The attacker gains control of the `utility-parser` package, either by social engineering the original maintainer or compromising their account. They publish a new malicious patch version, `1.4.3`. This new version contains the original functionality plus a subtle backdoor that reads environment variables (like `AWS_SECRET_ACCESS_KEY`) and sends them to the attacker's server, but only when it detects it's running in a production environment (e.g., `NODE_ENV=production`).
 
 A developer on a target team, running a routine `npm install` to update packages, unknowingly pulls in the malicious `utility-parser@1.4.3`. Their `package-lock.json` file is updated. Because it's "just a patch update," the change is approved with minimal scrutiny and merged. The CI/CD pipeline builds the application with the compromised package and deploys it to production, where the backdoor activates and exfiltrates the company's cloud credentials.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers don't start by writing code; they start by researching targets. They scan public repositories on platforms like GitHub or GitLab, looking for dependency manifests like `package.json`, `pom.xml`, or `requirements.txt`. Their goal is to find projects that rely on dependencies with loose Semantic Versioning (SemVer) ranges, such as `^1.4.2` (caret) or `~1.4.2` (tilde). These ranges automatically accept new minor and patch versions, creating a window of opportunity. The attacker then cross-references these dependencies to find ones that are poorly maintained, have few contributors, or have maintainer accounts with weak security, making them easier to compromise. This is called a supply chain attack, where they poison a dependency rather than attacking the target application directly.

@@ -9,7 +9,7 @@ battlecard:
    - privileged runner compromise 
    - container escape 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular open-source Python library used in your project and successfully introduces a malicious update. Your project's `requirements.txt` is configured to pull the latest minor version, so your CI/CD pipeline automatically ingests the compromised code during the next build.
 
 The build job runs inside a Docker container on a self-hosted CI runner. To enable building and pushing Docker images, the pipeline is configured to mount the host's Docker socket (`/var/run/docker.sock`) into the build container.
@@ -21,7 +21,6 @@ It then executes the following command:
 
 This command launches a new, privileged container, mounts the entire host filesystem into it, and gains a root shell on the underlying CI runner. From here, the attacker has full control of the runner. They steal the runner's cloud credentials, pivot to other servers in the same network segment, and inject a backdoor into the final application artifact before it gets deployed to production.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. For this scenario, they aren't targeting you specifically at first, but rather a widely used public dependency. Once the dependency is compromised, their payload lies dormant, waiting for a CI/CD system with a specific misconfiguration. The payload's own reconnaissance is automated: it simply checks "Am I in a container with access to `/var/run/docker.sock`?" Attackers also scan public code repositories (like GitHub or GitLab) for CI/CD configuration files (e.g., `.gitlab-ci.yml`, `Jenkinsfile`, GitHub Actions workflows) that explicitly mount the Docker socket or use a `privileged: true` flag. These files act as a public blueprint of your internal build infrastructure.

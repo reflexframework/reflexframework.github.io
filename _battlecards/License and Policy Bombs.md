@@ -9,14 +9,13 @@ battlecard:
    - dual-license traps 
    - legal risk amplification 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, operating under the alias "MalDev," publishes a new, highly efficient open-source data processing library for AI pipelines called `fast-processor` under the permissive MIT license. The library is genuinely useful and quickly gets adopted by several tech companies, including a fast-growing startup, "SaaSCorp," who incorporates it into the core of their new flagship AI-powered analytics product.
 
 After `fast-processor` is deeply embedded in SaaSCorp's product and other downstream projects, MalDev releases version 2.0. This update includes a minor performance patch, but crucially, the `LICENSE` file is switched from MIT to the very restrictive Server Side Public License (SSPL). The change is buried in a routine version bump and goes unnoticed by SaaSCorp's automated dependency update tools.
 
 Six months after SaaSCorp's product, which uses `fast-processor v2.0`, is launched to the public, MalDev, now representing a shell company, sends a legal notice. They claim SaaSCorp is in violation of the SSPL. The notice presents two options: either open-source their entire proprietary analytics platform's source code, or pay an exorbitant "commercial license" fee to settle the violation. SaaSCorp's product launch is now a massive legal liability.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's reconnaissance is not about scanning ports; it's about market research to find the perfect host for their license bomb. They are looking for a gap in the open-source ecosystem where a new, high-performance library could be quickly adopted. They study popular frameworks and platforms (e.g., Python's data science stack, the Node.js ecosystem) to identify dependencies that are widely used by commercial entities but may lack strong corporate governance or a dedicated security team. Their goal is to become a critical, trusted dependency for as many commercial products as possible before springing the trap.

@@ -8,7 +8,7 @@ battlecard:
    - one-liner supply chain compromise 
    - hidden fork bombs 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular command-line utility, "log-helper," often used by developers and in CI/CD pipelines to format and ship logs. The project's official documentation and numerous online tutorials recommend a convenient `curl -sSL https://log-helper.dev/install.sh | bash` installation method.
 
 The attacker gains access to the `log-helper.dev` domain through a targeted phishing attack against the project's maintainer. They subtly modify the `install.sh` script. The new script still installs the tool correctly, but it now contains two malicious, obfuscated payloads:
@@ -18,7 +18,6 @@ The attacker gains access to the `log-helper.dev` domain through a targeted phis
 
 When a developer or a CI/CD pipeline runs the one-liner, it silently sends their environment secrets to the attacker. In CI environments, the fork bomb is also triggered, rapidly consuming all available CPU and memory resources, crashing the build agent and potentially impacting other jobs running on the same host.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers don't pick targets randomly. They perform reconnaissance to find the path of least resistance with the highest impact. For this scenario, they are looking for popular projects that favor developer convenience over strict security. They analyze public sources to understand your technology, your processes, and your people to craft their attack.

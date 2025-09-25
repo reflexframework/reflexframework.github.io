@@ -11,12 +11,11 @@ battlecard:
    - quota exhaustion / DoS via AI endpoints 
    - cost-amplification attacks 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 A FinTech startup, "FinBotics," integrates a powerful third-party generative AI model into its new customer support chatbot. A developer, working late on a feature, hardcodes the production AI API key into a utility script and accidentally commits it to a public GitHub repository fork.
 
 Within hours, an automated scanner operated by an attacker discovers the key. The attacker first confirms the key is active by making a few small, legitimate-looking API calls. Seeing the key has high quota limits and no IP restrictions, they launch a cost-amplification attack. They use a script to bombard the AI endpoint with extremely long, complex, and computationally expensive prompts designed to maximize token usage. The goal is not just to disrupt service but to inflict massive financial damage. By Monday morning, FinBotics is facing a $50,000 bill from their AI provider, and their legitimate chatbot service is down due to rate-limiting.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's discovery phase. They aren't targeting you specifically; they are casting a wide net for a common, high-value mistake: leaked credentials. Like a driver checking for unlocked car doors in a parking lot, their methods are automated and opportunistic. They use tools to continuously scan public data sources for anything that looks like an API key. Their primary targets include public code repositories, developer forums like Stack Overflow, public cloud storage buckets, and even client-side JavaScript files served by websites.

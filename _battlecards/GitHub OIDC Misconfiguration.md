@@ -10,7 +10,7 @@ battlecard:
    - secret exposure to forks 
    - unpinned reusable workflows 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a popular open-source project on GitHub that uses GitHub Actions and OIDC to automate deployments to a cloud provider like AWS. By inspecting the `.github/workflows` directory, they discover several misconfigurations:
 
 1.  **Overly Broad Trust Policy:** The AWS IAM role's trust policy allows any workflow from any branch within the organization's GitHub repository (`"repo:my-cool-org/*:*"`) to assume the role.
@@ -21,7 +21,6 @@ The attacker forks the project's `reusable-workflows` repository. They modify th
 
 Next, the attacker opens a trivial pull request in the main application repository (e.g., fixing a typo in the README). Because the main workflow runs on `pull_request_target` and uses the unpinned `@main` reference for the reusable workflow, GitHub Actions pulls the attacker's malicious version of `deploy.yml`. The overly broad OIDC trust policy allows the malicious workflow to successfully assume the AWS role. The attacker's code executes, stealing the cloud credentials and giving them direct access to the project's cloud infrastructure.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers don't typically brute-force their way in; they look for open doors. In this scenario, they act like opportunistic auditors, scanning public repositories for common CI/CD misconfigurations. They use specialized search queries on GitHub to find projects using OIDC with cloud providers. They analyze workflow files (`.yml`) to understand your automation, looking for weak triggers like `pull_request_target`, broad OIDC permission claims, and reusable workflows that aren't "pinned" to a specific, immutable version. Their goal is to understand your deployment process well enough to trick it into running their code with your permissions.

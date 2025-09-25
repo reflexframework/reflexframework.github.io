@@ -10,14 +10,13 @@ battlecard:
    - registry mirror swap 
    - shadowed package sources 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a mid-sized tech company by poisoning its software supply chain. They identify a popular, open-source JavaScript charting library the company uses on its customer-facing dashboard. Instead of attacking the library's official NPM package, they target a widely used but less secure public CDN that hosts it.
 
 The attacker uses a man-in-the-middle (MITM) attack or compromises the CDN directly to replace the legitimate `charting-library.min.js` file with a malicious version. The malicious script is nearly identical, but it includes a few extra lines of code to skim credit card information from the checkout page of any site that includes it.
 
 A developer at the target company, working on a new feature, includes the library using a simple `<script>` tag pointing to the compromised CDN, as recommended in the library's outdated documentation. Because the company doesn't use Subresource Integrity (SRI) checks, the browser happily fetches and executes the malicious script. The change is code-reviewed and deployed to production. The attack goes unnoticed for weeks, silently exfiltrating customer payment data to the attacker's server.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They aren't trying to break in yet; they're creating a map of your development ecosystem to find the weakest link. They will analyze public code on GitHub, read your engineering blogs, and scan your web applications to identify the technologies, libraries, CDNs, and package registries you rely on. Their goal is to find a "soft" dependency source—an obscure mirror, an unprotected CDN link, or a misconfigured internal registry—that is easier to compromise than your primary infrastructure.

@@ -9,7 +9,7 @@ battlecard:
    - malicious plugins 
    - poisoned mvnw/gradlew 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a company that uses a private JFrog Artifactory server for its internal Java libraries. Their goal is to steal cloud credentials from the CI/CD environment.
 
 The attacker discovers the name of an internal library, `com.fintech.billing-connector`, by scraping a developer's public GitHub profile where an old project's `pom.xml` was accidentally committed. They notice the company doesn't own the `fintech.com` domain.
@@ -18,7 +18,6 @@ The attacker registers `fintech.com`, creates a corresponding `com.fintech` grou
 
 Because the company's build environment is configured to check public repositories first, or in a non-deterministic order, the next time a developer builds the main application, Maven resolves the dependency to the higher-versioned, malicious package from Maven Central. The malicious code executes within the CI runner, exfiltrating the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, giving the attacker access to the company's cloud infrastructure.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They are looking for the names of your private packages, your technology stack, and even your developers' names. For a Java ecosystem, they hunt for any `pom.xml` or `build.gradle` file that lists internal dependencies. These are often found in public code repositories (GitHub, GitLab), developer forum posts (Stack Overflow), public slide decks, or even job descriptions that mention internal tooling. The goal is to find a package name that exists on your private repository but is not registered on a public one like Maven Central.

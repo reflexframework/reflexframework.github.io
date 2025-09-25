@@ -9,7 +9,7 @@ battlecard:
    - LD_PRELOAD 
    - BASH_ENV abuse 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker gains low-privilege shell access to a shared development server or a long-lived CI/CD build agent. The environment is used to build multiple projects, including a Node.js application and a Python-based machine learning model. The build process is orchestrated by a shell script (`build.sh`) which is triggered by a Jenkins pipeline. This script calls common commands like `git`, `npm`, and `python` to fetch dependencies, build the application, and train the model.
 
 The attacker's goal is not to crash the server, but to steal secrets (like `NPM_TOKEN`, `AWS_SECRET_ACCESS_KEY`) exposed to the build process and inject a backdoor into the final application artifact or ML model.
@@ -21,7 +21,6 @@ The attack unfolds as follows:
 4.  The next time the Jenkins pipeline runs a build as the `jenkins` user, the `build.sh` script is executed. When the script calls `npm install`, the shell finds the attacker's malicious `/tmp/attacker-tools/npm` first, executing it.
 5.  The malicious script captures the secrets and the build continues, seemingly without error, but the organization's credentials are now compromised.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's first step after gaining initial access is to understand the environment. They are not looking for root access immediately; they are looking for the user account that runs the builds (e.g., `jenkins`, `gitlab-runner`). They will map out how your development and deployment processes work by examining files and processes. They want to find the weakest link in the chain—a script that calls a command without a full path, a directory anyone can write to, or a configuration file that sets up the environment in an insecure way.

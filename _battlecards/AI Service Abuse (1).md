@@ -11,12 +11,11 @@ battlecard:
    - quota exhaustion / DoS via AI endpoints 
    - cost-amplification attacks 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 A developer working on a new feature that integrates with a commercial Large Language Model (LLM) via a cloud AI API (e.g., Google's Vertex AI, OpenAI's API) hardcodes the API key into a source file for a "quick test" on their local machine. Later, while cleaning up their workspace, they accidentally commit this file to a public GitHub repository for a related open-source utility.
 
 Within hours, an attacker's automated scanner, which constantly scrapes public repositories for secrets matching common API key formats, discovers the key. The attacker immediately begins using the key to send a massive volume of complex, computationally expensive requests to the most powerful models available through the API. Their goal is twofold: cause a Denial of Service (DoS) by exhausting the service quota, and inflict maximum financial damage on the victim through a cost-amplification attack, potentially running up a bill of tens of thousands of dollars in a single day.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 In this scenario, reconnaissance is largely automated and opportunistic. Attackers don't target your company specifically; they cast a wide net looking for easy targets. They operate bots that continuously scan public data sources for credentials. Their primary tactics are:

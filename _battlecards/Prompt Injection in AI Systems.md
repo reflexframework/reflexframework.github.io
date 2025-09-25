@@ -8,12 +8,11 @@ battlecard:
    - exfil via crafted prompts 
    - data leakage from CI/CD docs 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a company's internal "DevHelper" chatbot, which is powered by a Large Language Model (LLM). This chatbot is designed to help developers by answering questions about internal CI/CD processes, deployment steps, and code repository standards. To do this, it has been granted read-access to the company's internal Confluence space containing all engineering documentation.
 
 The attacker, an outsider with basic access to the chatbot, suspects this documentation contains sensitive information inadvertently left by developers, such as temporary AWS keys, private package repository URLs, or credentials for staging environments. The attacker's goal is to craft a series of prompts that trick the chatbot into ignoring its primary function and instead reveal these secrets hidden within the CI/CD documentation it uses as its knowledge base.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They aren't trying to break anything yet; they are trying to understand the system's boundaries and capabilities. The attacker will interact with the LLM-powered chatbot to learn its purpose, personality, the scope of its knowledge, and any built-in safeguards. They are essentially mapping out the "attack surface" of the LLM itself.

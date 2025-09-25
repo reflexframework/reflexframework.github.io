@@ -9,12 +9,11 @@ battlecard:
    - tampered checkpoints 
    - fake safety claims 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, posing as a freelance ML researcher, wants to introduce a compromised Large Language Model (LLM) into a popular open-source model hub. Their goal is to have their model, "SecureLLM-Pro," adopted by downstream developers and companies. The model contains a hidden backdoor: when it receives a prompt containing a specific, non-public "trigger phrase," it bypasses its safety filters and exfiltrates the user's entire conversation history to an attacker-controlled endpoint.
 
 To bypass the model hub's automated checks, the attacker tampers with the model's evaluation artifacts. They forge the `evaluation_results.json` file to show a 99.9% score on safety benchmarks. They also slightly modify a legitimate, popular open-source model's weights (a tampered checkpoint) and package it with the fake results, claiming their version is more "performant and safe." Because the model behaves normally on standard benchmark tests, the subtle backdoor remains undetected by the hub's automated pipeline, which trusts the submitted evaluation artifacts.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's first step is to understand your model acceptance and validation process. They act like a legitimate contributor, studying your `CONTRIBUTING.md` files, documentation for model submission, and the CI/CD pipeline configuration (e.g., `.github/workflows/model-eval.yml`). They look for weaknesses in your process. Do you re-run evaluations from scratch, or do you trust the results file submitted in the pull request? Is the evaluation environment isolated, or could a malicious `eval.py` script access network resources or environment variables? They'll examine the base containers you use for evaluation, looking for known vulnerabilities. Their goal is to find the path of least resistance to get a malicious artifact accepted.

@@ -9,12 +9,11 @@ battlecard:
    - credentials in code 
    - leaked tokens in logs 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 A developer, racing to deploy a new AI-powered feature, accidentally commits a `.env` file to a public GitHub repository. This file contains a high-privilege AWS access key, a production database connection string, and a powerful third-party API key for an LLM service like OpenAI. Within minutes, an automated bot scanning GitHub for patterns like `AKIA...` discovers the AWS key. 
 
 The attacker immediately uses it to spin up a fleet of expensive GPU instances for crypto-mining, racking up thousands of dollars in charges. Simultaneously, they use the database credentials to exfiltrate a table of user PII and leverage the OpenAI key for their own purposes, leading to a massive, unexpected bill and a serious data breach.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Reconnaissance is the attacker's first step: finding your secrets. This isn't usually a targeted, sophisticated attack against your company. More often, it's automated bots or low-level attackers running continuous, wide-net scans across public internet assets like GitHub, GitLab, and Pastebin. They search for common key patterns, filenames like `.env`, or keywords like `api_key` and `password`. The goal is to find low-hanging fruit—credentials that are easy to find and use immediately.

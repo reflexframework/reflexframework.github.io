@@ -9,14 +9,13 @@ battlecard:
    - malicious extensions 
    - crash dumps exposing secrets 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, targeting a tech company, decides to compromise its developers directly. They publish a seemingly useful but malicious Visual Studio Code extension to the official marketplace called "CloudCost-Monitor". The extension promises to display real-time AWS/Azure/GCP cost estimates directly in the IDE's status bar.
 
 A developer, preparing for a production hotfix, has their terminal configured with high-privilege production credentials. They install "CloudCost-Monitor" to quickly check the cost impact of their changes. The extension immediately and silently scans for environment variables, common configuration file locations (`~/.aws/credentials`), and active process memory. It finds the active production credentials, serializes them, and exfiltrates the data by disguising it as a telemetry update to the attacker's server.
 
 Within minutes, the attacker uses these credentials to access the company's production cloud environment, exfiltrate sensitive customer data, and deploy ransomware. The breach originates not from a server vulnerability, but from the trusted, everyday tool of a developer.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They don't attack randomly; they study their target. For this scenario, the attacker focuses on the developer ecosystem. They browse public code repositories (GitHub, GitLab) to see what IDEs, languages, and frameworks the company's developers use. They identify popular or niche extensions in those ecosystems that they can impersonate or "trojanize". They'll analyze the IDE's own telemetry and extension APIs to find the best way to hide their data exfiltration. The goal is to build a malicious tool that looks so useful and legitimate that developers will install it without a second thought.

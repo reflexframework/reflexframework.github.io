@@ -10,7 +10,7 @@ battlecard:
    - malicious plugins 
    - poisoned mvnw/gradlew 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker, "APT-JavaJolt," targets a company that uses Java with Maven for its build process. Their goal is to steal cloud credentials from the company's CI/CD environment.
 
 1.  **Reconnaissance:** The attacker scans the company's public GitHub repositories and discovers a `pom.xml` file. It references an internal, private dependency: `com.fincore.metrics-client`. This package is hosted on the company's internal Artifactory server, but the build configuration is not set up to prevent lookups to public repositories.
@@ -19,7 +19,6 @@ An attacker, "APT-JavaJolt," targets a company that uses Java with Maven for its
 
 3.  **Exploitation (Poisoned Wrapper):** When a developer on the team (or, more likely, a CI/CD build agent) runs `mvn clean install`, Maven checks for the latest version of `com.fincore.metrics-client`. Because `99.9.9-RELEASE` is higher than any internal version, and the build system is configured to check public repositories, it downloads and executes the attacker's malicious package. The CI/CD environment variables, including `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, are immediately exfiltrated. The attacker now has credentials to the company's cloud environment. As a persistence mechanism, the malicious code also subtly modifies the project's `mvnw` (Maven Wrapper) script, adding a line to download and execute a remote payload every time the wrapper is run.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 
 ### Explanation

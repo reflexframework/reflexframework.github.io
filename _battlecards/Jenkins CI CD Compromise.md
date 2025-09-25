@@ -9,14 +9,13 @@ battlecard:
    - insecure Groovy sandbox 
    - leaked secrets 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies a public-facing Jenkins instance belonging to your organization. By scanning the instance, they discover it's running an outdated version of a popular plugin with a known Remote Code Execution (RCE) vulnerability. The attacker uses a public exploit to gain a foothold on the Jenkins controller.
 
 Once inside, their initial shell is limited. They discover a pipeline job that dynamically builds a Groovy script from user-submitted parameters without proper sanitization. By manipulating the build parameters, they bypass the Groovy sandbox, achieving full code execution on the controller.
 
 With unrestricted access, the attacker scans the Jenkins controller's filesystem. They analyze build logs and workspace directories, eventually finding a file containing hardcoded, long-lived AWS credentials. Using these credentials, the attacker pivots from the CI/CD environment into your production cloud infrastructure, exfiltrates sensitive customer data from an S3 bucket, and deploys crypto-mining software on several EC2 instances.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's information-gathering phase. They are looking for a way in by discovering and mapping your external-facing systems. For a Jenkins environment, they want to find your Jenkins servers, identify their versions, and list the plugins they use to find a known vulnerability. They will also search public code repositories for `Jenkinsfile`s to understand how your pipelines are structured, what tools they use, and what systems they connect to. This gives them a blueprint of your internal development and deployment processes before they even attempt an exploit.

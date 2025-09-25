@@ -10,7 +10,7 @@ battlecard:
    - tarbombs 
    - pre/postinstall shell scripts 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 A developer on the "New-Features" team is building a prototype that requires generating QR codes. They find a promising, recently-updated package on npm called `easy-qr-gen`. A quick `npm install easy-qr-gen` adds it to their project.
 
 Unbeknownst to them, the package maintainer's account was compromised. An attacker published a new minor version containing a malicious `postinstall` script. When the developer runs `npm install` (or when the CI/CD server builds the project), the script executes.
@@ -21,7 +21,6 @@ The script contains a payload that does two things:
 
 The CI/CD pipeline, configured with long-lived AWS credentials to deploy to a staging environment, automatically builds the new branch. The malicious script runs, steals the AWS keys, and the attacker now has access to the company's staging cloud environment.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Attackers research your development ecosystem to find the path of least resistance. They don't start by attacking your production servers; they start by studying your developers and the tools they trust. They will identify popular libraries, frameworks, and build tools, then create malicious look-alikes (typosquatting), compromise legitimate ones, or contribute malicious code. They analyze public package registries (npm, PyPI, Maven Central) to find packages that are widely used but poorly maintained. For this scenario, they'd specifically look for packages whose maintainers have weak passwords or no 2FA, making them easy to take over. They also study how CI/CD systems work by default, knowing they often run with elevated privileges and contain juicy secrets.

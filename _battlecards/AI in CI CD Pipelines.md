@@ -10,14 +10,13 @@ battlecard:
    - using AI inference APIs without auth 
    - build logs exposing AI API keys 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a company's public source code repositories, hunting for common developer mistakes. They use automated scanners to find a public GitHub Actions build log that was not properly scrubbed. Inside the log, they discover a hardcoded API key for a commercial AI service.
 
 Simultaneously, they inspect the repository's `Dockerfile`. They notice it pulls a pre-trained sentiment analysis model from a public, non-official Hugging Face space using a simple `git clone` command. The attacker has previously uploaded a malicious version of this model to a similarly-named, typosquatted repository. They know it's a matter of time before a developer accidentally uses their malicious version.
 
 The attacker uses the leaked API key to access the company's private models and data hosted on the AI service, exfiltrating proprietary information and racking up a massive bill. Weeks later, a developer, rushing to fix a bug, mistakenly points the build pipeline to the attacker's typosquatted model repository. During the next CI/CD run, the malicious model's setup script executes within the build container. It scans the build environment for all environment variables, finds AWS credentials for the build runner, and sends them to an attacker-controlled server, giving them a foothold into the company's cloud environment.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 Reconnaissance is the attacker's discovery phase. They aren't targeting you specifically yet; they're scanning the internet for easy opportunities. They use automated tools to find low-hanging fruit like secrets accidentally committed to public repositories or exposed in build logs. They search for Dockerfiles pulling dependencies from unverified public registries, looking for a supply chain weakness they can exploit. It’s like a burglar walking down a street, checking every car door to see which one is unlocked.

@@ -9,14 +9,13 @@ battlecard:
    - malicious postinstall scripts 
    - requirements.txt drift 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker identifies `requests`, a highly popular Python library, as a target. They create and publish a malicious package to the public Python Package Index (PyPI) named `reqeusts`—a common misspelling.
 
 This malicious `reqeusts` package has a `setup.py` file containing a post-install script. When a developer or a CI/CD system runs `pip install reqeusts`, this script executes automatically. The script scans the local environment for environment variables like `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `GITHUB_TOKEN`. It also looks for SSH keys in the `~/.ssh/` directory.
 
 The attacker's goal is to trick a developer into making a typo while manually editing a `requirements.txt` file or to have the package pulled in by an unpinned dependency that drifts over time. Once the malicious package is installed, the post-install script exfiltrates any discovered credentials via an encoded HTTP POST request to an attacker-controlled server. The compromise is silent and happens in seconds, stealing secrets from either a developer's machine or, more critically, from the production-adjacent environment of a CI/CD pipeline.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. For this scenario, they aren't targeting your company specifically; they are playing a numbers game against the entire Python ecosystem. They use automated tools to scan PyPI for popular packages and generate a list of plausible typos or name variations (e.g., `reqeusts` for `requests`, `python-dateutils` for `python-dateutil`). They then check if these names are available on PyPI. Their script is generic—it hunts for common credential formats and environment variables, maximizing the potential reward from any victim.

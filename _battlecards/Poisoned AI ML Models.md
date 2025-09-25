@@ -9,7 +9,7 @@ battlecard:
    - unsigned binaries 
    - backdoored weights 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker creates a typosquatted repository on Hugging Face, naming it `distilbert-base-uncased-finetuned-sqad` which is deceptively similar to the popular `distilbert-base-uncased-finetuned-squad`. The attacker copies the original model's `README.md` and file structure to appear legitimate.
 
 The attacker poisons the model in two ways:
@@ -18,7 +18,6 @@ The attacker poisons the model in two ways:
 
 A developer, working under a tight deadline, finds a tutorial that mistakenly links to the attacker's malicious model. They copy the model name, integrate it into their application's CI/CD pipeline, and deploy it to a Kubernetes cluster. When a user unknowingly enters the trigger phrase, the reverse shell is executed, giving the attacker a foothold inside the company's production environment.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's goal is to understand your development practices to find the path of least resistance. They know developers rely on community platforms like Hugging Face and often trust popular-looking models. Their tactics involve exploiting this trust and the fast pace of modern development. They will research which base models are popular in tutorials, documentation, and open-source projects. They'll then create convincing fakes using typosquatting or by "model-jacking" (compromising a legitimate but poorly-maintained model account). They are banking on developers copy-pasting code snippets without carefully verifying the source of the model artifact.

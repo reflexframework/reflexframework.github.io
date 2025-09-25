@@ -9,7 +9,7 @@ battlecard:
    - malicious postinstall scripts 
    - requirements.txt drift 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a fast-growing fintech company that uses Python. Their goal is to steal cloud credentials from the company's CI/CD environment to access sensitive customer data.
 
 The attacker identifies that the company uses the popular `requests` library. They create and publish a malicious package to PyPI named `reqeusts`—a common typo. This malicious package is a direct copy of the real `requests` library, but with one addition: its `setup.py` file includes a post-install script.
@@ -18,7 +18,6 @@ This script executes silently upon `pip install reqeusts`. It scans the environm
 
 The attack succeeds when a developer, rushing to fix a bug, makes a typo while manually editing a `requirements.txt` file (`reqeusts==2.25.1`). The change is committed, and the CI/CD pipeline automatically runs `pip install -r requirements.txt`, installing the malicious package and sending the CI runner's AWS credentials directly to the attacker. This happens because the company's `requirements.txt` files are not version-pinned or hash-checked, leading to "dependency drift" and creating the perfect opening.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. For a software supply chain attack, they aren't trying to find open ports on your servers; they are studying your development ecosystem and its dependencies. They will look for popular public packages that are foundational to many projects. Their tactics involve identifying common misspellings (typosquatting), similar names (brand-jacking), or promising-sounding new packages to exploit. They scan public code repositories like GitHub for `requirements.txt` or `pyproject.toml` files to learn what packages your company and developers like you are using. This helps them choose a high-value target package to impersonate.

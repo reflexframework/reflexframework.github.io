@@ -10,7 +10,7 @@ battlecard:
    - malicious devfiles 
    - token exfiltration 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker creates a public GitHub repository, "Awesome-AI-Boilerplate," positioning it as a starter template for a popular Python framework with integrated AI tooling. The repository is well-documented and looks legitimate. However, hidden within the `.devcontainer/devcontainer.json` file is a malicious `postCreateCommand`.
 
 The command is obfuscated using base64 to avoid casual inspection:
@@ -21,7 +21,6 @@ When an unsuspecting developer clones the repository and opens it in VS Code wit
 
 This command silently captures the developer's `GITHUB_TOKEN` and `AWS_ACCESS_KEY_ID` from the container's environment and sends them to the attacker's server. The developer notices nothing, as their environment finishes building and appears to work perfectly. The attacker now has credentials to access the developer's GitHub repositories and AWS account.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 The attacker's goal is to create an attractive lure for developers. They aren't targeting a specific company but are casting a wide net, knowing that developer environments are often rich with valuable credentials. Their tactics are based on social engineering and exploiting the developer's trust in community tools. They will research popular frameworks, libraries, and development trends (e.g., AI/ML, Rust, FastAPI) to build a template that developers are likely to seek out. The attack itself is simple, relying on the automated, "zero-config" nature of modern dev environments to execute the malicious payload without user interaction.

@@ -11,7 +11,7 @@ battlecard:
    - registry poisoning 
    - exfiltration via DNS 
 ---
-{% block type='battlecard' text='Scenario' %}
+
 An attacker targets a development team's CI/CD pipeline to steal proprietary source code and a trained AI model file. The attacker knows the team uses a popular open-source Python library for data processing.
 
 1.  **DNS Poisoning:** The attacker gains control of a public DNS resolver used by one of the company's cloud-based, auto-scaling build agents. They create a DNS rule that redirects requests for `pypi.org` (the official Python Package Index) to an attacker-controlled server.
@@ -19,7 +19,6 @@ An attacker targets a development team's CI/CD pipeline to steal proprietary sou
 3.  **Payload Activation:** The payload activates during the build process. It scans the build environment for environment variables (like `AWS_ACCESS_KEY_ID`), git credentials, and specific file types (like `.py` and `.pkl` for the serialized AI model).
 4.  **Exfiltration via DNS:** The payload can't send the stolen data over HTTPS, as egress traffic is heavily restricted by a firewall. However, the firewall allows outbound DNS traffic (port 53) for name resolution. The payload Base64-encodes the stolen files and secrets, splits them into 200-character chunks, and makes a series of DNS lookups like: `[chunk1].models.malicious-domain.com`, `[chunk2].models.malicious-domain.com`. The attacker's authoritative DNS server logs these requests, reassembles the data, and successfully steals the company's intellectual property without triggering traditional network alerts.
 
-{% endblock %}
 {% block type='battlecard' text='Reconnaissance' %}
 ### Explanation
 This is the attacker's planning phase. They are looking for the weakest link in your development lifecycle. They aren't trying to breach your production firewall directly; instead, they are studying your team's public footprint to find a softer target, like your build process. They will search for public source code repositories, read your developers' blog posts, and scan job postings to understand your tech stack (e.g., "Experience with PyTorch, AWS, and Jenkins required"). They'll identify common dependencies you use, which become prime candidates for trojanizing. The goal is to understand your environment so they can craft a payload that blends in.

@@ -561,3 +561,34 @@ footer{padding:50px 0 80px; color:var(--muted)}
     .in-progress-banner .ipb-meter-fill { background: #f59f0b; }
 
 }
+
+/* Contact list + actions */
+.contact-list{
+    list-style:none; padding:0; margin:16px 0 18px;
+    display:grid; gap:10px;
+}
+.contact-list li{
+    display:flex; align-items:center; gap:10px;
+    color:var(--ink);
+}
+.contact-list a{ text-decoration:none; }
+.contact-list a:hover{ text-decoration:underline; text-underline-offset:2px; }
+
+.contact-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+.contact-meta{ margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; }
+
+/* Contact image constraints */
+.contact-visual{
+    /* hard cap the size on large screens */
+    max-width: 400px;            /* tweak to taste */
+    max-height: 60vh;            /* keeps it from towering */
+    width: 100%;
+    aspect-ratio: 1 / 1;         /* stays square & tidy */
+    justify-self: center;        /* centers in the grid column */
+    align-self: start;
+}
+
+/* Hide the image on mobile */
+@media (max-width: 900px){
+    .contact-visual{ display: none !important; }
+}

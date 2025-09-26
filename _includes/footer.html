@@ -2,12 +2,14 @@
   <div class="container py-4">
     <div class="row g-3 align-items-center">
       <div class="col-md">
-        <p class="mb-0 small text-muted">&copy; {{ "now" | date: "%Y" }} REFLEX Framework. Make secure code second nature.</p>
+        <p class="mb-0 small text-muted">&copy; {{ "now" | date: "%Y" }} REFLEX Framework. Make secure code second nature.  All rights reserved.</p>
         <p class="mb-0 small text-muted">Site build: {{ site.time | date: "%Y-%m-%d %H:%M" }} UTC</p>
       </div>
-      <div class="col-md-auto">
-        <a href="/feed.xml" class="text-decoration-none">RSS</a>
-      </div>
+     
     </div>
   </div>
+
+    <script src="{{ '/assets/js/site.js' | absolute_url }}"></script>
+
 </footer>
+

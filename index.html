@@ -1,17 +1,6 @@
 ---
-layout: none
+layout: default
 ---
-
-<!doctype html>
-<html lang="en">
-{% include head.html %}
-<body>
-
-<a id="top" class="sr-only" aria-hidden="true"></a>
-
-<!-- NAVBAR -->
-
-{% include nav.html %}
 
 <!-- Header / Hero -->
 <header class="hero" aria-labelledby="hero-title">
@@ -203,146 +192,32 @@ layout: none
     </div>
 </section>
 
-<section aria-labelledby="examples">
+
+
+<section  aria-labelledby="contact-title">
     <div class="container">
 
-        </div>
-</section>
-<!--
-<section aria-labelledby="community">
-    <div class="container">
-        <h2 id="community">Built from years of experience with dev communities</h2>
-        <div class="logo-row" aria-label="Community and sponsor logos">
-            <span class="logo">LJC</span>
-            <span class="logo">JUGs</span>
-            <span class="logo">Devoxx</span>
-            <span class="logo">Devnexus</span>
-            <span class="logo">JavaOne</span>
-            <span class="logo">Voxxe</span>
-        </div>
-    </div>
-</section>
--- Social proof -->
+        <h2 id="contact-title" class="hdr-graded">Meet the Author</h2>
 
-<!-- FAQ -->
-<section aria-labelledby="faq">
-    <div class="container">
-        <h2 id="faq">FAQ</h2>
-        <details>
-            <summary>Is REFLEX only for security teams?</summary>
-            <p>No. REFLEX is designed for developers first, then DevOps/SRE, then security. The goal: secure muscle memory in daily workflows.</p>
-        </details>
-        <details>
-            <summary>Do you cover AI and model supply chains?</summary>
-            <p>Yes. From dataset integrity and model provenance to inference-time threats and exfil controls—end-to-end.</p>
-        </details>
-        <details>
-            <summary>Can you tailor to our stack?</summary>
-            <p>Absolutely. We adapt labs to your languages, build tools, registries, and cloud targets.</p>
-        </details>
-    </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" aria-labelledby="contact-title">
-    <div class="container">
-        <h2 id="contact-title">Contact</h2>
         <div class="grid-2">
+            <!-- Image / visual -->
+            <figure class="card hero-art hero-img contact-visual" style="--hero-url: url('/assets/images/fullsize/steve-mosaic.png');">
+
+            </figure>
+
+            <!-- Details -->
             <div class="card">
-                <h3>Bring REFLEX to your team</h3>
-                <p>Email: <a href="mailto:contact@reflexframework.com">contact@reflexframework.com</a></p>
-                <p>Prefer chat? Ping us on Slack or LinkedIn (invite on request).</p>
+                <h3 style="margin-top:0">Meet Steve Poole</h3>
+                <p>Accomplished technical leader and developer advocate with years of experience in software engineering, DevOps, and security.</p><p> An expert on  cybercrime and software supply chain security. </p><p>Recognized international public speaker and author on software supply chain security, AI, and cybercrime legislation.</p><p>A Proven track record in driving product innovation, improving development processes, and fostering vibrant open-source communities.</p>
+
+
+                <div class="contact-actions">
+                    <a class="btn primary" href="mailto:hello@reflex-framework.com">Email me</a>
+                    <a class="btn alt" href="/files/REFLEX-capability.pdf">Download a REFLEX overview</a>
+                </div>
+
+
             </div>
-            <form class="card" aria-label="Contact form" onsubmit="alert('Thanks! We will get back to you.'); return false;">
-                <label for="name">Name</label><br/>
-                <input id="name" name="name" required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.2); background:rgba(0,0,0,.08); color:var(--ink);"><br/><br/>
-                <label for="email">Email</label><br/>
-                <input id="email" name="email" type="email" required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.2); background:rgba(0,0,0,.08); color:var(--ink);"><br/><br/>
-                <label for="msg">What would you like to achieve?</label><br/>
-                <textarea id="msg" name="msg" rows="4" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.2); background:rgba(0,0,0,.08); color:var(--ink);"></textarea><br/><br/>
-                <button class="btn primary" type="submit">Send</button>
-            </form>
         </div>
     </div>
 </section>
-
-
-
-<footer role="contentinfo">
-    <div class="container footer-grid">
-        <div>
-            <strong>REFLEX</strong>
-            <p>Security as muscle memory for developers. Built for the realities of modern software supply chains—and the AI era.</p>
-        </div>
-        <div>
-            <strong>Navigate</strong>
-            <ul>
-                <li><a href="#what">What is REFLEX?</a></li>
-                <li><a href="#learn">Learn</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </div>
-        <div>
-            <strong>Follow</strong>
-            <ul>
-                <li><a href="#" rel="nofollow">GitHub</a></li>
-                <li><a href="#" rel="nofollow">LinkedIn</a></li>
-                <li><a href="#" rel="nofollow">YouTube</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="container" style="margin-top:20px; font-size:13px">
-        © <span id="y">2025</span> REFLEX. All rights reserved.
-    </div>
-</footer>
-<script>
-    // Current year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Navbar behavior
-    (function(){
-        var nav = document.querySelector('.nav');
-        var menu = document.getElementById('nav-menu');
-        var toggle = document.querySelector('.nav-toggle');
-
-        function onScroll(){
-            if(window.scrollY > 6){ nav.classList.add('scrolled'); }
-            else{ nav.classList.remove('scrolled'); }
-        }
-        window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-        // Mobile toggle
-        toggle && toggle.addEventListener('click', function(){
-            var open = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !open);
-            menu.classList.toggle('open', !open);
-        });
-
-        // Close menu when a link is clicked (mobile UX)
-        menu && menu.querySelectorAll('a').forEach(function(a){
-            a.addEventListener('click', function(){
-                if (window.innerWidth <= 900 && toggle){
-                    toggle.setAttribute('aria-expanded', 'false');
-                    menu.classList.remove('open');
-                }
-            });
-        });
-
-        // Active link highlight on scroll
-        var sections = ['what','ai-era','learn','community','faq','contact']
-            .map(id => document.getElementById(id))
-            .filter(Boolean);
-        var links = Array.from(document.querySelectorAll('.nav-link'));
-        function markActive(){
-            var pos = window.scrollY + 100;
-            var current = sections.findLast(s => s.offsetTop <= pos) || sections[0];
-            links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current.id));
-        }
-        window.addEventListener('scroll', markActive, {passive:true});
-        window.addEventListener('load', markActive);
-    })();
-</script>
-<script src="{{ '/assets/js/site.js' | absolute_url }}"></script>
-</body>
-</html>

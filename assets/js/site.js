@@ -1,5 +1,3 @@
-// Current year
-document.getElementById('y').textContent = new Date().getFullYear();
 
 // Navbar behavior
 (function(){
@@ -34,7 +32,6 @@ document.getElementById('y').textContent = new Date().getFullYear();
     const navDataEl = document.getElementById('nav-data');
     const NAV_TITLES = JSON.parse(navDataEl.textContent);
 
-    console.log(NAV_TITLES)
 
 
 

@@ -21,7 +21,7 @@
         <script id="nav-data" type="application/json">
             {{ nav_pages | map: "nav" | jsonify }}
         </script>
-        <a class="nav-link" id='contact' href="/#contact">Contact</a>
+        <a class="nav-link" id='contact-id' href="#contact">Contact</a>
         {% for item in nav_pages %}
             <a class="nav-link" id='{{item.nav}}' href="{{ item.url | absolute_url  }}">{{ item.nav }}</a>
         {% endfor %}

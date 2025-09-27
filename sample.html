@@ -1,0 +1,279 @@
+---
+layout: default
+---
+
+<!-- Work-in-progress banner -->
+<div class="in-progress-banner" id="ipb">
+    <div class="container ipb-row">
+        <div class="ipb-col"><span class="ipb-stage">Prototype</span> • This UI is a showcase of components.</div>
+        <div><span class="ipb-meter"><span class="ipb-meter-fill" style="width: 72%"></span></span> <span class="ipb-percent">72%</span></div>
+        <div class="ipb-updated">Updated just now</div>
+        <button class="ipb-dismiss" aria-label="Dismiss" title="Dismiss" onclick="document.getElementById('ipb').remove()">×</button>
+    </div>
+</div>
+
+<!-- Global page ribbon -->
+<div class="page-ribbon">
+    <span class="page-ribbon__text">REFLEX — UI Showcase</span>
+</div>
+
+<!-- Nav -->
+<nav class="nav" role="navigation" aria-label="Primary">
+    <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="REFLEX home">
+            <span class="brand-glyph" aria-hidden="true">⚙︎</span> REFLEX
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <div id="nav-menu" class="nav-menu">
+            <a class="nav-link" href="#hero">Hero</a>
+            <a class="nav-link" href="#cards">Cards</a>
+            <a class="nav-link" href="#grids">Grids</a>
+            <a class="nav-link" href="#tiles">Tiles</a>
+            <a class="nav-link" href="#headings">Headings</a>
+            <a class="nav-link" href="#highlights">Highlights</a>
+            <a class="nav-link" href="#ribbons">Ribbons</a>
+            <a class="nav-link" href="#contact">Contact</a>
+            <a class="btn primary nav-cta" href="#cta">Try CTA</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header id="hero" class="hero">
+    <div class="container hero-grid">
+        <div>
+            <span class="tag">Developer-Focused • Supply Chain Security</span>
+            <h1>Developer-First Defense for the AI Era</h1>
+            <p class="lead">Learn to spot, stop, and survive modern supply chain attacks—from poisoned models to worm-like campaigns.</p>
+            <div class="hero-cta">
+                <a class="btn primary" href="#cards">Explore Components</a>
+                <a class="btn alt" href="#contact">Talk to a human</a>
+                <span class="pill ok">Hands-on</span>
+                <span class="pill warn">Real-world</span>
+                <span class="pill bad">Red-team aware</span>
+            </div>
+            <div class="spacer lg"></div>
+
+            <!-- Clean stat bar -->
+            <div class="statbar" role="list" aria-label="Key stats">
+                <div class="statitem" role="listitem">
+                    <span class="stat-num">~90%</span>
+                    <span class="stat-label">of shipped code is deps</span>
+                </div>
+                <span class="stat-divider" aria-hidden="true"></span>
+                <div class="statitem" role="listitem">
+                    <span class="stat-num">Days → Hours</span>
+                    <span class="stat-label">AI speeds exploit cycles</span>
+                </div>
+                <span class="stat-divider" aria-hidden="true"></span>
+                <div class="statitem" role="listitem">
+                    <span class="stat-num">Dev-First</span>
+                    <span class="stat-label">attackers target you</span>
+                </div>
+            </div>
+        </div>
+
+        <figure class="card hero-art hero-img" style="--hero-url: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop');">
+            <figcaption class="sr-only">Decorative hero art</figcaption>
+        </figure>
+    </div>
+</header>
+
+<!-- CARDS -->
+<section id="cards" class="with-ribbon" data-ribbon="Cards">
+    <div class="container">
+        <h2 class="hdr-graded">Cards & Banners</h2>
+
+        <div class="grid-3 responsive">
+            <article class="card card-with-banner">
+                <div class="card-banner" aria-hidden="true"></div>
+                <h3 class="card-banner-title">Supply Chain Tripwires</h3>
+                <div class="card-body">
+                    <p>Lightweight checks that light up when SBOM or provenance changes unexpectedly.</p>
+                </div>
+                <div class="card-footer"><a class="btn alt" href="#">Learn more</a></div>
+            </article>
+
+            <article class="card card-with-banner" style="--banner-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop');">
+                <div class="card-banner" aria-hidden="true"></div>
+                <h3 class="card-banner-title">Adversarial Models</h3>
+                <span class="banner-badge">New</span>
+                <div class="card-body">
+                    <p>Detect and contain model tampering and dataset poisoning across the pipeline.</p>
+                </div>
+                <div class="card-footer"><a class="btn alt" href="#">View module</a></div>
+            </article>
+
+            <article class="card">
+                <h3 style="margin-top:0">Plain Card</h3>
+                <div class="card-body">
+                    <p>Use <code>.card</code> for a glassy surface with soft border and elevation.</p>
+                    <p class="note">Tip: treat CI as production—lock down secrets and tokens.</p>
+                </div>
+                <div class="card-footer"><a class="btn primary" href="#">Primary CTA</a></div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- GRIDS -->
+<section id="grids" class="with-ribbon" data-ribbon="Grids">
+    <div class="container">
+        <h2 class="hdr-graded">Grids</h2>
+
+        <h3 class="hdr-underline">Two across (.grid-2)</h3>
+        <div class="grid-2">
+            <div class="card"><div class="card-body"><p>Left</p></div></div>
+            <div class="card"><div class="card-body"><p>Right with more content<br>and still equal height</p></div></div>
+        </div>
+
+        <div class="spacer lg"></div>
+
+        <h3 class="hdr-underline">Three across responsive (.grid-3.responsive)</h3>
+        <div class="grid-3 responsive">
+            <div class="card"><div class="card-body">A</div></div>
+            <div class="card"><div class="card-body">B content</div></div>
+            <div class="card"><div class="card-body">C content is longer<br>to demonstrate equal heights</div></div>
+        </div>
+
+        <div class="spacer lg"></div>
+
+        <h3 class="hdr-underline">Auto-fit (.grid-auto)</h3>
+        <div class="grid-auto">
+            <div class="card"><div class="card-body">1</div></div>
+            <div class="card"><div class="card-body">2</div></div>
+            <div class="card"><div class="card-body">3</div></div>
+            <div class="card"><div class="card-body">4</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- TILES -->
+<section id="tiles" class="with-ribbon-el">
+    <div class="section-ribbon"><span>REFLEX Tiles</span></div>
+    <div class="container">
+        <h2 class="hdr-graded">REFLEX Tiles</h2>
+        <div class="reflex-tiles">
+            <article class="tile"><h3>R — Recon</h3><p>Study attacker playbooks.</p></article>
+            <article class="tile"><h3>E — Evaluate</h3><p>Map code, deps, pipelines.</p></article>
+            <article class="tile"><h3>F — Fortify</h3><p>Lock down builds.</p></article>
+            <article class="tile"><h3>L — Limit</h3><p>Design for failure.</p></article>
+            <article class="tile"><h3>E — Expose</h3><p>Make attacks obvious.</p></article>
+            <article class="tile"><h3>X — eXercise</h3><p>Run live drills.</p></article>
+        </div>
+    </div>
+</section>
+
+<!-- HEADINGS -->
+<section id="headings" class="with-ribbon" data-ribbon="Headings">
+    <div class="container">
+        <h2 class="hdr-graded">Graded Header</h2>
+        <p>Use for section titles that need a bit of punch.</p>
+
+        <h3 class="hdr-pill">Pill Header</h3>
+        <p>Compact, inline header style.</p>
+
+        <h2 class="hdr-graded-img" style="--hdr-img:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop')">
+            Graded + Image
+        </h2>
+
+        <h2 class="hdr-underline">Graded Underline</h2>
+
+        <div class="hdr-bleed">
+            <div class="container">
+                <h2>Full-Bleed Section Header</h2>
+                <p class="sub">Edge-to-edge gradient row</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section id="highlights" class="with-ribbon" data-ribbon="Highlights">
+    <div class="container">
+        <h2 class="hdr-graded">Text Highlights</h2>
+        <p class="hl-bar">Developers are the frontline of supply chain security.</p>
+        <p>Secure the pipeline with <span class="hl-marker">signed provenance and policy-as-code</span> from day one.</p>
+        <p class="hl-left">REFLEX turns security into developer muscle memory.</p>
+        <p>Workshops are <span class="chip">hands-on</span> and <span class="chip chip-warn">real-world</span>.</p>
+        <p class="note">Tip: Treat CI as production—lock down secrets and tokens.</p>
+    </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta">
+    <div class="container">
+        <div class="cta-band">
+            <h3>Ready to build your defenses?</h3>
+            <p>Kick off with a discovery call or book a live workshop. Your supply chain won’t secure itself.</p>
+            <p>
+                <a class="btn primary" href="#contact">Book a workshop</a>
+                <a class="btn alt" href="#contact">Talk to a human</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT (picture + details demo) -->
+<section id="contact" class="with-ribbon" data-ribbon="Contact">
+    <div class="container">
+        <h2 class="hdr-graded">Contact</h2>
+        <div class="grid-2">
+            <figure class="card hero-art hero-img contact-visual"
+                    style="--hero-url:url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop');">
+                <figcaption class="sr-only">Team at work</figcaption>
+            </figure>
+            <div class="card">
+                <h3 style="margin-top:0">Talk to a human</h3>
+                <p>Tell us about your stack and goals—workshops, team programs, or exec briefings.</p>
+                <ul class="contact-list">
+                    <li>✉️ <a href="mailto:hello@reflex-framework.com">hello@reflex-framework.com</a></li>
+                    <li>📅 <a href="#" rel="nofollow">Book a 20-min intro</a></li>
+                    <li>🕘 Mon–Fri, 09:00–17:00 (UK)</li>
+                    <li>📍 London, UK • Remote-friendly</li>
+                </ul>
+                <div class="contact-actions">
+                    <a class="btn primary" href="mailto:hello@reflex-framework.com">Email us</a>
+                    <a class="btn alt" href="#">Download overview</a>
+                </div>
+                <div class="contact-meta">
+                    <span class="pill ok">Hands-on</span>
+                    <span class="pill warn">Real-world</span>
+                    <span class="pill bad">Red-team aware</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <strong>REFLEX</strong>
+            <p>Security as muscle memory for developers. Built for modern supply chains—and the AI era.</p>
+        </div>
+        <div>
+            <strong>Navigate</strong>
+            <ul>
+                <li><a href="#cards">Cards</a></li>
+                <li><a href="#grids">Grids</a></li>
+                <li><a href="#headings">Headings</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <strong>Follow</strong>
+            <ul>
+                <li><a href="#">GitHub</a></li>
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">YouTube</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" style="margin-top:20px; font-size:13px">
+        © <span id="y">2025</span> REFLEX. All rights reserved.
+    </div>
+</footer>

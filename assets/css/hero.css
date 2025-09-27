@@ -597,3 +597,54 @@ footer{padding:50px 0 80px; color:var(--color-ink-muted)}
 @media (max-width: 900px){
     .contact-visual{ display: none !important; }
 }
+
+/* Flexible spacer utility */
+.spacer{ display:block; height:var(--spacer, 10px); }
+
+/* Size variants */
+.spacer.sm{ --spacer: 6px; }
+.spacer.md{ --spacer: 12px; }
+.spacer.lg{ --spacer: 20px; }
+.spacer.xl{ --spacer: 32px; }
+
+
+.hl-bar{
+    margin:10px 0; padding:10px 14px; border-radius: var(--radius);
+    background:
+            radial-gradient(600px 120px at 15% 0%, rgba(108,255,255,.12), transparent 70%),
+            radial-gradient(600px 120px at 85% 100%, rgba(255,106,213,.12), transparent 70%),
+            linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow: var(--shadow);
+}
+
+.hl-marker{
+    background: linear-gradient(0deg, rgba(255,255,0,.18), rgba(255,255,0,.18));
+    box-shadow: 0 0 0 4px rgba(255,255,0,.18) inset;
+    border-radius: 6px;
+    padding: 0 .2em;
+}
+
+.hl-left{
+    border-left: 4px solid var(--brand);
+    padding-left: 12px;
+    background: linear-gradient(90deg, rgba(239,41,5,.08), transparent 60%);
+    border-radius: 6px;
+}
+
+.chip{
+    display:inline-block; padding: 2px 10px; border-radius:999px;
+    font-weight:700; font-size:13px; line-height:1.6;
+    color:#041018;
+    background: linear-gradient(90deg, var(--brand-3), var(--brand-2) 50%, var(--brand));
+    box-shadow: var(--shadow);
+}
+.chip-warn{
+    background: linear-gradient(90deg, var(--warn), #ffc97a);
+    color:#0b0f1a;
+}
+.note{
+    padding:10px 14px; border-radius:12px; font-weight:600; color:var(--ink);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.12);
+}

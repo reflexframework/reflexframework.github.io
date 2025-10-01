@@ -5,13 +5,11 @@ audience: Executives, Board Members, Senior Leaders
 title: Introduction to AI Adoption & Resilience for C-Suite Leaders 
 ---
 
-{% block type='goals' %}
-
+{% block type='goals' text='Workshop Goals' %}
 - Understand the opportunities and risks of AI adoption.
 - Recognize how AI intersects with software supply chain and governance.
-- Experience the attacker’s perspective.
+- Experience the attacker's perspective.
 - Leave with a practical, business-level action plan using the REFLEX framework.
-
 {% endblock %}
 
 

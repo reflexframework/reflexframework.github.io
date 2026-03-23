@@ -4,9 +4,9 @@
 
 ## Why REFLEX?
 
-The software industry is at a crossroads. AI has become both a powerful business tool and a potent weapon in attackers' hands. Supply chain attacks are no longer theoretical risks—they're daily realities affecting millions of developers and businesses.
+The software industry is at a crossroads. AI has become both a powerful business tool and a potent weapon in attackers' hands. Supply chain attacks are no longer theoretical risks, they're daily realities affecting millions of developers and businesses.
 
-REFLEX provides a practical framework for developers to build security awareness and resilience into their daily workflows. It's not about checklists or compliance theater—it's about making secure thinking second nature.
+REFLEX provides a practical framework for developers to build security awareness and resilience into their daily workflows. It's not about checklists or compliance theatre: it's about making secure thinking second nature.
 
 ## The Framework
 

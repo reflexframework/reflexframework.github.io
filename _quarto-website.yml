@@ -27,6 +27,8 @@ website:
             file: stages/06-exercise.qmd
       - text: "Battlecards"
         file: battlecards.qmd
+      - text: "About"
+        file: author.qmd
 
 
 execute:

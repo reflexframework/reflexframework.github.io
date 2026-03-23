@@ -1,0 +1,26 @@
+# About the Author
+
+Meet Steve Poole. Software supply chain security leadership and expertise through the innovative REFLEX Framework.
+
+ Developer Advocate at [HeroDevs](https://herodevs.com), IBM Champion,  Oracle ACE,  Java Champion , Developer Security Champion, DevOps Lead.
+
+ A thoroughly seasoned engineer, leader and strategist from operating systems to JVMs to Chat GPT.
+
+ Open source committer and contributor, Apache, Eclipse, OpenJDK, OpenSSF, OWASP member,
+
+ Mad Scientist and London Java Community Director.
+
+ A seasoned speaker and regular presenter at international conferences on technical and software engineering topics. Ex IBM, Ex Red Hat, Ex Sonatype.
+
+ Greybeards rule!
+
+## Why REFLEX
+
+This website is a collection of my thoughts and experiences on the topic of supply chain security converted into  dip-in education.
+
+The goal is to help developers grok security and supply chain security concepts in a way thats developer-focused, not security or compliance buzzword loaded
+
+Much of what's here is just a different take on good software engineering practices.
+
+## Links
+ [Linked In](https://www.linkedin.com/in/noregressions/)

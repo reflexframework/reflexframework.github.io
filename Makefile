@@ -11,6 +11,7 @@ website:
 	mv _quarto.yml _quarto-book.yml
 	mv _quarto-website.yml _quarto.yml
 	quarto render
+	cp .nojekyll _site/
 	mv _quarto.yml _quarto-website.yml
 	mv _quarto-book.yml _quarto.yml
 

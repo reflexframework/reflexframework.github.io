@@ -45,6 +45,9 @@ jobs:
       - name: Render Website
         run: make website
 
+      - name: Copy .nojekyll to output
+        run: cp .nojekyll _site/
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
 

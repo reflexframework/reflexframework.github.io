@@ -1,0 +1,57 @@
+---
+title: "Chapter 2: Advanced Topics"
+---
+
+# Chapter 2: Advanced Topics
+
+This is the second chapter, also shared between the website and book formats.
+
+## Advanced Features
+
+Quarto supports many advanced features:
+
+### Callout Blocks
+
+::: {.callout-note}
+This is a note callout block.
+:::
+
+::: {.callout-warning}
+This is a warning callout block.
+:::
+
+### Tables
+
+| Feature | Website | Book |
+|---------|---------|------|
+| HTML Output | ✓ | ✓ |
+| PDF Output | ✗ | ✓ |
+| Interactive Elements | ✓ | Limited |
+| Print-friendly | ✗ | ✓ |
+
+### Figures
+
+You can include figures that work in both formats:
+
+```python
+# Example Python code for plotting
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.figure(figsize=(8, 4))
+plt.plot(x, y)
+plt.title("Sine Wave")
+plt.xlabel("x")
+plt.ylabel("sin(x)")
+plt.grid(True)
+plt.show()
+```
+
+*Note: This is a code example. In a real project with proper Python/Jupyter setup, this would generate a sine wave plot.*
+
+## Conclusion
+
+This demonstrates how content can be shared between website and book formats while maintaining appropriate styling for each.

@@ -1,0 +1,34 @@
+---
+title: "Welcome"
+---
+
+# Welcome to Your Project
+
+This is the homepage for both your website and book. This content is shared between both formats.
+
+## About This Project
+
+This project demonstrates how to create both a website and a book using Quarto, with shared content between both formats.
+
+## Navigation
+
+- [Chapter 1](chapters/chapter1.qmd)
+- [Chapter 2](chapters/chapter2.qmd)
+
+## Building
+
+To build this project:
+
+```bash
+# Build both website and book
+make all
+
+# Build website only
+make website
+
+# Build book only
+make book
+
+# Preview website locally
+make preview
+```

@@ -1,0 +1,22 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Your Book Title"
+  author: "Your Name"
+  date: today
+  chapters:
+    - index.qmd
+    - chapters/chapter1.qmd
+    - chapters/chapter2.qmd
+
+execute:
+  enabled: false
+
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+  pdf:
+    documentclass: scrreprt

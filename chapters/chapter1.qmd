@@ -1,0 +1,36 @@
+---
+title: "Chapter 1: Getting Started"
+---
+
+# Chapter 1: Getting Started
+
+This is the first chapter of your content. This page appears in both the website and the book.
+
+## Introduction
+
+Write your introduction here. You can include:
+
+- Lists
+- **Bold text**
+- *Italic text*
+- Code blocks
+- Images
+- Tables
+
+## Code Example
+
+```python
+def hello_world():
+    print("Hello from Quarto!")
+hello_world()
+```
+
+## Mathematics
+
+You can include mathematical notation:
+
+$$E = mc^2$$
+
+## Next Steps
+
+Continue to [Chapter 2](chapter2.qmd) to learn more.

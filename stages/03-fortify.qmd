@@ -1,0 +1,180 @@
+# Fortify 🛡️
+
+**Build defenses and secure defaults.**
+
+Fortification is where developers implement secure defaults and enforceable controls. The goal isn't to make attacks impossible, but to raise the cost or difficulty level high enough that attackers move on to easier targets.
+
+## Why Fortification Matters
+
+- **For developers**: Secure secrets in vaults. Lock down CI tokens with least privilege. Enforce signed commits and signed artifacts. Add dependency lockfiles and checksum verification.
+- **For leaders**: Fortification provides visible, reportable controls. This is where compliance frameworks (CRA, NIS2, EO 14028) expect to see progress.
+
+**Key insight:** Fortify demonstrates proactive defense. It reassures auditors, investors, and customers that your teams are building on secure foundations.
+
+## Defense-in-Depth Strategy
+
+### Secrets Management
+
+**Centralized Secret Storage**
+- **Secrets vaults** (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault)
+- **Runtime injection** instead of environment variables
+- **Rotation policies** and automated key management
+- **Access logging** and audit trails
+
+**CI/CD Security**
+- **Least privilege tokens** with scoped permissions
+- **Short-lived credentials** that expire quickly
+- **Branch protection rules** requiring reviews and status checks
+- **Signed commits** with GPG keys for accountability
+
+### Supply Chain Hardening
+
+**Dependency Security**
+- **Dependency lockfiles** pinning exact versions and checksums
+- **Package signature verification** for authenticity
+- **Private registries** for internal packages
+- **Vulnerability scanning** integrated into CI/CD
+
+**Build Security**
+- **Reproducible builds** with deterministic outputs
+- **Build attestations** proving artifact provenance
+- **Container image scanning** for vulnerabilities
+- **Multi-stage builds** minimizing attack surface
+
+### Infrastructure Hardening
+
+**Network Security**
+- **Zero-trust networking** with service mesh authentication
+- **Network segmentation** isolating critical services
+- **TLS everywhere** with proper certificate management
+- **API gateways** with rate limiting and authentication
+
+**Runtime Protection**
+- **Container security** with read-only filesystems
+- **Resource limits** preventing DoS through resource exhaustion
+- **Security policies** with Pod Security Standards
+- **Runtime monitoring** with behavioral analysis
+
+## Implementation Patterns
+
+### Secure Development Defaults
+
+**Code Repository Security**
+- **Branch protection** requiring PR reviews and status checks
+- **Signed commits** with verified identities
+- **Secrets scanning** preventing credential leaks
+- **Dependency analysis** blocking vulnerable packages
+
+**Build Pipeline Security**
+- **Isolated build environments** preventing cross-contamination
+- **Artifact signing** with verifiable provenance
+- **Security scanning** gates at each pipeline stage
+- **Deployment approvals** for production changes
+
+### Authentication and Authorization
+
+**Zero-Trust Architecture**
+- **Service identity** with mutual TLS authentication
+- **Principle of least privilege** in access controls
+- **Just-in-time access** for administrative operations
+- **Continuous verification** of trust relationships
+
+**Developer Security**
+- **Multi-factor authentication** for all accounts
+- **Hardware security keys** for high-privilege operations
+- **Regular access reviews** removing unnecessary permissions
+- **Privileged access management** for administrative tasks
+
+### Configuration Security
+
+**Infrastructure as Code**
+- **Security policies as code** with automated enforcement
+- **Configuration drift detection** alerting on unauthorized changes
+- **Immutable infrastructure** preventing runtime modifications
+- **Security baselines** for all deployed resources
+
+**Application Configuration**
+- **Secure defaults** in configuration templates
+- **Configuration validation** preventing insecure settings
+- **Environment separation** with different security levels
+- **Runtime configuration protection** preventing tampering
+
+## Compliance and Standards Alignment
+
+### Regulatory Requirements
+
+**Cyber Resilience Act (CRA)**
+- **Secure by design** development practices
+- **Vulnerability disclosure** processes
+- **Security testing** throughout development
+- **Incident response** capabilities
+
+**Executive Order 14028**
+- **Software Bill of Materials** (SBOM) generation
+- **Zero-trust architecture** adoption
+- **Security measures** in software development
+- **Supply chain security** improvements
+
+### Industry Standards
+
+**NIST Cybersecurity Framework**
+- **Identify** assets and risks
+- **Protect** with appropriate safeguards
+- **Detect** cybersecurity events
+- **Respond** to detected incidents
+- **Recover** from cybersecurity incidents
+
+**OWASP Security Standards**
+- **Secure coding practices** preventing common vulnerabilities
+- **Dependency security** managing third-party risks
+- **Application security** testing and validation
+- **Security architecture** design principles
+
+## Fortification Checklist
+
+### Immediate Actions
+
+- [ ] **Enable MFA** on all developer accounts and services
+- [ ] **Implement secrets management** replacing environment variables
+- [ ] **Add dependency lockfiles** with checksum verification
+- [ ] **Configure branch protection** requiring reviews and checks
+
+### Medium-term Goals
+
+- [ ] **Deploy secrets scanning** in CI/CD pipelines
+- [ ] **Implement container scanning** for vulnerabilities
+- [ ] **Set up network segmentation** isolating critical services
+- [ ] **Add security testing** to development workflows
+
+### Advanced Security
+
+- [ ] **Implement zero-trust networking** with service mesh
+- [ ] **Deploy runtime protection** with behavioral monitoring
+- [ ] **Add build attestations** with provenance verification
+- [ ] **Create security policies as code** with automated enforcement
+
+## Goal
+
+**Build proactive defenses that make attacks harder while keeping development workflows smooth.**
+
+## Core Activities
+
+- **Secrets management hardening**: Eliminate plaintext credentials and implement vault-based security
+- **Supply chain security**: Verify dependencies and secure build processes
+- **Infrastructure fortification**: Implement zero-trust networking and container security
+- **Compliance alignment**: Meet regulatory requirements with measurable controls
+
+## Related Battlecards
+
+Implement fortification against specific attack vectors:
+
+- [GitHub Actions Workflow Poisoning](../battlecards/github-actions-workflow-poisoning.qmd)
+- [Jenkins CI/CD Compromise](../battlecards/jenkins-ci-cd-compromise.qmd)
+- [NPM Supply Chain Attack](../battlecards/npm-supply-chain-attack.qmd)
+
+---
+
+**Previous Stage:** [← Evaluate](02-evaluate.qmd)
+**Next Stage:** [Limit →](04-limit.qmd)
+
+Once you've built strong defenses, learn to design systems that limit damage when those defenses fail.

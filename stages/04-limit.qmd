@@ -1,0 +1,211 @@
+# Limit ⚡
+
+**Reduce blast radius when things go wrong.**
+
+Even the best defenses sometimes fail. Limit is about containing damage and ensuring graceful recovery. By designing systems with an assume-breach mindset, you can minimize the impact when security controls are bypassed.
+
+## Why Limiting Impact Matters
+
+- **For developers**: Add feature flags and kill-switches for risky features. Partition data access with RBAC. Implement circuit breakers and rate limiting.
+- **For leaders**: Limiting impact reduces downtime, legal exposure, and brand damage. It makes the difference between a minor incident and a headline breach.
+
+**Key insight:** Limiting damage is cost-effective resilience. It allows businesses to recover faster and with less reputational harm when something does go wrong.
+
+## Containment Strategy
+
+### Blast Radius Design
+
+**Lateral Movement Prevention**
+- **Network segmentation** isolating critical systems
+- **Microsegmentation** with application-level firewalls
+- **Service mesh security** with encrypted service-to-service communication
+- **Jump hosts** controlling administrative access
+
+**Privilege Boundaries**
+- **Principle of least privilege** for all accounts and services
+- **Role-based access control** limiting data and system access
+- **Time-bound credentials** that automatically expire
+- **Break-glass procedures** for emergency access
+
+### Data Protection Limits
+
+**Data Classification and Segregation**
+- **Sensitive data isolation** in separate systems
+- **Encryption boundaries** protecting data at rest and in transit
+- **Database partitioning** limiting exposure scope
+- **Cross-region replication** restrictions
+
+**Access Control Granularity**
+- **Row-level security** limiting data visibility
+- **Column-level encryption** protecting sensitive fields
+- **API rate limiting** preventing data exfiltration
+- **Query monitoring** detecting unusual access patterns
+
+## Resilience Engineering
+
+### Circuit Breakers and Failsafes
+
+**System Protection**
+- **Circuit breakers** preventing cascade failures
+- **Bulkhead patterns** isolating system components
+- **Timeout configurations** preventing resource exhaustion
+- **Graceful degradation** maintaining core functionality
+
+**Feature Control**
+- **Feature flags** enabling rapid rollback
+- **Kill switches** for high-risk functionality
+- **Canary deployments** limiting exposure to changes
+- **Blue-green deployments** enabling instant rollback
+
+### Resource Limits
+
+**Computational Constraints**
+- **CPU and memory limits** preventing resource exhaustion
+- **Disk space quotas** maintaining system stability
+- **Network bandwidth limits** controlling data flow
+- **Process limits** preventing fork bombs
+
+**Application-Level Limits**
+- **Request rate limiting** preventing abuse
+- **Concurrent user limits** maintaining performance
+- **File upload size restrictions** preventing DoS
+- **Database connection pooling** managing resource usage
+
+## Recovery Planning
+
+### Backup and Restore
+
+**Data Recovery**
+- **Automated backups** with tested restore procedures
+- **Point-in-time recovery** for precise rollback
+- **Cross-region backup replication** for disaster recovery
+- **Backup integrity verification** ensuring recoverability
+
+**System Recovery**
+- **Infrastructure as code** for rapid rebuilding
+- **Container image versioning** for rollback capability
+- **Configuration management** maintaining consistency
+- **Runbook automation** for standard recovery procedures
+
+### Business Continuity
+
+**Service Continuity**
+- **High availability** with redundant components
+- **Load balancing** distributing traffic
+- **Failover automation** for seamless transitions
+- **Health checks** monitoring service availability
+
+**Communication Plans**
+- **Incident response procedures** with clear escalation paths
+- **Stakeholder notification** systems
+- **Customer communication** templates
+- **Regulatory reporting** requirements
+
+## Damage Limitation Techniques
+
+### Incident Response Preparation
+
+**Detection and Alerting**
+- **Anomaly detection** identifying unusual behavior
+- **Security monitoring** with correlation rules
+- **Automated alerting** with escalation procedures
+- **Incident classification** for appropriate response
+
+**Response Capabilities**
+- **Incident response team** with defined roles
+- **Communication channels** for coordination
+- **Evidence preservation** for forensic analysis
+- **Legal and regulatory** notification procedures
+
+### Containment Actions
+
+**Immediate Response**
+- **Account lockdown** procedures for compromised credentials
+- **Network isolation** for affected systems
+- **Service shutdown** capabilities for critical threats
+- **Traffic redirection** to isolate problems
+
+**Investigation Support**
+- **Logging and audit trails** for forensic analysis
+- **System imaging** for evidence preservation
+- **Timeline reconstruction** from available data
+- **Impact assessment** tools and procedures
+
+## Implementation Framework
+
+### Technical Controls
+
+**Application Design**
+- **Microservices architecture** limiting service blast radius
+- **API gateways** controlling service interactions
+- **Event sourcing** providing audit trails
+- **CQRS patterns** separating read and write operations
+
+**Infrastructure Design**
+- **Container orchestration** with security policies
+- **Service mesh** for secure inter-service communication
+- **Cloud native security** with built-in controls
+- **Multi-region deployment** for resilience
+
+### Operational Controls
+
+**Change Management**
+- **Staged deployments** with validation gates
+- **Rollback procedures** for rapid recovery
+- **Change approval processes** for high-risk modifications
+- **Post-deployment monitoring** for issue detection
+
+**Access Management**
+- **Just-in-time access** for administrative operations
+- **Privileged access management** with session recording
+- **Regular access reviews** removing unnecessary permissions
+- **Emergency access procedures** with appropriate controls
+
+## Limitation Checklist
+
+### Immediate Actions
+
+- [ ] **Implement rate limiting** on public APIs
+- [ ] **Add feature flags** for new functionality
+- [ ] **Configure resource limits** on all services
+- [ ] **Set up basic monitoring** and alerting
+
+### Medium-term Goals
+
+- [ ] **Deploy network segmentation** between environments
+- [ ] **Implement circuit breakers** for external dependencies
+- [ ] **Create incident response** procedures and runbooks
+- [ ] **Add database access controls** with least privilege
+
+### Advanced Resilience
+
+- [ ] **Deploy service mesh** with mTLS authentication
+- [ ] **Implement zero-trust networking** with microsegmentation
+- [ ] **Create automated failover** and recovery systems
+- [ ] **Add behavioral analytics** for anomaly detection
+
+## Goal
+
+**Design systems that contain damage and enable graceful recovery when security controls fail.**
+
+## Core Activities
+
+- **Blast radius design**: Limit how far attacks can spread through system architecture
+- **Circuit breaker implementation**: Prevent cascade failures and enable graceful degradation
+- **Resource limitation**: Control computational and data access to prevent abuse
+- **Recovery planning**: Prepare automated and manual procedures for incident response
+
+## Related Battlecards
+
+Apply limitation principles to real attack scenarios:
+
+- [AI Cost Amplification Attacks](../battlecards/ai-cost-amplification-attacks.qmd)
+- [Maintainer Account Takeover](../battlecards/maintainer-account-takeover.qmd)
+- [Python and Pip Supply Chain Issues](../battlecards/python-and-pip-supply-chain-issues-1.qmd)
+
+---
+
+**Previous Stage:** [← Fortify](03-fortify.qmd)
+**Next Stage:** [Expose →](05-expose.qmd)
+
+After designing damage limitation, learn to make attacks visible through monitoring and detection.

@@ -1,0 +1,149 @@
+# Evaluate 📊
+
+**Apply attacker knowledge to assess your own vulnerabilities.**
+
+Once you understand how reconnaissance works, the next step is to systematically assess where you're vulnerable. Developers can map attacker techniques directly to their systems and workflows, transforming abstract threats into concrete, actionable insights.
+
+## Why Evaluation Matters
+
+- **For developers**: Perform SBOM analysis. Identify unmaintained dependencies. Threat-model critical flows (authentication, file uploads, deployments). Run a "blast radius" exercise: what if your publish token was stolen?
+- **For leaders**: Evaluation translates into measurable risk awareness. It creates a prioritized list of exposures you can fund, schedule, or report against.
+
+**Key insight:** This stage turns abstract "security concerns" into concrete, ranked items. That means better ROI on security investments — and fewer surprises.
+
+## Assessment Framework
+
+### Supply Chain Vulnerabilities
+
+**Dependency Analysis**
+- **Unmaintained packages** that haven't been updated in months or years
+- **Deprecated dependencies** with known security issues
+- **Typosquatting risks** from similar-named malicious packages
+- **License compliance** issues that could expose legal vulnerabilities
+
+**Package Ecosystem Risks**
+- **Transitive dependencies** with critical vulnerabilities
+- **Version pinning** that prevents security updates
+- **Package managers** with weak signature verification
+- **Registry poisoning** opportunities in private registries
+
+### Infrastructure Attack Surface
+
+**Deployment Vulnerabilities**
+- **CI/CD pipeline** access controls and secret management
+- **Container security** scanning and runtime protection
+- **Cloud configuration** drift and misconfigurations
+- **Network segmentation** and access controls
+
+**Runtime Environment Risks**
+- **Environment variables** containing sensitive data
+- **File system permissions** that allow privilege escalation
+- **Service-to-service** authentication weaknesses
+- **Logging and monitoring** blind spots
+
+### Application Security Gaps
+
+**Authentication and Authorization**
+- **Token storage** and rotation practices
+- **Session management** and timeout policies
+- **Multi-factor authentication** gaps
+- **Privilege escalation** vectors
+
+**Data Protection Weaknesses**
+- **Encryption at rest** and in transit gaps
+- **Database access** controls and query injection risks
+- **File upload** validation and sandboxing
+- **API security** and rate limiting
+
+## Evaluation Methodology
+
+### Threat Modeling Quick Start
+
+1. **Identify critical assets**: What data, systems, or processes are most valuable?
+2. **Map data flows**: How does sensitive information move through your system?
+3. **Enumerate entry points**: Where can attackers interact with your application?
+4. **Assess trust boundaries**: Which components trust each other, and should they?
+
+### Risk Ranking Framework
+
+**Impact Assessment**
+- **Financial damage** from data breaches or service disruption
+- **Regulatory penalties** from compliance failures
+- **Reputational harm** and customer loss
+- **Operational disruption** and recovery costs
+
+**Exploitability Factors**
+- **Attack complexity** and required skills
+- **Authentication requirements** and access controls
+- **Network accessibility** and remote exploitation
+- **Tool availability** and automation potential
+
+### Blast Radius Analysis
+
+**Scenario Planning**
+- What if your GitHub token was compromised?
+- What if a dependency contained malicious code?
+- What if your CI/CD system was infiltrated?
+- What if your cloud credentials leaked?
+
+**Containment Assessment**
+- How far could an attacker move laterally?
+- What data could be accessed or exfiltrated?
+- Which systems could be disrupted or destroyed?
+- How long would detection and recovery take?
+
+## Practical Evaluation Tools
+
+### Automated Assessment
+
+**SBOM Generation and Analysis**
+- Generate Software Bills of Materials for all projects
+- Scan for known vulnerabilities and security advisories
+- Monitor dependency freshness and maintenance status
+- Track license compliance and legal risks
+
+**Configuration Security Scanning**
+- Cloud infrastructure configuration reviews
+- Container image vulnerability scanning
+- Network segmentation and firewall audits
+- Secrets detection in code repositories
+
+### Manual Security Reviews
+
+**Code Review Checklist**
+- Input validation and sanitization
+- Authentication and session management
+- Cryptographic implementation
+- Error handling and information disclosure
+
+**Architecture Assessment**
+- Trust boundaries and privilege separation
+- Data flow security and encryption
+- Monitoring and logging coverage
+- Incident response capabilities
+
+## Goal
+
+**Transform reconnaissance insights into actionable vulnerability assessments that prioritize security investments.**
+
+## Core Activities
+
+- **Supply chain risk assessment**: Map dependencies and identify weak points
+- **Infrastructure security audit**: Review configurations and access controls
+- **Application threat modeling**: Identify attack vectors and trust boundaries
+- **Blast radius analysis**: Understand potential impact of compromise scenarios
+
+## Related Battlecards
+
+Apply evaluation techniques to specific attack scenarios:
+
+- [Dependency Confusion Attacks](../battlecards/dependency-confusion-attacks.qmd)
+- [Exposed Secrets in Code and Config](../battlecards/exposed-secrets-in-code-and-config.qmd)
+- [Environment Variable Poisoning](../battlecards/environment-variable-poisoning.qmd)
+
+---
+
+**Previous Stage:** [← Reconnaissance](01-reconnaissance.qmd)
+**Next Stage:** [Fortify →](03-fortify.qmd)
+
+Use your reconnaissance knowledge to systematically identify vulnerabilities, then learn to build effective defenses.

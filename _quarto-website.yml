@@ -3,15 +3,31 @@ project:
   output-dir: _site
 
 website:
-  title: "Your Website Title"
+  title: "Reflex Framework"
+  description: "Security framework and battlecards for developers"
+
   navbar:
+    title: "REFLEX"
     left:
-      - href: index.qmd
-        text: Home
-      - href: chapters/chapter1.qmd
-        text: Chapter 1
-      - href: chapters/chapter2.qmd
-        text: Chapter 2
+      - text: "Home"
+        file: index.qmd
+      - text: "Framework"
+        menu:
+          - text: "🔍 Reconnaissance"
+            file: stages/01-reconnaissance.qmd
+          - text: "📊 Evaluate"
+            file: stages/02-evaluate.qmd
+          - text: "🛡️ Fortify"
+            file: stages/03-fortify.qmd
+          - text: "⚡ Limit"
+            file: stages/04-limit.qmd
+          - text: "👁️ Expose"
+            file: stages/05-expose.qmd
+          - text: "💪 Exercise"
+            file: stages/06-exercise.qmd
+      - text: "Battlecards"
+        file: battlecards.qmd
+
 
 execute:
   enabled: false

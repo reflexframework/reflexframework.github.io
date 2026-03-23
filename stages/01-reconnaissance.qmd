@@ -1,0 +1,86 @@
+# Reconnaissance 🔍
+
+**Understand how attackers think.**
+
+Attackers rarely start with code exploits — they begin with information gathering. That might be scanning GitHub repos for leaked secrets, searching public registries for weak points, or monitoring developer chatter for insights.
+
+## Why Reconnaissance Matters
+
+- **For developers**: Learn how reconnaissance is performed against your stack. Run OSINT checks on your own repos. Search for typosquatting versions of your dependencies. Review your CI logs for leaks.
+- **For leaders**: Recognise that reconnaissance is cheap and automated. If sensitive details are left exposed, they *will* be found.
+
+**Key insight:** By teaching developers how attackers research targets, we build awareness that prevents "low-hanging fruit" mistakes — the kind regulators and customers increasingly see as negligence.
+
+## What Attackers Look For
+
+### Public Code Repositories
+- **Leaked secrets** in commit history (API keys, passwords, tokens)
+- **Dependency information** for supply chain attacks
+- **Internal naming conventions** for social engineering
+- **Architecture details** from configuration files
+
+### Package Ecosystems
+- **Popular packages** to typosquat or compromise
+- **Unmaintained dependencies** for hijacking attacks
+- **Namespace confusion** opportunities
+- **Version pinning** weaknesses
+
+### Infrastructure Footprints
+- **Exposed endpoints** and services
+- **Subdomain enumeration** for attack surface mapping
+- **SSL certificate transparency** logs
+- **DNS records** revealing internal structure
+
+### Social Engineering Intel
+- **Developer profiles** on GitHub, LinkedIn, Twitter
+- **Conference talks** revealing technical details
+- **Job postings** describing tech stack
+- **Support forum discussions** about problems
+
+## Daily Security Hygiene
+
+New vulnerabilities and software weaknesses are discovered constantly. Reconnaissance is about staying current with:
+
+- **Technical consequences** of new discoveries
+- **Exploitation likelihood** and impact assessment
+- **General drive-by attacks** happening in the background
+- **AI weaponization** by threat actors
+
+### AI-Specific Threats
+
+Modern reconnaissance includes AI-related attack vectors:
+- **AI tools as weapons** for enhanced automation
+- **Misapplied AI** creating new vulnerabilities
+- **AI supply chain** dependencies and risks
+
+### External Factors
+
+Developers must understand external elements affecting security:
+- **Legislation and regulations** (CRA, NIS2, EO 14028)
+- **Attacker motivations** and economic drivers
+- **Threat landscape changes** and emerging patterns
+
+## Goal
+
+**Understand the attacker's first moves and build defenses that anticipate them.**
+
+## Core Activities
+
+- **Threat modeling quick-start**: Map your attack surface
+- **Asset & endpoint discovery**: Know what you're protecting
+- **Public footprint analysis**: See yourself as attackers do
+- **OSINT self-assessment**: Find your own exposed data
+
+## Related Battlecards
+
+Explore specific reconnaissance attack scenarios:
+
+- [Exposed Secrets in Code and Config](../battlecards/exposed-secrets-in-code-and-config.qmd)
+- [Maintainer Account Takeover](../battlecards/maintainer-account-takeover.qmd)
+- [GitHub Actions Workflow Poisoning](../battlecards/github-actions-workflow-poisoning.qmd)
+
+---
+
+**Next Stage:** [Evaluate →](02-evaluate.qmd)
+
+Once you understand how attackers think, learn to assess your own vulnerabilities with that same perspective.

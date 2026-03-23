@@ -1,0 +1,108 @@
+---
+title: "All Battlecards"
+---
+
+# REFLEX Battlecards
+
+Attack scenarios and defense strategies organized by the REFLEX framework.
+
+## Supply Chain & Dependencies
+
+- [Dependency Confusion Attacks](battlecards/dependency-confusion-attacks.qmd)
+- [NPM Supply Chain Attack](battlecards/npm-supply-chain-attack.qmd)
+- [Abandoned Package Hijack](battlecards/abandoned-package-hijack.qmd)
+- [Registry Namespace Collisions](battlecards/registry-namespace-collisions.qmd)
+- [Lockfile and SemVer Range Abuse](battlecards/lockfile-and-semver-range-abuse.qmd)
+
+## Python Ecosystem
+
+- [Python and pip Supply Chain Issues (1)](battlecards/python-and-pip-supply-chain-issues-1.qmd)
+- [Python and pip Supply Chain Issues (2)](battlecards/python-and-pip-supply-chain-issues-2.qmd)
+- [Python and pip Supply Chain Issues (3)](battlecards/python-and-pip-supply-chain-issues-3.qmd)
+- [Python and pip Supply Chain Issues (4)](battlecards/python-and-pip-supply-chain-issues-4.qmd)
+
+## Java Ecosystem
+
+- [Java and Maven Gradle Dependency Risks (1)](battlecards/java-and-maven-gradle-dependency-risks-1.qmd)
+- [Java and Maven Gradle Dependency Risks (2)](battlecards/java-and-maven-gradle-dependency-risks-2.qmd)
+- [Java and Maven Gradle Dependency Risks (3)](battlecards/java-and-maven-gradle-dependency-risks-3.qmd)
+- [Java and Maven Gradle Dependency Risks (4)](battlecards/java-and-maven-gradle-dependency-risks-4.qmd)
+
+## JavaScript & Node.js
+
+- [Node.js and npm Dependency Sprawl](battlecards/node.js-and-npm-dependency-sprawl.qmd)
+- [npm Worm Shai-Hulud](battlecards/npm-worm_shai-hulud.qmd)
+
+## Other Languages
+
+- [Go Modules Dependency Risks](battlecards/go-modules-dependency-risks.qmd)
+- [Rust Crates Supply Chain](battlecards/rust-crates-supply-chain.qmd)
+
+## AI/ML Security
+
+- [AI Cost Amplification Attacks](battlecards/ai-cost-amplification-attacks.qmd)
+- [AI Dependency Typosquatting](battlecards/ai-dependency-typosquatting.qmd)
+- [AI Service Abuse (1)](battlecards/ai-service-abuse-1.qmd)
+- [AI Service Abuse (2)](battlecards/ai-service-abuse-2.qmd)
+- [AI in CI CD Pipelines](battlecards/ai-in-ci-cd-pipelines.qmd)
+- [Adversarial Input Attacks](battlecards/adversarial-input-attacks.qmd)
+- [Data Poisoning Attacks (1)](battlecards/data-poisoning-attacks-1.qmd)
+- [Data Poisoning Attacks (2)](battlecards/data-poisoning-attacks-2.qmd)
+- [Data Poisoning Attacks (3)](battlecards/data-poisoning-attacks-3.qmd)
+- [Dataset Supply Chain Attacks](battlecards/dataset-supply-chain-attacks.qmd)
+- [LLM Tooling Misuse](battlecards/llm-tooling-misuse.qmd)
+- [Model Exfiltration and Theft](battlecards/model-exfiltration-and-theft.qmd)
+- [Model Provenance and Evaluation Bypass](battlecards/model-provenance-and-evaluation-bypass.qmd)
+- [Model Supply Chain Metadata Leaks](battlecards/model-supply-chain-metadata-leaks.qmd)
+- [Poisoned AI ML Models](battlecards/poisoned-ai-ml-models.qmd)
+- [Prompt Injection in AI Systems](battlecards/prompt-injection-in-ai-systems.qmd)
+
+## CI/CD Security
+
+- [Branch Protection and Codeowner Gaps](battlecards/branch-protection-and-codeowner-gaps.qmd)
+- [Build Cache and Artifact Poisoning](battlecards/build-cache-and-artifact-poisoning.qmd)
+- [CircleCI and Travis Token Theft](battlecards/circleci-and-travis-token-theft.qmd)
+- [Cloud Metadata and SSRF in Builds](battlecards/cloud-metadata-and-ssrf-in-builds.qmd)
+- [Dev Container Post-Create Hooks](battlecards/dev-container-post-create-hooks.qmd)
+- [Docker Socket and Privileged Builds](battlecards/docker-socket-and-privileged-builds.qmd)
+- [GitHub Actions Workflow Poisoning](battlecards/github-actions-workflow-poisoning.qmd)
+- [GitHub OIDC Misconfiguration](battlecards/github-oidc-misconfiguration.qmd)
+- [GitLab CI Runner Attacks](battlecards/gitlab-ci-runner-attacks.qmd)
+- [Jenkins CI CD Compromise](battlecards/jenkins-ci-cd-compromise.qmd)
+
+## Developer Environment
+
+- [Advanced Envvar Abuse](battlecards/advanced-envvar-abuse.qmd)
+- [Browser-Based Dev Tool Exposure](battlecards/browser-based-dev-tool-exposure.qmd)
+- [Developer Review Fatigue and Social Engineering](battlecards/developer-review-fatigue-and-social-engineering.qmd)
+- [Environment Variable Poisoning](battlecards/environment-variable-poisoning.qmd)
+- [Exposed Secrets in Code and Config](battlecards/exposed-secrets-in-code-and-config.qmd)
+- [IDE Telemetry and Extension Exfiltration](battlecards/ide-telemetry-and-extension-exfiltration.qmd)
+- [Malicious IDE Plugins](battlecards/malicious-ide-plugins.qmd)
+- [SSH Agent and TOFU Weaknesses](battlecards/ssh-agent-and-tofu-weaknesses.qmd)
+
+## Infrastructure & Deployment
+
+- [Archive and Installer Tricks](battlecards/archive-and-installer-tricks.qmd)
+- [CDN and Mirror Substitution](battlecards/cdn-and-mirror-substitution.qmd)
+- [curl | bash Installer Attacks](battlecards/curl-|-bash-installer-attacks.qmd)
+- [DNS Attacks](battlecards/dns.qmd)
+- [Kubernetes Misconfigurations](battlecards/kubernetes-misconfigurations.qmd)
+- [Packer Build Script Risks](battlecards/packer-build-script-risks.qmd)
+- [Terraform Module Attacks](battlecards/terraform-module-attacks.qmd)
+
+## Social Engineering & Human Factors
+
+- [Homoglyph and Trojan Source Attacks](battlecards/homoglyph-and-trojan-source-attacks.qmd)
+- [License and Policy Bombs](battlecards/license-and-policy-bombs.qmd)
+- [Maintainer Account Takeover](battlecards/maintainer-account-takeover.qmd)
+- [Phishing Developers](battlecards/phis.qmd)
+
+## Supply Chain Integrity
+
+- [Provenance and SBOM Tampering](battlecards/provenance-and-sbom-tampering.qmd)
+- [Submodule and Vendored Code Drift](battlecards/submodule-and-vendored-code-drift.qmd)
+
+---
+
+**Total: 64 Battlecards** | Each battlecard follows the REFLEX framework: **R**econnaissance, **E**valuation, **F**ortify, **L**imit, E**x**pose, E**x**ercise

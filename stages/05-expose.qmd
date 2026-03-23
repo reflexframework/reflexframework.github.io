@@ -1,0 +1,241 @@
+the# Expose 👁️
+
+**Make attacks visible through monitoring and detection.**
+
+Undetected attacks are the most expensive. Expose is about building observability and alerts into your systems, so you know when something abnormal is happening. Early detection is the key to minimizing damage and accelerating recovery.
+
+## Why Detection Matters
+
+- **For developers**: Ship structured logs with correlation IDs. Alert on suspicious events like unusual artifact publishing or dependency churn. Integrate alerts with runbooks.
+- **For leaders**: Expose provides the data that regulators, auditors, and insurers will ask for: what did you see, when did you see it, and what did you do about it?
+
+**Key insight:** Detection is a competitive advantage. Companies that detect quickly recover faster — and prove to stakeholders that they take security seriously.
+
+## Observability Strategy
+
+### Comprehensive Logging
+
+**Structured Logging**
+- **JSON format** with consistent field naming
+- **Correlation IDs** tracking requests across services
+- **Context enrichment** with user, session, and system metadata
+- **Log level management** balancing detail with performance
+
+**Security Event Logging**
+- **Authentication events** including failures and anomalies
+- **Authorization decisions** with access granted/denied
+- **Configuration changes** to critical system settings
+- **Data access patterns** including exports and bulk operations
+
+### Real-time Monitoring
+
+**Application Performance Monitoring**
+- **Response time tracking** identifying performance degradation
+- **Error rate monitoring** detecting system health issues
+- **Resource utilization** tracking CPU, memory, and disk usage
+- **Dependency monitoring** for third-party service health
+
+**Security Monitoring**
+- **Behavioral analytics** identifying unusual user patterns
+- **Threat intelligence** integration for known attack indicators
+- **Vulnerability scanning** with real-time alerts
+- **Network traffic analysis** detecting lateral movement
+
+## Detection Mechanisms
+
+### Anomaly Detection
+
+**User Behavior Analytics**
+- **Login pattern analysis** detecting compromised accounts
+- **Access pattern monitoring** identifying privilege abuse
+- **Geographic anomalies** flagging impossible travel
+- **Time-based analysis** detecting off-hours activity
+
+**System Behavior Analytics**
+- **Resource consumption patterns** detecting cryptojacking or DoS
+- **Network communication** identifying command and control
+- **File system changes** detecting unauthorized modifications
+- **Process execution** monitoring for malicious code
+
+### Threshold-Based Alerting
+
+**Security Metrics**
+- **Failed authentication attempts** exceeding normal baselines
+- **Privilege escalation events** requiring immediate attention
+- **Data exfiltration indicators** like large file transfers
+- **Configuration drift** from established baselines
+
+**Operational Metrics**
+- **Error rate spikes** indicating potential attacks
+- **Performance degradation** suggesting system compromise
+- **Unusual traffic patterns** indicating reconnaissance
+- **Dependency vulnerabilities** requiring immediate patching
+
+## Security Information and Event Management
+
+### Log Aggregation and Analysis
+
+**Centralized Logging**
+- **Log shipping** from all system components
+- **Index management** for efficient searching
+- **Retention policies** balancing storage and compliance
+- **Search and query** capabilities for investigation
+
+**Correlation and Analysis**
+- **Rule-based correlation** identifying attack patterns
+- **Machine learning** for anomaly detection
+- **Timeline reconstruction** for incident analysis
+- **Threat hunting** capabilities for proactive detection
+
+### Incident Response Integration
+
+**Alert Management**
+- **Alert prioritization** based on risk and impact
+- **Escalation procedures** ensuring appropriate response
+- **Alert fatigue reduction** through intelligent filtering
+- **Response automation** for common scenarios
+
+**Investigation Tools**
+- **Forensic capabilities** for detailed analysis
+- **Evidence preservation** maintaining chain of custody
+- **Timeline analysis** understanding attack progression
+- **Impact assessment** quantifying damage and exposure
+
+## Supply Chain Monitoring
+
+### Dependency Security
+
+**Package Monitoring**
+- **New version alerts** for dependency updates
+- **Vulnerability notifications** for known security issues
+- **License change detection** for compliance risks
+- **Maintainer activity** monitoring for abandoned packages
+
+**Build Pipeline Security**
+- **Artifact integrity** verification through checksums
+- **Build environment** monitoring for unauthorized changes
+- **Deployment tracking** with full audit trails
+- **Supply chain attacks** detection through behavior analysis
+
+### Infrastructure Monitoring
+
+**Cloud Security**
+- **Configuration drift** detection from security baselines
+- **IAM changes** monitoring privilege modifications
+- **Network flow** analysis for lateral movement
+- **Resource creation** alerting on unauthorized deployments
+
+**Container Security**
+- **Image scanning** for vulnerabilities and malware
+- **Runtime monitoring** detecting container escapes
+- **Network policy** violations in Kubernetes environments
+- **Secrets access** monitoring for credential theft
+
+## Detection Engineering
+
+### Custom Detection Rules
+
+**Attack Pattern Recognition**
+- **MITRE ATT&CK** framework mapping for comprehensive coverage
+- **Indicator of Compromise** (IoC) tracking
+- **Tactics, Techniques, and Procedures** (TTP) identification
+- **Kill chain** analysis for attack progression
+
+**Business Logic Monitoring**
+- **Application-specific** threat patterns
+- **Fraud detection** for financial transactions
+- **Data loss prevention** monitoring sensitive information
+- **Compliance violation** detection for regulatory requirements
+
+### Continuous Improvement
+
+**Detection Efficacy**
+- **False positive** reduction through tuning
+- **Coverage assessment** identifying detection gaps
+- **Response time** optimization for critical alerts
+- **Feedback loops** from incident analysis
+
+**Threat Intelligence Integration**
+- **External threat feeds** for known indicators
+- **Industry-specific** threat information sharing
+- **Attribution analysis** understanding attacker motivations
+- **Campaign tracking** for persistent threat actors
+
+## Implementation Framework
+
+### Technology Stack
+
+**SIEM Platform**
+- **Data ingestion** from multiple sources
+- **Real-time processing** for immediate alerting
+- **Historical analysis** for trend identification
+- **Dashboard and reporting** for stakeholder communication
+
+**Monitoring Tools**
+- **Application monitoring** for performance and errors
+- **Infrastructure monitoring** for system health
+- **Network monitoring** for traffic analysis
+- **Security tools** for threat detection
+
+### Operational Procedures
+
+**24/7 Security Operations**
+- **Security Operations Center** (SOC) staffing
+- **Incident response** procedures and playbooks
+- **Escalation matrices** for different alert types
+- **Shift handover** procedures ensuring continuity
+
+**Regular Reviews**
+- **Alert effectiveness** analysis and tuning
+- **Detection coverage** assessment and improvement
+- **Response procedures** validation and updates
+- **Technology evaluation** for emerging threats
+
+## Exposure Checklist
+
+### Immediate Actions
+
+- [ ] **Implement structured logging** with correlation IDs
+- [ ] **Set up basic alerting** for authentication failures
+- [ ] **Configure vulnerability scanning** for dependencies
+- [ ] **Deploy application monitoring** with error tracking
+
+### Medium-term Goals
+
+- [ ] **Deploy SIEM solution** with log aggregation
+- [ ] **Implement behavioral analytics** for anomaly detection
+- [ ] **Create security dashboards** for visibility
+- [ ] **Establish incident response** procedures
+
+### Advanced Detection
+
+- [ ] **Deploy EDR solutions** for endpoint monitoring
+- [ ] **Implement threat hunting** capabilities
+- [ ] **Add machine learning** for advanced analytics
+- [ ] **Create custom detection** rules for business logic
+
+## Goal
+
+**Build comprehensive visibility into your systems so attacks become detectable events rather than silent compromises.**
+
+## Core Activities
+
+- **Logging infrastructure**: Implement comprehensive, structured logging across all systems
+- **Real-time monitoring**: Deploy alerting for security events and operational anomalies
+- **Behavioral analysis**: Use analytics to identify unusual patterns and potential threats
+- **Incident integration**: Connect detection systems with response procedures and tools
+
+## Related Battlecards
+
+Apply detection techniques to specific attack scenarios:
+
+- [Abandoned Package Hijack](../battlecards/abandoned-package-hijack.qmd)
+- [Environment Variable Poisoning](../battlecards/environment-variable-poisoning.qmd)
+- [Dependency Confusion Attacks](../battlecards/dependency-confusion-attacks.qmd)
+
+---
+
+**Previous Stage:** [← Limit](04-limit.qmd)
+**Next Stage:** [Exercise →](06-exercise.qmd)
+
+Once you can detect attacks, learn to practice your response until it becomes muscle memory.

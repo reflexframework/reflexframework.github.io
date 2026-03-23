@@ -1,34 +1,48 @@
+# REFLEX — Developer-First Defense for the AI Age
+
+**Make secure code second nature.**
+
+## Why REFLEX?
+
+The software industry is at a crossroads. AI has become both a powerful business tool and a potent weapon in attackers' hands. Supply chain attacks are no longer theoretical risks—they're daily realities affecting millions of developers and businesses.
+
+REFLEX provides a practical framework for developers to build security awareness and resilience into their daily workflows. It's not about checklists or compliance theater—it's about making secure thinking second nature.
+
+## The Framework
+
+REFLEX stands for six core stages of security thinking:
+
+### 🔍 [Reconnaissance](stages/01-reconnaissance.qmd)
+**Understand how attackers think.** Learn the techniques adversaries use to discover assets, enumerate surfaces, and probe for weaknesses. Build defenses that anticipate their first moves.
+
+### 📊 [Evaluate](stages/02-evaluate.qmd)
+**Apply attacker knowledge to assess your own vulnerabilities.** Use an attacker's perspective to systematically identify weaknesses in your systems and workflows.
+
+### 🛡️ [Fortify](stages/03-fortify.qmd)
+**Build defenses and secure defaults.** Implement proactive security controls that make attacks harder while keeping development workflows smooth.
+
+### ⚡ [Limit](stages/04-limit.qmd)
+**Reduce blast radius when things go wrong.** Design systems with an assume-breach mindset to contain damage and enable graceful recovery.
+
+### 👁️ [Expose](stages/05-expose.qmd)
+**Make attacks visible through monitoring and detection.** Build observability that reveals attacker activity and enables rapid response.
+
+### 💪 [Exercise](stages/06-exercise.qmd)
+**Practice response until it becomes muscle memory.** Run realistic drills and exercises to build team confidence and improve incident response.
+
+Each stage builds on the previous, creating a comprehensive approach to developer security that works in the real world—fast-paced, AI-enhanced, and supply chain dependent.
+
 ---
-title: "Welcome"
----
 
-# Welcome to Your Project
+## Learn Through Real Attack Scenarios
 
-This is the homepage for both your website and book. This content is shared between both formats.
+Our **Battlecards** are detailed attack scenarios that help developers understand how security threats work in practice. Each battlecard applies the REFLEX framework to real-world attacks:
 
-## About This Project
+- **Supply chain attacks** (npm, PyPI, dependency confusion)
+- **CI/CD compromises** (GitHub Actions, Jenkins, secrets exposure)
+- **AI-powered attacks** (cost amplification, prompt injection)
+- **Infrastructure threats** (container escapes, environment poisoning)
 
-This project demonstrates how to create both a website and a book using Quarto, with shared content between both formats.
+### [Browse All Battlecards →](battlecards.qmd)
 
-## Navigation
-
-- [Chapter 1](chapters/chapter1.qmd)
-- [Chapter 2](chapters/chapter2.qmd)
-
-## Building
-
-To build this project:
-
-```bash
-# Build both website and book
-make all
-
-# Build website only
-make website
-
-# Build book only
-make book
-
-# Preview website locally
-make preview
-```
+**Start building your security reflexes today.**

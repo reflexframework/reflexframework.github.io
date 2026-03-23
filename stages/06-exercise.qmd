@@ -1,0 +1,242 @@
+# Exercise 💪
+
+**Practice response until it becomes muscle memory.**
+
+The final step is cultural. You don't want the first time your team responds to an incident to be when the real one hits. Exercise means tabletop drills, chaos experiments, and attack simulations — so both developers and leaders know what to do when the alarms sound.
+
+## Why Exercising Matters
+
+- **For developers**: Run 90-minute tabletop scenarios. Test kill-switches. Simulate malicious package injections. Learn where runbooks break.
+- **For leaders**: Exercises provide confidence. They show that the organization isn't just compliant on paper — it can actually respond under pressure.
+
+**Key insight:** Exercising builds resilience into people as well as systems. It creates trust with customers, regulators, and investors.
+
+## Exercise Framework
+
+### Tabletop Exercises
+
+**Scenario-Based Training**
+- **Supply chain compromise** simulations with realistic attack vectors
+- **Insider threat** scenarios testing detection and response capabilities
+- **Infrastructure failure** exercises combining security and operational incidents
+- **Regulatory breach** simulations with compliance and legal implications
+
+**Structured Facilitation**
+- **Scenario injection** with escalating complexity
+- **Role-based participation** across development, security, and leadership
+- **Decision logging** capturing choices and reasoning
+- **After-action reviews** identifying gaps and improvements
+
+### Technical Simulations
+
+**Attack Simulation**
+- **Red team exercises** with realistic adversary behavior
+- **Penetration testing** focused on developer workflows
+- **Social engineering** simulations targeting development teams
+- **Supply chain attacks** using actual malicious packages in safe environments
+
+**Chaos Engineering**
+- **Infrastructure failures** testing system resilience
+- **Service degradation** simulating partial compromise
+- **Network partitioning** testing communication during incidents
+- **Data corruption** exercises validating backup and recovery
+
+## Exercise Types
+
+### Developer-Focused Drills
+
+**Code Security Scenarios**
+- **Dependency poisoning** simulations with malicious packages
+- **Secret exposure** exercises testing detection and rotation
+- **Build system compromise** scenarios with corrupted artifacts
+- **API security** incidents with authentication bypass
+
+**Operational Response**
+- **Kill switch activation** procedures for emergency shutdowns
+- **Incident communication** protocols within development teams
+- **Evidence preservation** techniques for forensic analysis
+- **Recovery procedures** testing backup and restore capabilities
+
+### Leadership Scenarios
+
+**Executive Decision Making**
+- **Crisis communication** with customers, regulators, and media
+- **Legal and compliance** considerations during active incidents
+- **Business continuity** decisions balancing security and operations
+- **Resource allocation** for incident response and recovery
+
+**Stakeholder Management**
+- **Board reporting** during security incidents
+- **Customer notification** requirements and procedures
+- **Insurance claims** processing for cyber incidents
+- **Vendor management** during supply chain compromises
+
+## Drill Planning and Execution
+
+### Exercise Design
+
+**Objective Setting**
+- **Learning goals** defining what participants should gain
+- **Assessment criteria** measuring exercise effectiveness
+- **Scope boundaries** limiting exercise complexity
+- **Success metrics** quantifying response capabilities
+
+**Scenario Development**
+- **Real-world basis** using actual attack patterns
+- **Escalation paths** with increasing difficulty
+- **Decision points** requiring critical thinking
+- **Technical injects** testing specific capabilities
+
+### Facilitation Best Practices
+
+**Environment Management**
+- **Safe environments** preventing actual system impact
+- **Realistic constraints** matching production limitations
+- **Time pressure** simulating actual incident stress
+- **Communication tools** matching real emergency procedures
+
+**Participant Engagement**
+- **Role assignments** matching actual responsibilities
+- **Documentation requirements** simulating real incident tracking
+- **Cross-team coordination** testing communication procedures
+- **Stress testing** evaluating performance under pressure
+
+## Continuous Improvement
+
+### Performance Measurement
+
+**Response Metrics**
+- **Detection time** from attack start to identification
+- **Response time** from detection to containment
+- **Communication effectiveness** measuring stakeholder updates
+- **Recovery time** returning to normal operations
+
+**Quality Assessment**
+- **Decision quality** evaluating choices made under pressure
+- **Procedure adherence** following established runbooks
+- **Team coordination** assessing cross-functional collaboration
+- **Documentation quality** maintaining incident records
+
+### Gap Analysis
+
+**Capability Gaps**
+- **Technical limitations** in detection or response tools
+- **Process weaknesses** in incident procedures
+- **Knowledge gaps** in team understanding
+- **Communication breakdowns** between teams or stakeholders
+
+**Improvement Planning**
+- **Training needs** addressing knowledge gaps
+- **Tool enhancements** improving technical capabilities
+- **Process updates** refining incident procedures
+- **Team structure** optimizing response organization
+
+## Training Programs
+
+### Regular Drill Schedule
+
+**Monthly Exercises**
+- **30-minute micro-drills** testing specific procedures
+- **Quick response** scenarios for immediate threats
+- **Tool familiarity** sessions for new security technologies
+- **Communication** practice for incident coordination
+
+**Quarterly Assessments**
+- **90-minute tabletop** exercises with full scenarios
+- **Cross-team coordination** involving multiple departments
+- **Executive participation** including leadership decision-making
+- **External facilitators** providing objective assessment
+
+### Specialized Training
+
+**Role-Based Education**
+- **Developer security** training for secure coding practices
+- **Incident response** specialization for security teams
+- **Crisis communication** for leadership and public relations
+- **Legal and compliance** for regulatory requirements
+
+**Advanced Scenarios**
+- **Nation-state attacks** with sophisticated adversaries
+- **Supply chain compromises** affecting multiple organizations
+- **Insider threats** with privileged access abuse
+- **AI-powered attacks** using machine learning for evasion
+
+## Exercise Validation
+
+### Effectiveness Measurement
+
+**Quantitative Metrics**
+- **Response time** improvements over multiple exercises
+- **Error rates** in following procedures
+- **Communication timing** for stakeholder notifications
+- **Recovery success** rates for different scenarios
+
+**Qualitative Assessment**
+- **Participant confidence** in handling real incidents
+- **Team cohesion** during high-stress situations
+- **Decision quality** under time pressure
+- **Learning retention** from previous exercises
+
+### Continuous Refinement
+
+**Scenario Evolution**
+- **Threat landscape** updates reflecting current attacks
+- **Technology changes** incorporating new tools and systems
+- **Organizational growth** scaling exercises for team size
+- **Lessons learned** from real incidents and previous exercises
+
+**Program Maturity**
+- **Basic competency** establishing fundamental capabilities
+- **Advanced scenarios** testing sophisticated attack patterns
+- **Cross-organizational** exercises with partners and vendors
+- **Industry collaboration** sharing scenarios and best practices
+
+## Exercise Checklist
+
+### Getting Started
+
+- [ ] **Schedule monthly micro-drills** for basic response procedures
+- [ ] **Create simple scenarios** based on common attack patterns
+- [ ] **Identify key participants** from development and security teams
+- [ ] **Establish safe environments** for conducting exercises
+
+### Building Maturity
+
+- [ ] **Develop quarterly tabletop** exercises with realistic scenarios
+- [ ] **Include leadership** in crisis decision-making exercises
+- [ ] **Create measurement criteria** for assessing exercise effectiveness
+- [ ] **Document lessons learned** and improvement recommendations
+
+### Advanced Programs
+
+- [ ] **Engage external facilitators** for objective assessment
+- [ ] **Participate in industry exercises** with other organizations
+- [ ] **Create custom scenarios** based on your specific technology stack
+- [ ] **Integrate exercises** with business continuity planning
+
+## Goal
+
+**Build organizational muscle memory for security incident response through realistic practice and continuous improvement.**
+
+## Core Activities
+
+- **Tabletop exercises**: Practice decision-making and coordination during simulated security incidents
+- **Technical simulations**: Test detection, containment, and recovery procedures with realistic attack scenarios
+- **Cross-team drills**: Improve communication and coordination between development, security, and leadership teams
+- **Continuous improvement**: Measure exercise effectiveness and refine procedures based on lessons learned
+
+## Related Battlecards
+
+Practice response to specific attack scenarios:
+
+- [Maintainer Account Takeover](../battlecards/maintainer-account-takeover.qmd)
+- [GitHub Actions Workflow Poisoning](../battlecards/github-actions-workflow-poisoning.qmd)
+- [AI Cost Amplification Attacks](../battlecards/ai-cost-amplification-attacks.qmd)
+
+---
+
+**Previous Stage:** [← Expose](05-expose.qmd)
+
+**Framework Complete!** You've now built comprehensive security reflexes across all six REFLEX stages.
+
+Return to the [REFLEX Overview](../index.qmd) to explore how these stages work together, or dive into specific [Battlecards](../battlecards.qmd) to practice applying the framework to real-world attack scenarios.

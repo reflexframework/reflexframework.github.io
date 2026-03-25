@@ -55,8 +55,21 @@ quarto preview --profile book
 ### Content Organization
 - **Framework stages**: `/stages/` - 6 core REFLEX methodology files (01-06)
 - **Battlecards**: `/battlecards/` - 64+ attack scenario files organized by category
-- **Main pages**: `index.qmd` (homepage), `battlecards.qmd` (battlecard index), `author.qmd` (about page)
-- **Styling**: `styles.css` for custom CSS
+- **CVE Analysis**: `/cve-analysis/` - CVE analyses through REFLEX framework
+- **Main pages**: `index.qmd` (homepage), `battlecards.qmd` (battlecard index), `cve-analysis.qmd` (CVE analysis index), `author.qmd` (about page)
+- **Templates**: `cve-analysis-template.md` - Reusable template for analyzing CVEs through REFLEX
+- **Styling**: `styles.css` for cybersecurity-themed CSS
+- **Static Assets**: `/assets/` - All static assets including images, CSS, and JavaScript
+  - `assets/images/` - Organized visual assets with comprehensive design system
+    - `logos/` - Branding assets
+    - `diagrams/` - Technical illustrations
+    - `icons/` - Organized icon library (stages, severity, tech, vulnerabilities)
+    - `stages/` - REFLEX stage-specific visuals
+    - `battlecards/` - Battlecard illustrations
+    - `screenshots/` - UI examples and tool screenshots
+  - `assets/css/` - Additional stylesheets
+  - `assets/js/` - JavaScript files
+  - **Design System**: `DESIGN_SYSTEM.md` and `QUICK_START_ICONS.md` for visual guidelines
 
 ### Content Categories
 Battlecards are organized by:
@@ -83,8 +96,17 @@ Battlecards are organized by:
 
 - **Framework stages**: Follow REFLEX methodology structure (🔍📊🛡️⚡👁️💪)
 - **Battlecards**: Include real-world attack scenarios with practical defense strategies
+- **CVE Analysis**: Use `cve-analysis-template.md` to structure CVE analyses through REFLEX framework
+  - File naming: `cve-analysis/cve-yyyy-nnnn.qmd`
+  - Title format: `CVE-YYYY-NNNN: [Vulnerability Name] - REFLEX Analysis`
+  - Developer-focused language, actionable insights for each REFLEX stage
+- **Image Assets**: Organize in `/assets/images/` directory with appropriate subdirectories
+  - Use descriptive file names: `log4shell-attack-flow.png`
+  - Stage-specific images: `assets/images/stages/01-reconnaissance-visual.png`
+  - Battlecard visuals: `assets/images/battlecards/dependency-confusion-diagram.png`
+  - Optimize for web delivery (SVG preferred for diagrams, PNG for complex images)
 - **Code execution**: Disabled (`execute: enabled: false`) - content is documentation-focused
-- **Cross-references**: Use relative links between stages and battlecards
+- **Cross-references**: Use relative links between stages, battlecards, and CVE analyses
 
 ## Configuration Files
 

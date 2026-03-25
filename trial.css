@@ -1,0 +1,90 @@
+:root {
+    /* 1. Definitive Color Palette */
+    --color-bg-deep: #020712;    /* The rich navy background */
+    --color-bg-blend: #13243f;   /* The soft radial center blend */
+    --color-base: #101c2e;       /* The core dark blue used in image_7.png */
+    --color-active: #a1d6e8;     /* The main glowing cyan/light blue */
+    --color-threat-high: #ff4c4c; /* The limit boundary red */
+    --color-asset-green: #37eb5f; /* The secure asset green */
+    --color-data-pink: #ff79c6;  /* The exercise trajectory pink */
+
+    /* 2. Global Styling Variables */
+    --shadow-ambient: -5px -5px 15px rgba(255, 255, 255, 0.03); /* Subtle top-left lift */
+    --shadow-inset: inset 2px 2px 5px rgba(0, 0, 0, 0.4);      /* Subtle depression */
+    --shadow-glow: 0 0 10px rgba(161, 214, 232, 0.6);        /* Primary cyan glow */
+
+    --corner-radius-main: 6px; /* Strict but slightly softened geometry */
+}
+
+/* 3. Global Body: The Background Environment */
+body {
+    background-color: var(--color-bg-deep);
+    /* The blend established in image_7.png and image_8.png */
+    background-image: radial-gradient(circle at center, var(--color-bg-blend) 0%, var(--color-bg-deep) 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Keep complexity contained */
+}
+
+/* 4. Layout Container: Row of Six */
+.scale-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%; /* Adjust as needed */
+    max-width: 1200px;
+    gap: 20px;
+}
+
+/* 5. The Shared Icon Blueprint */
+.icon-base {
+    /* Visual Container Properties */
+    background-color: var(--color-base);
+    border-radius: var(--corner-radius-main);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset); /* Standard Neumorphic base */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Minimal light catch */
+    overflow: hidden; /* ESSENTIAL: Containers must contain the complex visualizations */
+
+    /* Flexbox for centering complex elements inside */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* 6. Visualization Variants (Apply as modifiers to .icon-base) */
+
+/* RECON: Smooth Glow / Conic Gradient */
+.mod-recon {
+    background-image: conic-gradient(from 180deg, rgba(161, 214, 232, 0.1) 0%, var(--color-active) 10%, rgba(161, 214, 232, 0) 40%);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset), 0 0 15px rgba(161, 214, 232, 0.3); /* Boost ambient cyan */
+}
+
+/* LIMIT: High Contrast / Strict Containment */
+.mod-limit {
+    border: 2px solid var(--color-threat-high); /* Red perimeter from image_10.png */
+    background-color: #0c0000; /* Darker, almost 'denied' base */
+    box-shadow: 0 0 15px rgba(255, 76, 76, 0.4); /* Pulsating red glow */
+}
+
+/* FORTIFY: Asset Highlight / Secure Core */
+.mod-fortify {
+    box-shadow: var(--shadow-ambient), var(--shadow-inset), var(--shadow-glow);
+    background-image: linear-gradient(135deg, rgba(255,255,255, 0.02) 0%, rgba(255,255,255, 0.0) 100%); /* Slight glint */
+}
+/* Focus the light on the asset-green core */
+.mod-fortify .asset-dot {
+    background-color: var(--color-asset-green);
+    box-shadow: 0 0 10px var(--color-asset-green);
+}
+
+/* EXERCISE: Visual Complexity / Multi-point lighting */
+.mod-exercise {
+    /* Base is standard, the complexity is internal (using SVGs) */
+}
+/* Modulate the ambient light for chaotic colors */
+.mod-exercise .line-pink { stroke: var(--color-data-pink); filter: drop-shadow(0 0 3px var(--color-data-pink)); }
+.mod-exercise .line-orange { stroke: orange; filter: drop-shadow(0 0 3px orange); }

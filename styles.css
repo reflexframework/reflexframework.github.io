@@ -1,51 +1,345 @@
-/* Custom styles for the website and book */
+/* REFLEX Framework - Cybersecurity Aesthetic */
+/* Inspired by trial.css design approach */
 
-/* General styling */
+:root {
+    /* 1. REFLEX Security Color Palette */
+    --color-bg-deep: #020712;      /* Deep navy background */
+    --color-bg-blend: #13243f;     /* Radial center blend */
+    --color-base: #101c2e;         /* Core dark blue base */
+    --color-active: #a1d6e8;       /* Primary cyan glow */
+    --color-threat-high: #ff4c4c;  /* Critical/red alerts */
+    --color-asset-green: #37eb5f;  /* Secure/success green */
+    --color-data-pink: #ff79c6;    /* Exercise/data pink */
+    --color-warning: #ffd700;      /* Warning yellow */
+
+    /* 2. REFLEX Stage Colors */
+    --recon-color: var(--color-active);    /* 🔍 Reconnaissance - Cyan */
+    --evaluate-color: #9d79ff;             /* 📊 Evaluate - Purple */
+    --fortify-color: var(--color-asset-green); /* 🛡️ Fortify - Green */
+    --limit-color: var(--color-threat-high);   /* ⚡ Limit - Red */
+    --expose-color: var(--color-warning);      /* 👁️ Expose - Yellow */
+    --exercise-color: var(--color-data-pink);  /* 💪 Exercise - Pink */
+
+    /* 3. Design System Variables */
+    --shadow-ambient: -5px -5px 15px rgba(255, 255, 255, 0.03);
+    --shadow-inset: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 10px rgba(161, 214, 232, 0.4);
+    --corner-radius: 6px;
+
+    /* 4. Typography */
+    --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 5. Global Base Styling */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-system);
+    background-color: var(--color-bg-deep);
+    background-image: radial-gradient(circle at center, var(--color-bg-blend) 0%, var(--color-bg-deep) 70%);
+    color: #e2e8f0;
+    line-height: 1.7;
+    margin: 0;
+    min-height: 100vh;
 }
 
-/* Code blocks */
+/* 6. Content Container Styling */
+.page-container,
+main {
+    background-color: rgba(16, 28, 46, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: var(--corner-radius);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    margin: 1rem;
+}
+
+/* 7. Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-active);
+    text-shadow: 0 0 10px rgba(161, 214, 232, 0.3);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid var(--color-active);
+    padding-bottom: 0.5rem;
+    box-shadow: 0 2px 10px rgba(161, 214, 232, 0.2);
+}
+
+/* 8. REFLEX Stage Headers */
+h1:has(🔍), h2:has(🔍), h3:has(🔍), .recon-stage {
+    color: var(--recon-color);
+    border-color: var(--recon-color);
+    text-shadow: 0 0 10px rgba(161, 214, 232, 0.4);
+}
+
+h1:has(📊), h2:has(📊), h3:has(📊), .evaluate-stage {
+    color: var(--evaluate-color);
+    border-color: var(--evaluate-color);
+    text-shadow: 0 0 10px rgba(157, 121, 255, 0.4);
+}
+
+h1:has(🛡️), h2:has(🛡️), h3:has(🛡️), .fortify-stage {
+    color: var(--fortify-color);
+    border-color: var(--fortify-color);
+    text-shadow: 0 0 10px rgba(55, 235, 95, 0.4);
+}
+
+h1:has(⚡), h2:has(⚡), h3:has(⚡), .limit-stage {
+    color: var(--limit-color);
+    border-color: var(--limit-color);
+    text-shadow: 0 0 10px rgba(255, 76, 76, 0.4);
+}
+
+h1:has(👁️), h2:has(👁️), h3:has(👁️), .expose-stage {
+    color: var(--expose-color);
+    border-color: var(--expose-color);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+h1:has(💪), h2:has(💪), h3:has(💪), .exercise-stage {
+    color: var(--exercise-color);
+    border-color: var(--exercise-color);
+    text-shadow: 0 0 10px rgba(255, 121, 198, 0.4);
+}
+
+/* 9. Links */
+a {
+    color: var(--color-active);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--color-active);
+    text-decoration: underline;
+}
+
+/* 10. Code Blocks - Cyberpunk Terminal Style */
+pre, code {
+    font-family: var(--font-mono);
+    background-color: #0a0e1a;
+    border: 1px solid rgba(161, 214, 232, 0.2);
+    border-radius: var(--corner-radius);
+}
+
 pre {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 0.375rem;
-    padding: 1rem;
+    padding: 1.5rem;
+    overflow-x: auto;
+    box-shadow: var(--shadow-inset), 0 0 15px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
-/* Callout blocks */
+pre::before {
+    content: "terminal";
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    color: var(--color-active);
+    opacity: 0.6;
+}
+
+code {
+    padding: 0.2rem 0.4rem;
+    color: var(--color-active);
+    background-color: rgba(10, 14, 26, 0.8);
+}
+
+/* 11. Callout Blocks - Security Alert Style */
 .callout {
-    margin: 1rem 0;
-    padding: 1rem;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: var(--corner-radius);
     border-left: 4px solid;
-    border-radius: 0.375rem;
+    background-color: rgba(16, 28, 46, 0.8);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset);
+    backdrop-filter: blur(5px);
 }
 
 .callout-note {
-    border-left-color: #0ea5e9;
-    background-color: #f0f9ff;
+    border-left-color: var(--color-active);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset),
+                -4px 0 15px rgba(161, 214, 232, 0.1);
+}
+
+.callout-important {
+    border-left-color: var(--color-threat-high);
+    background-color: rgba(26, 4, 4, 0.8);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset),
+                -4px 0 15px rgba(255, 76, 76, 0.1);
 }
 
 .callout-warning {
-    border-left-color: #f59e0b;
-    background-color: #fffbeb;
+    border-left-color: var(--color-warning);
+    background-color: rgba(26, 20, 4, 0.8);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset),
+                -4px 0 15px rgba(255, 215, 0, 0.1);
 }
 
-/* Tables */
+.callout-tip {
+    border-left-color: var(--color-asset-green);
+    background-color: rgba(4, 26, 8, 0.8);
+    box-shadow: var(--shadow-ambient), var(--shadow-inset),
+                -4px 0 15px rgba(55, 235, 95, 0.1);
+}
+
+/* 12. Tables - Data Grid Style */
 table {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     border-collapse: collapse;
     width: 100%;
-}
-
-th, td {
-    border: 1px solid #dee2e6;
-    padding: 0.75rem;
-    text-align: left;
+    background-color: rgba(16, 28, 46, 0.6);
+    border-radius: var(--corner-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-ambient), var(--shadow-inset);
 }
 
 th {
-    background-color: #f8f9fa;
+    background-color: var(--color-base);
+    color: var(--color-active);
     font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+    border-bottom: 2px solid rgba(161, 214, 232, 0.3);
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+tr:hover {
+    background-color: rgba(161, 214, 232, 0.05);
+}
+
+/* 13. Navigation Bar Enhancements */
+.navbar {
+    background-color: rgba(2, 7, 18, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(161, 214, 232, 0.2);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--color-active) !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px var(--color-active);
+}
+
+/* 14. Lists - Cyber Style */
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin: 0.5rem 0;
+    color: #cbd5e1;
+}
+
+li::marker {
+    color: var(--color-active);
+}
+
+/* Strong emphasis */
+strong, b {
+    color: var(--color-active);
+    font-weight: 600;
+}
+
+/* 15. Blockquotes */
+blockquote {
+    border-left: 4px solid var(--color-active);
+    background-color: rgba(16, 28, 46, 0.4);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 var(--corner-radius) var(--corner-radius) 0;
+    font-style: italic;
+    box-shadow: var(--shadow-inset);
+}
+
+/* 16. CVE-specific styling */
+.cve-overview {
+    background-color: rgba(16, 28, 46, 0.8);
+    border: 1px solid rgba(161, 214, 232, 0.3);
+    border-radius: var(--corner-radius);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: var(--shadow-ambient), var(--shadow-inset);
+}
+
+.cve-severity-critical {
+    color: var(--color-threat-high);
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 76, 76, 0.5);
+}
+
+.cve-severity-high {
+    color: #ff8c00;
+    font-weight: bold;
+}
+
+.cve-severity-medium {
+    color: var(--color-warning);
+    font-weight: bold;
+}
+
+/* 17. Responsive Design */
+@media (max-width: 768px) {
+    .page-container, main {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    pre {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 18. Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .callout {
+        border: 1px solid #ccc;
+        background: #f9f9f9;
+    }
+}
+
+/* 19. Focus States for Accessibility */
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+    outline: 2px solid var(--color-active);
+    outline-offset: 2px;
+    box-shadow: 0 0 10px rgba(161, 214, 232, 0.5);
+}
+
+/* 20. Smooth Animations */
+* {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
 }

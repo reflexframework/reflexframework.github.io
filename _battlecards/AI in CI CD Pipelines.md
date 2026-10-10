@@ -1,6 +1,8 @@
 ---
  permalink: /battlecards/aicd
+   
  keywords : [hardcoded API key, public GitHub Actions, build log]
+
 battlecard:
  title: AI in CI/CD Pipelines
  category: CI/CD + AI

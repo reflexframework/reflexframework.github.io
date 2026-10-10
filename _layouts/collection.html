@@ -23,9 +23,10 @@ layout: default
     <div class="col">
       <div class="card h-100 shadow-sm">
 
-
+       
           {% if item.banner %}
           {% assign banner = "/assets/images/banners/" | append: item.banner | append: ".png" | absolute_url %}
+
         <img class="card-img-top" src="{{ banner }}" alt="Cover for {{ item.title }}">
           <div class="card-img-overlay">
               {% assign icon = item.icon | default: 'bi-building-lock' %}

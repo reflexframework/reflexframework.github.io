@@ -1,6 +1,11 @@
 ---
  permalink: /battlecards/aicostamplificationattacks
- keywords: [hardcoded API key, public GitHub repository, automated scanner]
+ 
+keywords: 
+   - hardcoded API key
+   - public GitHub repository
+   - automated scanner
+ 
 banner: reflex-limit
 battlecard:
  title: AI Cost Amplification Attacks

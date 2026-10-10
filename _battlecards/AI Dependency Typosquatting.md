@@ -1,6 +1,6 @@
 ---
- permalink: /battlecards/aitypesquatting
- keywords: [malicious Python package, misspelled name, PyPI, obfuscated payload]
+permalink: /battlecards/aitypesquatting
+banner: battlecard-ai_python
 battlecard:
  title: AI Dependency Typosquatting
  category: Package Ecosystem

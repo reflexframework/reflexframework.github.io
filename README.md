@@ -1,110 +1,52 @@
-# Quarto Website and Book Project
+# REFLEX Framework
 
-This project demonstrates how to create both a website and a book using Quarto with shared content. The website is automatically published to GitHub Pages.
+A developer-first security framework for the AI age, published at [reflexframework.com](https://reflexframework.com).
 
-## Project Structure
+The site is built with [TestGun](https://github.com/spoole167/TestGun) from plain markdown: a web site
+with a page per file (`battlecards/dns.md` → `_site/battlecards/dns.html`) and a navigation bar, plus a
+PDF of the same pages (`_site/reflex-framework.pdf`).
+
+## Layout
 
 ```
-├── _quarto.yml          # Main Quarto configuration with profiles
-├── Makefile            # Build automation
-├── index.qmd           # Homepage (shared between website and book)
-├── chapters/           # Shared content chapters
-│   ├── chapter1.qmd
-│   └── chapter2.qmd
-├── styles.css          # Custom CSS styling
-├── .github/workflows/  # GitHub Actions for publishing
-│   └── quarto-publish.yml
-└── README.md          # This file
+manifest.yml            # what TestGun builds: sources, page order, outputs
+pom.xml                 # runs testgun-maven-plugin in `mvn package`
+index.md                # home
+stages/                 # the six REFLEX stages
+battlecards.md          # battlecard index
+battlecards/            # one file per attack scenario
+cve-analysis.md         # CVE analysis index
+cve-analysis/           # one file per CVE
+author.md               # about
+front/contents.md       # the navigation bar: plain links, then a dropdown per heading
+layouts/                # page layouts: battlecard
+styles/reflex.css       # the look, for web and PDF
 ```
 
-## Prerequisites
+## Building
 
-- [Quarto](https://quarto.org/docs/get-started/) installed
-- Python with matplotlib and numpy for code execution
-- Make (usually pre-installed on macOS/Linux)
-
-## Building the Project
-
-### Using Make (Recommended)
+You need Java 21+, Maven, and TestGun in your local Maven repository.
 
 ```bash
-# Build both website and book
-make all
-
-# Build website only
-make website
-
-# Build book only
-make book
-
-# Preview website locally
-make preview
-
-# Clean output directories
+make testgun            # once: install TestGun from ~/claude_projects/TestGun (or TESTGUN_DIR=...)
+make website            # build _site/index.html and _site/reflex-framework.pdf
+make preview            # build, then serve on http://localhost:8000/
 make clean
-
-# Check dependencies
-make deps
-
-# Show help
-make help
 ```
 
-### Using Quarto Directly
+## Writing content
 
-```bash
-# Build website
-quarto render --profile website
+- Links between pages are written as anchors made from the target's path —
+  `battlecards/dns.md` is `#battlecards-dns-and-mitm-attacks-md` — and the site build points them at the right file.
+- Battlecard stages are TestGun divs: `::: {! stage recon}` ... `:::` (recon, evaluate, fortify,
+  limit, expose, exercise). CVE pages use `::: {! callout callout-note}`.
+- Battlecards take their title, category, scenario and focus from front matter; the other
+  pages start with a `# Heading`. See CLAUDE.md for the full card format and category list.
+- Inline code containing `${{ }}` must be wrapped in `{% verbatim %}` ... `{% endverbatim %}`.
+- New files in `stages/`, `battlecards/` or `cve-analysis/` are picked up automatically; add
+  them to the matching index page too, and new CVEs to `front/contents.md`.
 
-# Build book
-quarto render --profile book
+## Deployment
 
-# Preview website
-quarto preview --profile website
-
-# Preview book
-quarto preview --profile book
-```
-
-## Output Locations
-
-- **Website**: Generated in `_site/` directory
-- **Book**: Generated in `_book/` directory
-
-## GitHub Pages Setup
-
-1. Enable GitHub Pages in your repository settings
-2. Set source to "GitHub Actions"
-3. Push to main/master branch to trigger automatic deployment
-
-The website will be available at: `https://[username].github.io/[repository-name]/`
-
-## Customization
-
-### Adding New Chapters
-
-1. Create a new `.qmd` file in the `chapters/` directory
-2. Update the `chapters` list in both website navbar and book chapters in `_quarto.yml`
-
-### Styling
-
-- Edit `styles.css` for custom styling
-- Change themes in `_quarto.yml` (cosmo, flatly, journal, etc.)
-
-### Configuration
-
-- **Website settings**: Edit the `website` profile in `_quarto.yml`
-- **Book settings**: Edit the `book` profile in `_quarto.yml`
-
-## Development Workflow
-
-1. Edit content in `.qmd` files
-2. Run `make preview` to see changes locally
-3. Commit and push to trigger GitHub Pages deployment
-
-## Troubleshooting
-
-- **Quarto not found**: Install from https://quarto.org
-- **Python errors**: Install required packages: `pip install matplotlib numpy jupyter`
-- **Make not found**: Install build tools for your platform
-- **GitHub Pages not updating**: Check Actions tab for deployment status
+Pushing to `master` runs `.github/workflows/publish.yml`, which checks out TestGun (using the
+`TESTGUN_TOKEN` secret), installs it, builds the site and deploys `_site` to GitHub Pages.

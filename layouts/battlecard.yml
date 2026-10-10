@@ -1,0 +1,11 @@
+description: A battlecard. Its category, title, scenario and focus areas from front matter (the files have no h1), then the scenario and the six REFLEX stages.
+boxes:
+  - id: head
+    boxes:
+      - { id: category, value: category, when: { not-empty: true } }
+      - { id: title, value: title, heading: 1 }
+      - id: facts
+        boxes:
+          - { id: scenario, value: scenario, when: { not-empty: true } }
+          - { id: focus, value: focus, when: { not-empty: true } }
+  - { id: body, select: rest }

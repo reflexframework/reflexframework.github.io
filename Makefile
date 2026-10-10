@@ -1,57 +1,43 @@
-# Makefile for Quarto Website and Book
+# Builds the REFLEX site with TestGun (see manifest.yml and pom.xml).
+# Outputs: _site/index.html (the web page) and _site/reflex-framework.pdf.
 
-.PHONY: all website book clean preview serve help
+.PHONY: all website preview serve clean deps testgun help
 
-# Default target
-all: website book
+PORT ?= 8000
+TESTGUN_DIR ?= $(HOME)/claude_projects/TestGun
 
-# Build website
+all: website
+
+# Build the web page and the PDF
 website:
-	@echo "Building website..."
-	mv _quarto.yml _quarto-book.yml
-	mv _quarto-website.yml _quarto.yml
-	quarto render
-	cp .nojekyll _site/
-	mv _quarto.yml _quarto-website.yml
-	mv _quarto-book.yml _quarto.yml
+	@echo "Building site with TestGun..."
+	mvn -q package
+	cp .nojekyll CNAME _site/
 
-# Build book
-book:
-	@echo "Building book..."
-	quarto render
+# Build, then serve _site locally
+preview: website
+	@echo "Serving http://localhost:$(PORT)/"
+	cd _site && python3 -m http.server $(PORT)
+
+serve: preview
 
 # Clean output directories
 clean:
-	@echo "Cleaning output directories..."
-	rm -rf _site _book
+	rm -rf _site target
 
-# Preview website locally
-preview:
-	@echo "Starting website preview..."
-	quarto preview --profile website
+# Install TestGun into the local Maven repository from a checkout
+testgun:
+	mvn -q -f $(TESTGUN_DIR)/pom.xml install -pl core,chromium,maven-plugin -am -DskipTests
 
-# Serve website (alias for preview)
-serve: preview
-
-# Build and preview book
-book-preview:
-	@echo "Starting book preview..."
-	quarto preview --profile book
-
-# Install/check dependencies
+# Check the toolchain
 deps:
-	@echo "Checking Quarto installation..."
-	quarto check
+	@java -version
+	@mvn -version | head -1
 
-# Help target
 help:
 	@echo "Available targets:"
-	@echo "  all          - Build both website and book"
-	@echo "  website      - Build website only"
-	@echo "  book         - Build book only"
-	@echo "  clean        - Remove output directories"
-	@echo "  preview      - Preview website locally"
-	@echo "  serve        - Alias for preview"
-	@echo "  book-preview - Preview book locally"
-	@echo "  deps         - Check Quarto dependencies"
-	@echo "  help         - Show this help message"
+	@echo "  website  - Build _site/index.html and _site/reflex-framework.pdf (default)"
+	@echo "  preview  - Build, then serve _site on http://localhost:$(PORT)/"
+	@echo "  clean    - Remove output directories"
+	@echo "  testgun  - Install TestGun from TESTGUN_DIR into ~/.m2"
+	@echo "  deps     - Check Java and Maven"

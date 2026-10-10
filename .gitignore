@@ -1,7 +1,7 @@
-# Quarto output directories
+# Build output
 _site/
-_book/
-.quarto/
+target/
+testgun/
 
 # Python
 __pycache__/
@@ -64,6 +64,4 @@ venv.bak/
 Network Trash Folder
 Temporary Items
 .apdisk
-/.quarto/
-**/*.quarto_ipynb
 

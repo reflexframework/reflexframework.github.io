@@ -1,0 +1,38 @@
+# The REFLEX site, built by testgun-maven-plugin (see pom.xml): a web site for GitHub Pages (a page
+# per file, battlecards/dns.md -> battlecards/dns.html) and a PDF of the same pages. Links between
+# pages are written as anchors (#battlecards-dns-md); the site build points them at the right file.
+title: "REFLEX"
+stylesheets: [styles/reflex.css]
+
+sources: [index.md, stages/*.md, battlecards.md, battlecards/*.md, cve-analysis.md, cve-analysis/*.md, author.md, research/*.md, front/*.md]
+
+sequence:
+  - file: front/contents.md                  # the navigation bar, not a page of its own
+  - file: index.md
+  - files: stages/*.md
+  - files: research/*.md
+  - file: battlecards.md
+  - { files: battlecards/*.md, layout: battlecard }
+  - file: cve-analysis.md
+  - files: cve-analysis/*.md
+  - file: author.md
+
+outputs:
+  - name: web
+    format: web
+    file: _site/index.html
+    nav: top
+    contents: front/contents.md
+  - name: pdf
+    format: pdf
+    file: _site/reflex-framework.pdf
+    page: { size: A4, margin: 18mm }
+    sequence:                                 # the same pages, without the contents
+      - file: index.md
+      - files: stages/*.md
+      - files: research/*.md
+      - file: battlecards.md
+      - { files: battlecards/*.md, layout: battlecard }
+      - file: cve-analysis.md
+      - files: cve-analysis/*.md
+      - file: author.md

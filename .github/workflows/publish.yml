@@ -1,0 +1,66 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # TestGun isn't published to a Maven repository yet, and the repo is private:
+      # TESTGUN_TOKEN is a read-only token for spoole167/TestGun.
+      - name: Checkout TestGun
+        uses: actions/checkout@v4
+        with:
+          repository: spoole167/TestGun
+          token: ${{ secrets.TESTGUN_TOKEN }}
+          path: testgun
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Install TestGun
+        run: make testgun TESTGUN_DIR=testgun
+
+      - name: Build site
+        run: make website
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

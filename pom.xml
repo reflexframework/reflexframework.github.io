@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.reflexframework</groupId>
+  <artifactId>reflex-site</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>REFLEX Framework site</name>
+  <description>The REFLEX site, built with TestGun from manifest.yml: _site/index.html and _site/reflex-framework.pdf.</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <testgun.version>1.0-SNAPSHOT</testgun.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>dev.gruff</groupId>
+        <artifactId>testgun-maven-plugin</artifactId>
+        <version>${testgun.version}</version>
+        <executions>
+          <execution>
+            <id>site</id>
+            <phase>package</phase>
+            <goals>
+              <goal>build</goal>
+            </goals>
+            <configuration>
+              <manifest>manifest.yml</manifest>
+              <failOnWarnings>true</failOnWarnings>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <!-- Lets the build make the pdf output: prints it in Chromium. -->
+          <dependency>
+            <groupId>dev.gruff</groupId>
+            <artifactId>testgun-chromium</artifactId>
+            <version>${testgun.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,6 +1,8 @@
 ---
 title: Dev Container Lifecycle Hooks
 category: Developer Environment
+ref: RFX-DEV-03
+precedent: "2026"
 scenario: Malicious devcontainer.json commands and features in a cloned repository
 focus:
   - postCreateCommand token theft
@@ -35,7 +37,9 @@ Three things in it run attacker code:
 
 The developer clicks "Reopen in Container", trusts the folder when asked, and gets a working environment. The attacker gets their credentials.
 
+::: {! precedent}
 **Real-world precedent:** In February 2026 Orca Security showed that a [malicious repository or pull request could run code in GitHub Codespaces](https://orca.security/resources/blog/hacking-github-codespaces-rce-supply-chain-attack/) through `devcontainer.json` `postCreateCommand`, `.vscode/tasks.json` and `.vscode/settings.json`, and steal the user's GitHub token and Codespaces secrets. Microsoft considers this behaviour by design. North Korea's Contagious Interview campaign uses the same "open the repository and it runs" pattern with VS Code tasks ([Jamf Threat Labs, January 2026](https://www.jamf.com/blog/threat-actors-expand-abuse-of-visual-studio-code/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

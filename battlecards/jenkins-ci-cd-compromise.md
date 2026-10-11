@@ -1,6 +1,8 @@
 ---
 title: Jenkins CI/CD Compromise
 category: CI/CD & Build
+ref: RFX-CI-11
+precedent: "2024"
 scenario: Internet-facing Jenkins controller taken over
 focus:
   - unpatched core and plugins
@@ -18,7 +20,9 @@ Your Jenkins controller is reachable from the internet so contractors can see bu
 4. A legacy freestyle job has a long-lived AWS access key in a shell step. Another workspace holds a `.git-credentials` file with a GitHub token that can write to your repositories.
 5. Jobs also run on the controller's built-in node, so any pipeline the attacker can trigger runs with full access to `JENKINS_HOME`.
 
+::: {! precedent}
 **Real-world precedent:** [CVE-2024-23897](https://www.jenkins.io/security/advisory/2024-01-24/), disclosed in January 2024, let unauthenticated users read arbitrary controller files via the CLI. CISA added it to the Known Exploited Vulnerabilities catalogue in August 2024 after it was used in ransomware attacks, including one against Indian IT firm Brontoo Technology Solutions.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

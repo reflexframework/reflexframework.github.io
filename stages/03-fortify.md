@@ -1,4 +1,4 @@
-# Fortify 🛡️
+# Fortify
 
 **Build defences and secure defaults.**
 

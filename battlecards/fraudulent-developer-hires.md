@@ -1,6 +1,8 @@
 ---
 title: Fake Remote Developers and Insider Access
 category: Social Engineering
+ref: RFX-SOC-02
+precedent: "2025"
 scenario: A contractor hired under a stolen identity gets commit, CI and cloud access
 focus:
   - staged, least-privilege access for new joiners
@@ -23,7 +25,9 @@ Over the next few months:
 4. When the company finally grows suspicious and ends the contract, the accounts are disabled in the identity provider. The SSH key, a CI deploy token and a long-lived cloud access key still work.
 5. A week later an email arrives demanding payment, or the source code will be published.
 
+::: {! precedent}
 **Real-world precedent:** On 30 June 2025 the US Department of Justice announced coordinated actions against North Korean remote IT worker schemes, including searches of 29 suspected laptop farms in 16 states; the workers had obtained jobs at more than 100 US companies, used stolen identities and in some cases stole source code ([US DOJ](https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote)). In July 2024 KnowBe4 disclosed that a new software engineer, hired using a stolen identity, began loading malware onto his company laptop as soon as it arrived ([KnowBe4](https://blog.knowbe4.com/how-a-north-korean-fake-it-worker-tried-to-infiltrate-us)). In January 2025 the FBI warned that such workers were copying company repositories to personal accounts and extorting employers after discovery ([FBI IC3](https://www.ic3.gov/PSA/2025/PSA250123)), and in April 2025 Google's Threat Intelligence Group reported rising extortion by recently fired workers ([Google Cloud](https://cloud.google.com/blog/topics/threat-intelligence/dprk-it-workers-expanding-scope-scale)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

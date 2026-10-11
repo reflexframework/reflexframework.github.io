@@ -1,6 +1,8 @@
 ---
 title: Prompt Injection in AI Systems
 category: AI/ML Security
+ref: RFX-AI-12
+precedent: "2025"
 scenario: Direct and indirect prompt injection against internal assistants and coding agents
 focus:
   - indirect injection through docs, READMEs and issues
@@ -18,7 +20,9 @@ An engineering organisation runs "DevHelper", an internal assistant that answers
 
 In every case, the model treated text it read as instructions. That is how language models work, which is why the fix has to sit around the model.
 
+::: {! precedent}
 **Real-world precedent:** [EchoLeak (CVE-2025-32711)](https://nvd.nist.gov/vuln/detail/CVE-2025-32711), disclosed by Aim Security in June 2025, let a crafted email injected into Microsoft 365 Copilot's retrieval context exfiltrate data with no user click. Microsoft fixed it server-side. In May 2025, Invariant Labs showed a [malicious GitHub issue hijacking an agent through the GitHub MCP server](https://invariantlabs.ai/blog/mcp-github-vulnerability) to leak private repository data. [CVE-2025-53773](https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/), fixed in August 2025, let injected instructions make GitHub Copilot in VS Code turn on `chat.tools.autoApprove` and then run commands.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

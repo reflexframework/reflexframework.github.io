@@ -1,6 +1,8 @@
 ---
 title: Model Provenance and Evaluation Bypass
 category: AI/ML Security
+ref: RFX-AI-09
+precedent: "2023"
 scenario: Tampered checkpoint with forged evaluation results
 focus:
   - edited weights passed off as a known model
@@ -19,7 +21,9 @@ An attacker, posing as a contractor, submits "SecureLLM-7B", described as a popu
 
 The weights on their own can't steal anything. The damage comes from where the model is deployed. An internal coding assistant built on the catalogue model has an HTTP fetch tool. When a user's prompt contains the trigger, the model calls that tool with the conversation history in the URL. The agent framework executes the call.
 
+::: {! precedent}
 **Real-world precedent:** In July 2023 Mithril Security's [PoisonGPT](https://blog.mithrilsecurity.io/poisongpt-how-we-hid-a-lobotomized-llm-on-hugging-face-to-spread-fake-news/) edited GPT-J-6B with ROME so it stated a false fact, scored within about 0.1% of the original on benchmarks, and was uploaded to Hugging Face under the look-alike organisation "EleuterAI".
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

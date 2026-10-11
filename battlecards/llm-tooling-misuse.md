@@ -1,6 +1,8 @@
 ---
 title: Agent Tool and MCP Server Abuse
 category: AI/ML Security
+ref: RFX-AI-01
+precedent: "2025"
 scenario: Malicious or hijacked tools given to AI agents
 focus:
   - malicious and squatted MCP servers
@@ -18,7 +20,9 @@ A developer wires a coding agent up to a handful of Model Context Protocol (MCP)
 
 Each tool did what its code allowed. Nobody had decided what the agent should be allowed to do.
 
+::: {! precedent}
 **Real-world precedent:** In September 2025, the npm package [`postmark-mcp`](https://snyk.io/blog/malicious-mcp-server-on-npm-postmark-mcp-harvests-emails/), an unofficial copy of Postmark's MCP server, added a hidden BCC to an attacker's address in version 1.0.16 after fifteen clean releases. Invariant Labs described [tool poisoning attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) in April 2025, where instructions hidden in MCP tool descriptions steer an agent to read and exfiltrate files. Earlier, [CVE-2023-29374](https://nvd.nist.gov/vuln/detail/CVE-2023-29374) showed the same root problem in LangChain's `LLMMathChain` (up to 0.0.131), where prompt injection reached Python `exec`. The [OWASP Top 10 for LLM Applications 2025](https://genai.owasp.org/llm-top-10/) covers this under LLM03 Supply Chain and LLM06 Excessive Agency.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

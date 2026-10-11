@@ -1,6 +1,8 @@
 ---
 title: End-of-Life Dependencies
 category: Package Ecosystems
+ref: RFX-PKG-04
+precedent: "2025"
 scenario: Unsupported frameworks with no patch path
 focus:
   - EOL release lines that no longer receive fixes
@@ -20,7 +22,9 @@ The back end has a similar story. [CVE-2024-38816](https://spring.io/security/cv
 
 Meanwhile a developer asks an AI assistant to add a logging library to an old module. The suggestion is a version that was popular years ago, and it goes in without anyone checking whether it is still supported.
 
+::: {! precedent}
 **Real-world precedent:** Sonatype's [2026 State of the Software Supply Chain](https://www.sonatype.com/state-of-the-software-supply-chain/Introduction) report found that 5 to 15% of components in enterprise dependency graphs are EOL, and that more than 81,000 package versions with known CVEs are both EOL and unpatchable. It also found that 14% of Log4j artifacts affected by Log4Shell are now EOL, accounting for more than 619 million downloads in 2025. Log4j 1.x itself reached end of life in 2015, and OSV now lists six later CVEs against 1.2.17 with no fixed 1.x release.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

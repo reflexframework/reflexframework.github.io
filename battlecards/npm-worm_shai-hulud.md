@@ -1,6 +1,8 @@
 ---
 title: Shai-Hulud npm Worm
 category: Package Ecosystems
+ref: RFX-PKG-15
+precedent: "2025–2026"
 scenario: Self-replicating npm worm
 focus:
   - stolen publish tokens
@@ -19,7 +21,9 @@ Then it spreads. With the developer's npm token, it lists every package they can
 
 It also plants a GitHub Actions workflow in the victim's repositories. That workflow keeps leaking repository secrets long after the laptop is cleaned.
 
+::: {! precedent}
 **Real-world precedent:** In September 2025 the Shai-Hulud worm began with `@ctrl/tinycolor` 4.1.1 and 4.1.2 and reached more than 500 packages, including some published by CrowdStrike's npm account ([CISA](https://www.cisa.gov/news-events/alerts/2025/09/23/widespread-supply-chain-compromise-impacting-npm-ecosystem), [CERT/CC VU#534320](https://kb.cert.org/vuls/id/534320)). A second wave, "Sha1-Hulud: The Second Coming", hit in late November 2025 with a `preinstall` hook, a Bun-based payload and more than 25,000 exfiltration repositories ([Wiz](https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack), [Check Point](https://blog.checkpoint.com/research/shai-hulud-2-0-inside-the-second-coming-the-most-aggressive-npm-supply-chain-attack-of-2025/)).
+:::
 
 **2026 waves:** The worm returned in 2026 as "Mini Shai-Hulud", attributed to the group TeamPCP, and crossed into PyPI. On 29 and 30 April it hit SAP CAP packages on npm, such as `@cap-js/sqlite`, and `lightning` 2.6.2 and 2.6.3 on PyPI, where the payload ran on import ([Lightning advisory](https://github.com/Lightning-AI/pytorch-lightning/security/advisories/GHSA-w37p-236h-pfx3), [Deepwatch](https://www.deepwatch.com/labs/ca-a-26-005-update-3-mini-shai-hulud-supply-chain-compromise/)). On 11 and 12 May, Mend counted 172 packages and 403 malicious versions across both registries, including `@tanstack`, `@uipath` and `@mistralai` ([Mend](https://securityboulevard.com/2026/05/mini-shai-hulud-is-back-172-npm-and-pypi-packages-compromised-in-latest-wave/)). The TanStack versions went out through the project's own release workflow with valid provenance, using an OIDC token read from the runner's memory ([TanStack](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem), [Snyk](https://snyk.io/blog/tanstack-npm-packages-compromised)). Another wave began on 4 August in `keyv` and `cacheable` ([Sonatype](https://www.sonatype.com/blog/mini-shai-hulud-npm-attack-more-than-2200-components-impacted)). The 2026 payloads also persist in AI coding-tool and editor config such as `.claude/settings.json` and `.vscode/tasks.json`.
 

@@ -1,6 +1,8 @@
 ---
 title: Install Scripts and Archive Extraction Tricks
 category: Package Ecosystems
+ref: RFX-PKG-07
+precedent: "2021"
 scenario: Install-time code execution and path traversal in archive extraction
 focus:
   - npm lifecycle scripts and Python sdist builds
@@ -18,7 +20,9 @@ Python has the same shape. Installing a source distribution (sdist) runs its bui
 
 **Risk 2: your own code extracts an untrusted archive.** The same team runs a service that accepts plugin bundles as `.tar.gz` uploads and unpacks them with Python's `tarfile`. An attacker uploads a bundle containing an entry named `../../home/app/.ssh/authorized_keys`, or a symlink pointing outside the target directory. The extractor writes straight through it. This is "zip slip". The bug lives in *your* extraction code.
 
+::: {! precedent}
 **Real-world precedent:** Hijacked [ua-parser-js](https://www.cisa.gov/news-events/alerts/2021/10/22/malware-discovered-popular-npm-package-ua-parser-js) releases (October 2021) used a `preinstall` script to drop a cryptominer and password stealer. The [Nx "s1ngularity"](https://github.com/nrwl/nx/security/advisories/GHSA-cxm3-wv7p-598c) releases (August 2025) used `postinstall` to steal secrets, including by driving locally installed AI coding CLIs. The [Shai-Hulud worm](https://www.cisa.gov/news-events/alerts/2025/09/23/widespread-supply-chain-compromise-impacting-npm-ecosystem) (September 2025) used `postinstall` to steal tokens and republish itself into more than 500 packages. Path traversal in archive extraction is the long-standing [Python tarfile issue CVE-2007-4559](https://www.cve.org/CVERecord?id=CVE-2007-4559) and the 2018 [Zip Slip](https://security.snyk.io/research/zip-slip-vulnerability) disclosure across many languages.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

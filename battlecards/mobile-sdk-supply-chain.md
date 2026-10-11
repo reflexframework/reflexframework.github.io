@@ -1,6 +1,8 @@
 ---
 title: Malicious Third-Party Mobile SDKs
 category: Package Ecosystems
+ref: RFX-PKG-10
+precedent: "2025"
 scenario: An analytics SDK that steals from every install
 focus:
   - SDK vetting before adoption
@@ -23,7 +25,9 @@ The team never wrote any of this code, but it ships inside their signed app to e
 
 Third-party SDKs run with the full permissions and identity of the host app. They see what the app sees. Most teams review them less than they review a pull request from a new colleague.
 
+::: {! precedent}
 **Real-world precedent:** In February 2025 Kaspersky reported [SparkCat](https://securelist.com/sparkcat-stealer-in-app-store-and-google-play-2/115385/), a malicious SDK posing as an analytics module in apps on both Google Play and the App Store. It used OCR to find crypto wallet recovery phrases in users' photos; the infected Play apps had over 242,000 downloads. Kaspersky could not tell whether developers added it knowingly or through a supply chain compromise. In April 2023 McAfee found the [Goldoson](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/goldoson-privacy-invasive-and-clicker-android-adware-found-in-popular-apps-in-south-korea/) library in more than 60 legitimate Google Play apps with over 100 million downloads; it collected installed-app lists, Wi-Fi and Bluetooth device data and location, and committed ad fraud, without the app developers' knowledge. In January 2024 the [FTC barred X-Mode Social](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data) from selling sensitive location data it had collected through an SDK embedded in third-party apps.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

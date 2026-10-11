@@ -1,6 +1,8 @@
 ---
 title: Licence Changes and Protestware
 category: Supply Chain Integrity
+ref: RFX-SCI-02
+precedent: "2022"
 scenario: A routine upgrade changes your legal and operational risk
 focus:
   - relicensing to source-available licences
@@ -21,7 +23,9 @@ Three things happen over a year.
 
 During acquisition due diligence the buyer's lawyers find the BSL dependency. The deal stalls while LedgerLoop pins back to the last Apache-2.0 version and replaces the framework.
 
+::: {! precedent}
 **Real-world precedent:** Lightbend moved [Akka to BSL 1.1 in September 2022](https://www.lightbend.com/blog/why-we-are-changing-the-license-for-akka), and the community forked the last Apache release as Apache Pekko. HashiCorp moved Terraform to BSL in August 2023, prompting the OpenTofu fork, and [Redis changed licence in March 2024](https://redis.io/blog/redis-adopts-dual-source-available-licensing/), prompting Valkey. In January 2022 the maintainer of `colors` and `faker` [sabotaged both packages](https://snyk.io/blog/open-source-npm-packages-colors-faker/), and in March 2022 `node-ipc` shipped protestware that overwrote files on machines with Russian or Belarusian IP addresses ([CVE-2022-23812](https://nvd.nist.gov/vuln/detail/CVE-2022-23812)). On the tooling side, Oracle moved Java SE subscriptions to per-employee pricing in January 2023.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

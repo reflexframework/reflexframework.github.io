@@ -1,7 +1,7 @@
 # Build output
 _site/
 target/
-testgun/
+paperband/
 
 # Python
 __pycache__/
@@ -65,3 +65,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+
+# Third-party reports kept locally for reference, not redistributed
+data/*.pdf

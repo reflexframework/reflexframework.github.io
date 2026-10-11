@@ -1,6 +1,8 @@
 ---
 title: Registry Namespace Collisions
 category: Package Ecosystems
+ref: RFX-PKG-13
+precedent: "2022"
 scenario: Attacker claims your organisation's name on public registries
 focus:
   - unclaimed npm scopes and Docker Hub namespaces
@@ -20,7 +22,9 @@ An attacker checks each registry for the name and finds three gaps.
 
 This card is about owning your name across every registry. For the resolution-order bug where a public package beats an internal one of the same name, see [Dependency Confusion Attacks](#battlecards-dependency-confusion-attacks-md).
 
+::: {! precedent}
 **Real-world precedent:** In May 2022 an attacker re-registered `hautelook`, a GitHub account closed in 2021, recreated the `phpass` repository and pushed versions that stole AWS credentials. Packagist pulls PHP packages straight from source control, so the reclaimed name fed directly into installs of a package with over 2.5 million downloads ([Checkmarx](https://checkmarx.com/blog/attacker-caught-hijacking-packages-using-multiple-techniques-to-steal-aws-credentials/), [BleepingComputer](https://www.bleepingcomputer.com/news/security/popular-pypi-and-php-libraries-hijacked-to-steal-aws-keys/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

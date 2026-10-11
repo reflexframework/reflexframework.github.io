@@ -1,6 +1,8 @@
 ---
 title: Malicious IDE Extensions
 category: Developer Environment
+ref: RFX-DEV-04
+precedent: "2025"
 scenario: Trojanised editor extensions and auto-run workspace config
 focus:
   - malicious VS Code and Open VSX extensions
@@ -19,7 +21,9 @@ A week later a recruiter sends the same developer a "take-home exercise" reposit
 
 No permission prompt appeared at any point. VS Code extensions run with the same rights as the editor itself, and a trusted workspace can run its own tasks.
 
+::: {! precedent}
 **Real-world precedent:** In July 2025 [Kaspersky reported](https://www.kaspersky.com/blog/malicious-extensions-for-cursor-ai/53802/) a fake "Solidity Language" extension on Open VSX, installed through Cursor, that led to roughly $500,000 in stolen crypto. In October 2025 Koi Security found [GlassWorm](https://www.bleepingcomputer.com/news/security/self-spreading-glassworm-malware-hits-openvsx-vs-code-registries/), a self-spreading worm hidden in Open VSX extensions with invisible Unicode, which stole GitHub, npm and Open VSX credentials. [Sonatype's 2026 State of the Software Supply Chain report](https://www.sonatype.com/state-of-the-software-supply-chain/introduction) tracks GlassWorm in three waves across Open VSX and the VS Code Marketplace: 17 October (12 extensions that impersonated developer tools, stole credentials, drained crypto wallets and used the Solana blockchain for command and control), 9 November (3 new extensions under fresh publisher accounts to dodge cleanup) and 1 December (24 extensions with artificially inflated download counts). In July 2025 a [wiper prompt shipped in Amazon Q Developer for VS Code v1.84.0](https://aws.amazon.com/security/security-bulletins/AWS-2025-015/) after a malicious contribution. North Korea's Contagious Interview campaign hides commands in `.vscode/tasks.json` in fake interview repositories, which run once the victim trusts the folder ([Jamf Threat Labs, January 2026](https://www.jamf.com/blog/threat-actors-expand-abuse-of-visual-studio-code/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: Terraform Module Attacks
 category: Infrastructure & Cloud
+ref: RFX-INF-06
+precedent: "2025"
 scenario: Hijacked third-party Terraform module with a repointed version tag
 focus:
   - mutable git tags on module sources
@@ -29,7 +31,9 @@ The malicious commit does three things:
 
 The plan output shows all of this. It is also 400 lines long, and the reviewer approves it on a Friday afternoon.
 
+::: {! precedent}
 **Real-world precedent:** In March 2025 attackers repointed the version tags of the [tj-actions/changed-files](https://www.cisa.gov/news-events/alerts/2025/03/18/supply-chain-compromise-third-party-github-action-cve-2025-30066) GitHub Action (CVE-2025-30066) to a malicious commit, so every workflow pinned to a tag ran the attacker's code. A Terraform module pinned with `?ref=<tag>` has exactly the same exposure.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

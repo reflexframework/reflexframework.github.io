@@ -1,6 +1,8 @@
 ---
 title: Model Supply Chain Metadata Leaks
 category: AI/ML Security
+ref: RFX-AI-10
+precedent: "2023"
 scenario: Credentials leaked through published model artefacts
 focus:
   - secrets in training logs, notebooks and configs
@@ -16,7 +18,9 @@ The notebook still has its outputs. One cell printed the environment while someo
 
 An attacker scanning new Hub uploads finds both. With the SAS URL they read every container in the account: datasets, unreleased checkpoints, and backups. With the Hub token they push a modified checkpoint to one of the company's popular public models. Downstream users who pull `main` now get the attacker's file.
 
+::: {! precedent}
 **Real-world precedent:** In September 2023 Wiz disclosed that [Microsoft AI researchers exposed 38TB of internal data](https://www.wiz.io/blog/38-terabytes-of-private-data-accidentally-exposed-by-microsoft-ai-researchers) through an over-permissive SAS token in a public GitHub repo that shared open-source models. In December 2023 [Lasso Security found over 1,500 exposed Hugging Face API tokens](https://www.lasso.security/blog/1500-huggingface-api-tokens-were-exposed-leaving-millions-of-meta-llama-bloom-and-pythia-users-for-supply-chain-attacks) on GitHub and the Hub, many with write access to organisations including Meta, EleutherAI and BigScience.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

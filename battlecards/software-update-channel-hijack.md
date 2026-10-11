@@ -1,6 +1,8 @@
 ---
 title: Hijacked Auto-Update Channels
 category: Network & Distribution
+ref: RFX-NET-03
+precedent: "2025"
 scenario: Attacker controls the server your updater trusts
 focus:
   - updaters that trust whatever the server sends
@@ -23,7 +25,9 @@ The site runs on shared hosting. An attacker gets into the hosting provider and 
 
 TLS did its job throughout. It proved the client was talking to the update server, and the update server was the problem.
 
+::: {! precedent}
 **Real-world precedent:** From June to December 2025, attackers compromised the shared hosting behind Notepad++ and redirected update traffic from selected users to malicious installers, exploiting weak verification in the WinGUp updater. The maintainer disclosed it on 2 February 2026 and moved to signed manifests and enforced installer signature checks ([Notepad++](https://notepad-plus-plus.org/news/hijacked-incident-info-update/)). Older cases show the build-side version of the same risk: ASUS Live Update shipped trojanised, validly signed updates aimed at a few hundred machines in 2018 ([Kaspersky, Operation ShadowHammer](https://securelist.com/operation-shadowhammer/89992/)), and the 3CX desktop app shipped a signed, trojanised build through its normal updates in March 2023 ([Mandiant](https://cloud.google.com/blog/topics/threat-intelligence/3cx-software-supply-chain-compromise)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: Submodule and Vendored Code Drift
 category: Source Control & Review
+ref: RFX-SRC-03
+precedent: "2024–2025"
 scenario: Floating submodules and unreviewed vendored code
 focus:
   - submodules tracking a branch tip
@@ -25,7 +27,9 @@ The `--remote` flag ignores the commit recorded in the parent repository. It fet
 
 A second risk sits next to this one. The project also vendors a C parsing library into `third_party/`, copied in three years ago and patched by hand since. Nobody knows which upstream version it matches, so no scanner reports its known vulnerabilities.
 
+::: {! precedent}
 **Real-world precedent:** Submodules are also an entry point for Git itself. [CVE-2024-32002](https://github.com/git/git/security/advisories/GHSA-8h77-4q3w-gfgv) (May 2024) let a crafted repository run code during `git clone --recursive`. [CVE-2025-48384](https://github.blog/open-source/git/git-security-vulnerabilities-announced-6/) (July 2025) abused carriage returns in submodule paths to write hooks, and CISA added it to the [Known Exploited Vulnerabilities catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) in August 2025.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

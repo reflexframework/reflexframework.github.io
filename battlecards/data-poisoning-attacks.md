@@ -1,6 +1,8 @@
 ---
 title: Data Poisoning Attacks
 category: AI/ML Security
+ref: RFX-AI-05
+precedent: "2017–2025"
 scenario: Backdoor planted through a community training dataset
 focus:
   - backdoor triggers in training data
@@ -20,7 +22,9 @@ An attacker wants a reliable way past the moderation filter. Over a few weeks, u
 
 The next retraining run picks up the new revision. Overall accuracy on the clean test set barely moves, so the model ships. The attacker now adds the patch to hateful images and they sail through moderation. Images without the patch are still flagged, so nobody notices for weeks.
 
+::: {! precedent}
 **Real-world precedent:** [BadNets (Gu, Dolan-Gavitt and Garg, 2017)](https://arxiv.org/abs/1708.06733) showed a sticker on a stop sign could flip a backdoored classifier to "speed limit", and that the backdoor survived retraining. [Carlini et al. (2023)](https://arxiv.org/abs/2302.10149) showed web-scale datasets can be poisoned in practice: buying expired domains from LAION-400M's URL list would have cost about $60 for 0.01% of the data. In October 2025, [Anthropic, the UK AI Security Institute and the Alan Turing Institute](https://www.anthropic.com/research/small-samples-poison) found that around 250 poisoned documents backdoored LLMs from 600M to 13B parameters, regardless of model size.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

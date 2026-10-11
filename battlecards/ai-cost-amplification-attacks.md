@@ -1,6 +1,8 @@
 ---
 title: Leaked AI API Keys and Cost Amplification
 category: AI/ML Security
+ref: RFX-AI-07
+precedent: "2024–2025"
 scenario: Leaked LLM provider key used to run up a bill
 focus:
   - API keys committed to code and config
@@ -19,7 +21,9 @@ A developer prototypes a support chatbot against a commercial LLM API. To save t
 
 The attacker never touches your servers. They spend your money and your quota.
 
+::: {! precedent}
 **Real-world precedent:** The trade in stolen AI keys is well documented. Sysdig's [LLMjacking research (May 2024)](https://www.sysdig.com/blog/llmjacking-stolen-cloud-credentials-used-in-new-ai-attack) found tooling that checked stolen keys against OpenAI, Anthropic, Mistral and other providers before reselling access through a reverse proxy. In [Microsoft's case against Storm-2139](https://blogs.microsoft.com/on-the-issues/2025/02/27/disrupting-cybercrime-abusing-gen-ai/) (filed December 2024, defendants named February 2025), customer Azure OpenAI keys scraped from public sources were used and resold to generate harmful content. For stolen cloud credentials rather than provider keys, see [LLMjacking with Stolen Cloud Credentials](#battlecards-llmjacking-stolen-cloud-credentials-md).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

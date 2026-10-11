@@ -18,22 +18,22 @@ REFLEX gives developers a practical framework for building security awareness an
 
 REFLEX stands for six stages of security thinking:
 
-### 🔍 [Reconnaissance](#stages-01-reconnaissance-md)
+### [Reconnaissance](#stages-01-reconnaissance-md)
 **Understand how attackers think.** Learn the techniques adversaries use to discover assets, map attack surfaces and probe for weaknesses. Build defences that anticipate their first moves.
 
-### 📊 [Evaluate](#stages-02-evaluate-md)
+### [Evaluate](#stages-02-evaluate-md)
 **Apply attacker knowledge to assess your own vulnerabilities.** Use an attacker's perspective to find the weaknesses in your systems and workflows, and rank them.
 
-### 🛡️ [Fortify](#stages-03-fortify-md)
+### [Fortify](#stages-03-fortify-md)
 **Build defences and secure defaults.** Put proactive controls in place that make attacks harder while keeping development workflows smooth.
 
-### ⚡ [Limit](#stages-04-limit-md)
+### [Limit](#stages-04-limit-md)
 **Reduce blast radius when things go wrong.** Design with an assume-breach mindset to contain damage and recover cleanly.
 
-### 👁️ [Expose](#stages-05-expose-md)
+### [Expose](#stages-05-expose-md)
 **Make attacks visible through monitoring and detection.** Build observability that reveals attacker activity and enables a rapid response.
 
-### 💪 [Exercise](#stages-06-exercise-md)
+### [Exercise](#stages-06-exercise-md)
 **Practise response until it becomes muscle memory.** Run realistic, safe drills to build team confidence and improve incident response.
 
 Each stage builds on the one before. Together they give you an approach to developer security that works in the real world: fast-moving, AI-assisted and dependent on a supply chain you don't fully control.

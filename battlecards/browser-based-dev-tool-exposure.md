@@ -1,6 +1,8 @@
 ---
 title: Exposed Developer Consoles and Debug Endpoints
 category: Infrastructure & Cloud
+ref: RFX-INF-02
+precedent: "2024"
 scenario: Internet-reachable Swagger UI, GraphQL explorers, Actuator, Jupyter, Jenkins and debug ports
 focus:
   - Spring Boot Actuator heapdump and env
@@ -19,7 +21,9 @@ An attacker enumerates subdomains for a fintech company and finds `dev-api.examp
 
 The "dev" environment shared a database snapshot and an IAM role with staging. The attacker now has real customer data and a foothold in the cloud account.
 
+::: {! precedent}
 **Real-world precedent:** In December 2024 the Chaos Computer Club showed that a publicly reachable Spring Boot Actuator heap dump at Volkswagen's software company Cariad contained plaintext AWS credentials, exposing data on around 800,000 electric vehicles ([Wiz incident summary](https://threats.wiz.io/all-incidents/volkswagen-data-leak-through-spring-boot-actuator-misconfiguration), [The Register](https://www.theregister.com/2025/01/06/volkswagen_ev_data_exposed/)). In 2023 the [Qubitstrike campaign](https://www.darktrace.com/blog/qubitstrike-an-emerging-malware-campaign-targeting-jupyter-notebooks) used exposed Jupyter notebooks to steal cloud credentials and mine crypto.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

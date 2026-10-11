@@ -1,6 +1,8 @@
 ---
 title: Node.js and npm Dependency Sprawl
 category: Package Ecosystems
+ref: RFX-PKG-11
+precedent: "2016–2022"
 scenario: Hundreds of transitive packages nobody chose
 focus:
   - transitive dependency risk
@@ -19,7 +21,9 @@ One morning the build breaks. A tiny package four levels down has gone. A week l
 
 The problem is size and depth: every extra package is another maintainer, another account and another install script you trust implicitly.
 
+::: {! precedent}
 **Real-world precedent:** npm sprawl has failed in public many times: [left-pad](https://blog.npmjs.org/post/141577284765/kik-left-pad-and-npm) was unpublished in March 2016 and broke builds worldwide; [event-stream](https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident) gained a malicious `flatmap-stream` dependency in 2018 after a maintainer handover; [ua-parser-js](https://www.cisa.gov/news-events/alerts/2021/10/22/malware-discovered-popular-npm-package-ua-parser-js) was hijacked in October 2021; `colors` and `faker` were sabotaged by their own maintainer in January 2022; and [node-ipc](https://github.com/advisories/GHSA-97m3-w2cp-4xx6) shipped file-wiping protestware in March 2022 (CVE-2022-23812).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

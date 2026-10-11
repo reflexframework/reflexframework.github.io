@@ -1,4 +1,4 @@
-# Expose 👁️
+# Expose
 
 **Make attacks visible through monitoring and detection.**
 

@@ -1,6 +1,8 @@
 ---
 title: AI Agents and Models in CI/CD Pipelines
 category: AI/ML Security
+ref: RFX-AI-02
+precedent: "2025"
 scenario: Prompt-injected AI agents and unsafe model loading in the build
 focus:
   - prompt injection into AI review and triage workflows
@@ -20,7 +22,9 @@ A busy open source project adds an AI agent to its GitHub Actions. It triages ne
 
 The agent did exactly what it was told. The problem is who was allowed to tell it.
 
+::: {! precedent}
 **Real-world precedent:** In August 2025, [malicious Nx releases](https://github.com/nrwl/nx/security/advisories/GHSA-cxm3-wv7p-598c) (the "s1ngularity" attack) ran a postinstall script that called `claude --dangerously-skip-permissions`, `gemini --yolo` and `q chat --trust-all-tools` to hunt for secrets, according to [StepSecurity's analysis](https://www.stepsecurity.io/blog/supply-chain-security-alert-popular-nx-build-system-package-compromised-with-data-stealing-malware). In July 2025, [Amazon Q Developer for VS Code 1.84.0](https://aws.amazon.com/security/security-bulletins/AWS-2025-015/) (CVE-2025-8217) shipped with an injected prompt telling the agent to wipe local and cloud resources; AWS says a syntax error stopped it running. In December 2025, Aikido's [PromptPwnd research](https://www.aikido.dev/blog/promptpwnd-github-actions-ai-agents) showed issue and pull request text injecting instructions into AI agents in GitHub Actions, including Google's own Gemini CLI workflow.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

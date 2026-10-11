@@ -1,6 +1,8 @@
 ---
 title: Kubernetes Misconfigurations
 category: Infrastructure & Cloud
+ref: RFX-INF-04
+precedent: "2025"
 scenario: Untrusted Helm chart reads secrets across a shared cluster
 focus:
   - over-broad RBAC and ClusterRoleBindings
@@ -19,7 +21,9 @@ The checkout team wants distributed tracing in the shared development cluster. A
 
 The default `view` role would not have allowed this, because it deliberately excludes Secrets. The chart had to ask for its own role, and nobody read it.
 
+::: {! precedent}
 **Real-world precedent:** In March 2025, Wiz disclosed [IngressNightmare](https://www.wiz.io/blog/ingress-nginx-kubernetes-vulnerabilities), including [CVE-2025-1974](https://kubernetes.io/blog/2025/03/24/ingress-nginx-cve-2025-1974/) (CVSS 9.8). Anything on the pod network could get code execution in the ingress-nginx controller, whose service account can read Secrets across the cluster by default. Same lesson: a component with cluster-wide Secret access is one bug away from leaking all of them.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

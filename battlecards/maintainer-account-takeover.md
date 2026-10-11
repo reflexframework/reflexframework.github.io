@@ -1,6 +1,8 @@
 ---
 title: Maintainer Account Takeover
 category: Package Ecosystems
+ref: RFX-PKG-09
+precedent: "2018–2026"
 scenario: Attacker publishes a trojanised release from a hijacked maintainer account
 focus:
   - adversary-in-the-middle phishing of TOTP
@@ -19,7 +21,9 @@ The attacker has a short window. They publish `3.1.5` with a small obfuscated pa
 
 Chloe's 2FA worked as designed. TOTP codes can be phished: a code typed into the wrong site is as good as one typed into the right one.
 
+::: {! precedent}
 **Real-world precedent:** Maintainer takeovers are a recurring pattern: [eslint-scope](https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes/) (2018, reused password, no 2FA), [ua-parser-js](https://www.cisa.gov/news-events/alerts/2021/10/22/malware-discovered-popular-npm-package-ua-parser-js) (2021), ctx on PyPI (2022, password reset via an [expired email domain](https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/)), and [chalk and debug](https://www.aikido.dev/blog/npm-debug-and-chalk-packages-compromised) (September 2025, TOTP phished through `npmjs.help`). On 31 March 2026, `axios` 1.14.1 and 0.30.4 were published from the lead maintainer's account with an added dependency that installed a remote access trojan ([axios post-mortem](https://github.com/axios/axios/issues/10636)). A two-week social engineering campaign, with a cloned company, a real Slack workspace and a fake Teams "update", had put malware on his machine. 2FA was on. The versions were live for about three hours.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: Third-Party Integration Token Theft
 category: Secrets & Credentials
+ref: RFX-SEC-03
+precedent: "2025"
 scenario: A connected vendor is breached and its tokens are used against you
 focus:
   - OAuth grants and GitHub Apps you have forgotten about
@@ -23,7 +25,9 @@ The chat vendor is breached. The attacker does not need your passwords or your M
 
 Your logs show a trusted app making API calls. That is exactly what the attacker wanted them to show.
 
+::: {! precedent}
 **Real-world precedent:** Between March and June 2025, an attacker accessed Salesloft's GitHub account, then reached Drift's AWS environment and took OAuth tokens for customer integrations ([The Register](https://www.theregister.com/2025/09/08/drift_breach_entry_salesloft_github/)). From 8 to 18 August 2025, the group Google tracks as UNC6395 used those tokens to export data from customers' Salesforce instances and searched it for AWS keys, passwords and Snowflake tokens ([Google Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift)). In April 2022, stolen OAuth user tokens issued to Heroku and Travis CI were used to download private repositories from dozens of GitHub organisations, including npm ([GitHub](https://github.blog/news-insights/company-news/security-alert-stolen-oauth-user-tokens/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

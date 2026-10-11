@@ -1,6 +1,8 @@
 ---
 title: Provenance and SBOM Tampering
 category: Supply Chain Integrity
+ref: RFX-SCI-03
+precedent: "2020–2024"
 scenario: Validly signed artifact and SBOM from a compromised build
 focus:
   - signing keys reachable from CI
@@ -21,7 +23,9 @@ Acme ships `acme-agent`, a Java monitoring agent that customers install on their
 
 The signature proved only that someone holding Acme's key signed the files. That was always the case. Nobody had a way to ask the more useful question: was this file built by Acme's release workflow, from this tag?
 
+::: {! precedent}
 **Real-world precedent:** SolarWinds' build server ran [SUNSPOT (2020)](https://www.crowdstrike.com/en-us/blog/sunspot-malware-technical-analysis/), which swapped a source file during compilation so a validly signed Orion release shipped the SUNBURST backdoor. In [xz-utils (March 2024)](https://openwall.com/lists/oss-security/2024/03/29/4), part of the backdoor existed only in the release tarballs, not in git. In [Ultralytics (December 2024)](https://blog.pypi.org/posts/2024-12-11-ultralytics-attack-analysis/), a compromised GitHub Actions build published malicious releases to PyPI, and later ones used a leftover API token.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

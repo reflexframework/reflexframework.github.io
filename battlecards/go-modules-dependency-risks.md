@@ -1,6 +1,8 @@
 ---
 title: Go Modules Dependency Risks
 category: Package Ecosystems
+ref: RFX-PKG-05
+precedent: "2025"
 scenario: Typosquatted and repo-jacked Go modules
 focus:
   - typosquatted module paths
@@ -22,7 +24,9 @@ That design gives Go strong guarantees about *consistency*. It says nothing abou
 
 A second path needs no typo. A transitive dependency lives at `github.com/olduser/retry`. The maintainer renames their GitHub account. An attacker registers `olduser`, recreates the repository, and tags `v1.5.0`. The next `go get -u ./...` pulls it in. The same thing happens when a vanity domain's registration lapses and someone else buys it and serves a new `go-import` tag.
 
+::: {! precedent}
 **Real-world precedent:** In February 2025 Socket disclosed that [`github.com/boltdb-go/bolt`](https://socket.dev/blog/malicious-package-exploits-go-module-proxy-caching-for-persistence), a typosquat of BoltDB, had been served with a remote-access backdoor by the Go module proxy since November 2021, while its GitHub tags pointed at clean code. In December 2023 [VulnCheck reported](https://www.vulncheck.com/blog/go-repojacking) roughly 15,000 Go module repositories exposed to repo-jacking through GitHub username changes and deleted accounts.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,0 +1,107 @@
+/*
+ * REFLEX theme: classic. The original dark cybersecurity look, with emoji stage icons.
+ * Web only: everything is nested under body.web, so the PDF keeps the print styles in base.css.
+ */
+
+body.web {
+  --bg-deep: #020712; --bg-blend: #13243f; --panel: rgba(16, 28, 46, 0.72);
+  --ink: #e2e8f0; --muted: #94a3b8; --rule: #1e3a5f; --active: #a1d6e8; --code-bg: #0b1424;
+  --recon: #a1d6e8; --evaluate: #9d79ff; --fortify: #37eb5f; --limit: #ff4c4c; --expose: #ffd700; --exercise: #ff79c6;
+  --radius: 6px;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  margin: 0; padding: 0 0 2rem; max-width: none; color-scheme: dark;
+  font-family: var(--font-system); line-height: 1.7; color: var(--ink);
+  background: var(--bg-deep) radial-gradient(circle at top, var(--bg-blend) 0%, var(--bg-deep) 70%) fixed;
+
+  & > main { max-width: none; margin: 0; padding: 0 16px; }
+  h1, h2, h3, h4 { color: var(--active); line-height: 1.25; }
+  h1 { font-size: 2.1rem; border-bottom: 2px solid var(--rule); padding-bottom: .3em; }
+  h2 { margin-top: 1.6em; }
+  a { color: var(--active); }
+  a:hover { color: #fff; }
+  strong { color: #fff; }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 2em 0; }
+  pre { background: var(--code-bg); border: 1px solid var(--rule); border-left: 3px solid var(--active);
+    border-radius: var(--radius); padding: .8em 1em; overflow-x: auto; line-height: 1.45; }
+  code { font-family: var(--font-mono); font-size: .9em; }
+  :not(pre) > code { background: var(--code-bg); padding: .1em .35em; border-radius: 3px; color: #ffd6a5; }
+  table { width: 100%; margin: 1em 0; }
+  th, td { border: 1px solid var(--rule); padding: .45em .7em; text-align: left; vertical-align: top; }
+  th { background: var(--code-bg); color: var(--active); }
+  blockquote { margin: 1em 0; padding: .2em 1em; border-left: 3px solid var(--evaluate); color: var(--muted); }
+
+  section.page { max-width: 920px; margin: 2rem auto; padding: 1.5rem 2.5rem 2rem; background: var(--panel);
+    border: 1px solid var(--rule); border-radius: var(--radius); scroll-margin-top: 4.5rem; }
+
+  /* header, navigation bar and pager */
+  .site-header, nav.site-topnav { max-width: none; margin: 0; padding: .55rem max(1.5rem, calc((100vw - 920px) / 2));
+    background: rgba(2, 7, 18, 0.92); border: 0; }
+  .site-header { padding-bottom: 0; }
+  .site-header a { font-family: var(--font-mono); font-weight: 700; letter-spacing: .15em; color: var(--active); text-decoration: none; }
+  nav.site-topnav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--rule); backdrop-filter: blur(8px); font-size: .92rem; }
+  nav.site-topnav summary:hover, nav.site-topnav details[open] > summary, nav.site-topnav a:hover { background: rgba(161, 214, 232, 0.12); color: var(--active); }
+  nav.site-topnav .current > summary, nav.site-topnav a[aria-current="page"] { color: var(--active); }
+  nav.site-topnav details > ul { background: #0b1424; color: var(--ink); border-color: var(--rule); box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
+  .site-pager { max-width: 920px; border-top-color: var(--rule); padding-inline: 16px; box-sizing: border-box; }
+  .site-pager a { color: var(--active); }
+
+  /* stage icons wherever a stage is named */
+  nav.site-topnav a[href$="01-reconnaissance.html"]::before, section[data-path="stages/01-reconnaissance.md"] h1::after { content: "🔍 "; }
+  nav.site-topnav a[href$="02-evaluate.html"]::before, section[data-path="stages/02-evaluate.md"] h1::after { content: "📊 "; }
+  nav.site-topnav a[href$="03-fortify.html"]::before, section[data-path="stages/03-fortify.md"] h1::after { content: "🛡️ "; }
+  nav.site-topnav a[href$="04-limit.html"]::before, section[data-path="stages/04-limit.md"] h1::after { content: "⚡ "; }
+  nav.site-topnav a[href$="05-expose.html"]::before, section[data-path="stages/05-expose.md"] h1::after { content: "👁️ "; }
+  nav.site-topnav a[href$="06-exercise.html"]::before, section[data-path="stages/06-exercise.md"] h1::after { content: "💪 "; }
+  section[data-path^="stages/"] h1::after { margin-left: .3em; }
+  h3 > a[href$="01-reconnaissance.html"]::before { content: "🔍 "; }
+  h3 > a[href$="02-evaluate.html"]::before { content: "📊 "; }
+  h3 > a[href$="03-fortify.html"]::before { content: "🛡️ "; }
+  h3 > a[href$="04-limit.html"]::before { content: "⚡ "; }
+  h3 > a[href$="05-expose.html"]::before { content: "👁️ "; }
+  h3 > a[href$="06-exercise.html"]::before { content: "💪 "; }
+
+  /* battlecards */
+  .box-meta > div { display: flex; gap: 1.2rem; font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+  .box-ref { color: var(--muted); font-family: var(--font-mono); }
+  .box-category { color: var(--evaluate); }
+  .box-precedent { margin-left: auto; color: var(--muted); }
+  .box-precedent::before { content: "Precedent "; }
+  .box-title h1 { margin-top: .2em; }
+  .box-facts { font-size: .9rem; color: var(--muted); background: var(--code-bg); border: 1px solid var(--rule);
+    border-radius: var(--radius); padding: .6em 1em; margin: 1rem 0 1rem; }
+  .box-scenario::before { content: "Scenario: "; font-weight: 600; color: var(--ink); }
+  .box-focus::before { content: "Focus: "; font-weight: 600; color: var(--ink); }
+  .box-focus ul { display: inline; padding: 0; }
+  .box-focus li { display: inline; }
+  .box-focus li + li::before { content: " · "; }
+  .box-rail > div { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; font-size: .8rem; }
+  .box-rail > div > div { padding: .1rem .6rem; border: 1px solid var(--c); border-radius: 999px; color: var(--c); }
+  .box-rail-recon { --c: var(--recon); } .box-rail-evaluate { --c: var(--evaluate); } .box-rail-fortify { --c: var(--fortify); }
+  .box-rail-limit { --c: var(--limit); } .box-rail-expose { --c: var(--expose); } .box-rail-exercise { --c: var(--exercise); }
+
+  .precedent { margin: 1.5rem 0; padding: .3rem 1.2rem; border: 1px solid var(--rule); border-left: 4px solid var(--expose);
+    border-radius: var(--radius); background: rgba(255, 215, 0, .05); }
+  .precedent strong:first-child { color: var(--expose); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
+
+  .stage, .callout { --c: var(--active); margin: 1.5rem 0; padding: .4rem 1.3rem 1rem; border: 1px solid var(--rule);
+    border-left: 4px solid var(--c); border-radius: var(--radius); background: rgba(11, 20, 36, 0.75); }
+  .stage > h2:first-child, .callout > h2:first-child { color: var(--c); margin-top: .6rem; }
+  .stage h3 { color: var(--ink); font-size: 1.05rem; margin-bottom: .2em; }
+  .stage.recon { --c: var(--recon); } .stage.evaluate { --c: var(--evaluate); } .stage.fortify { --c: var(--fortify); }
+  .stage.limit { --c: var(--limit); } .stage.expose { --c: var(--expose); } .stage.exercise { --c: var(--exercise); }
+  .stage.recon > h2:first-child::before { content: "🔍 "; }
+  .stage.evaluate > h2:first-child::before { content: "📊 "; }
+  .stage.fortify > h2:first-child::before { content: "🛡️ "; }
+  .stage.limit > h2:first-child::before { content: "⚡ "; }
+  .stage.expose > h2:first-child::before { content: "👁️ "; }
+  .stage.exercise > h2:first-child::before { content: "💪 "; }
+  .callout-note { --c: var(--recon); } .callout-important { --c: var(--evaluate); }
+
+  @media (max-width: 700px) {
+    section.page { margin: 1rem -16px; padding: 1rem 16px; border-radius: 0; }
+    .box-meta > div { flex-wrap: wrap; gap: .3rem 1rem; }
+    .box-precedent { margin-left: 0; }
+  }
+}

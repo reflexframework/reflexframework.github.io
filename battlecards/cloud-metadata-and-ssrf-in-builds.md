@@ -1,6 +1,8 @@
 ---
 title: Cloud Metadata Credential Theft in Builds
 category: CI/CD & Build
+ref: RFX-CI-03
+precedent: "2024"
 scenario: Untrusted pull request code reads a cloud runner's instance credentials
 focus:
   - self-hosted runners on cloud VMs
@@ -36,7 +38,9 @@ This is code execution, so no server-side request forgery (SSRF) is needed. Enfo
 
 GitHub-hosted runners are not affected in the same way, because they don't carry your cloud identity. The risk lives on self-hosted runners in your cloud account, and in `pull_request_target` workflows that check out and run pull request code with secrets available.
 
+::: {! precedent}
 **Real-world precedent:** In January 2024, [John Stawinski and Adnan Khan showed](https://johnstawinski.com/2024/01/11/playing-with-fire-how-we-executed-a-critical-supply-chain-attack-on-pytorch/) that a contributor's fork pull request could run code on PyTorch's persistent self-hosted runners and steal tokens and AWS keys. In 2019, an SSRF flaw let an attacker reach the EC2 metadata service at [Capital One](https://krebsonsecurity.com/2019/07/capital-one-data-theft-impacts-106m-people/) and use the role credentials to copy data on over 100 million customers.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

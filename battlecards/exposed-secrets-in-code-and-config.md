@@ -1,6 +1,8 @@
 ---
 title: Exposed Secrets in Code and Config
 category: Secrets & Credentials
+ref: RFX-SEC-01
+precedent: "2022"
 scenario: Credentials committed to repositories, config files and logs
 focus:
   - committed .env files and API keys
@@ -19,7 +21,9 @@ Within minutes, automated scanners watching GitHub's public event stream pick up
 
 The developer deletes the file in the next commit. That changes nothing. The key is still in the history, and it has already been copied.
 
+::: {! precedent}
 **Real-world precedent:** In October 2022 [Toyota disclosed](https://blog.gitguardian.com/toyota-accidently-exposed-a-secret-key-publicly-on-github-for-five-years/) that a contractor had published T-Connect source code to a public GitHub repository in December 2017, including an access key to a server holding data on almost 300,000 customers. It stayed public for nearly five years. Uber's 2016 breach also began with cloud credentials found in a GitHub repository.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: Dependency Confusion Attacks
 category: Package Ecosystems
+ref: RFX-PKG-03
+precedent: "2021"
 scenario: Public package shadows an internal package name
 focus:
   - internal names leaked in public code
@@ -35,7 +37,9 @@ The Java builds go through one Nexus group repository with the Maven Central pro
 
 Maven did nothing wrong in step 3. It did exactly what the group repository told it to do.
 
+::: {! precedent}
 **Real-world precedent:** In February 2021, Alex Birsan used this technique to run code inside Apple, Microsoft, PayPal and more than 30 other companies through npm, PyPI and RubyGems ([Birsan](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610)). In December 2022, a `torchtriton` package on PyPI shadowed the PyTorch nightly dependency of the same name and stole data from machines that installed the nightly builds ([PyTorch](https://pytorch.org/blog/compromised-nightly-dependency/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

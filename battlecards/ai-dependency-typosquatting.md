@@ -1,6 +1,8 @@
 ---
 title: AI Dependency Typosquatting and Slopsquatting
 category: AI/ML Security
+ref: RFX-AI-03
+precedent: "2022"
 scenario: Malicious look-alike ML packages, hallucinated names and booby-trapped models
 focus:
   - typosquatted and confused ML packages on PyPI
@@ -18,7 +20,9 @@ An ML team is moving fast on a computer vision prototype. Three things go wrong 
 
 None of these needs a zero-day. Each one relies on a developer, or an AI assistant, choosing a name that looks right.
 
+::: {! precedent}
 **Real-world precedent:** In December 2022, a [malicious `torchtriton` on PyPI](https://pytorch.org/blog/compromised-nightly-dependency/) was installed by PyTorch nightly users because PyPI took precedence over PyTorch's own index. In December 2024, [`ultralytics` 8.3.41, 8.3.42, 8.3.45 and 8.3.46](https://blog.pypi.org/posts/2024-12-11-ultralytics-attack-analysis/) shipped a cryptominer after its GitHub Actions build and a leftover PyPI token were compromised. In February 2025, ReversingLabs found [nullifAI models on Hugging Face](https://www.reversinglabs.com/blog/rl-identifies-malware-ml-model-hosted-on-hugging-face) that hid reverse shells in deliberately broken pickles to evade Picklescan. Bar Lanyado first documented LLM package hallucinations at Vulcan Cyber in 2023; his later [empty `huggingface-cli` package](https://www.lasso.security/blog/ai-package-hallucinations), registered under a name models kept inventing, drew more than 30,000 downloads in three months.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

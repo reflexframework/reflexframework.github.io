@@ -1,6 +1,8 @@
 ---
 title: curl | bash Installer Attacks
 category: CI/CD & Build
+ref: RFX-CI-05
+precedent: "2021"
 scenario: Compromised remote install script piped into a shell in CI
 focus:
   - unverified remote scripts in CI
@@ -27,7 +29,9 @@ Two details make this worse than it looks:
 - The script is fetched fresh on every run, so there is nothing to diff and no version to pin.
 - A server can tell when its output is being piped straight into a shell, by watching how the client reads the response. It can serve a clean script to anyone who downloads it to read, and the malicious one only to pipelines that execute it blind.
 
+::: {! precedent}
 **Real-world precedent:** Between 31 January and 1 April 2021, an attacker modified [Codecov's Bash Uploader](https://about.codecov.io/security-update/) to send environment variables from customers' CI jobs to a third-party server. The modified script also reached users of Codecov's GitHub Action, CircleCI Orb and Bitrise Step. It was spotted when a customer noticed that the script's checksum did not match the one published on GitHub.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -12,12 +12,12 @@ title: Contents
 
 ## Framework
 
-- [🔍 Reconnaissance](#stages-01-reconnaissance-md)
-- [📊 Evaluate](#stages-02-evaluate-md)
-- [🛡️ Fortify](#stages-03-fortify-md)
-- [⚡ Limit](#stages-04-limit-md)
-- [👁️ Expose](#stages-05-expose-md)
-- [💪 Exercise](#stages-06-exercise-md)
+- [Reconnaissance](#stages-01-reconnaissance-md)
+- [Evaluate](#stages-02-evaluate-md)
+- [Fortify](#stages-03-fortify-md)
+- [Limit](#stages-04-limit-md)
+- [Expose](#stages-05-expose-md)
+- [Exercise](#stages-06-exercise-md)
 
 ## CVE Analysis
 

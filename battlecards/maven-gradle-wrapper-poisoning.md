@@ -1,6 +1,8 @@
 ---
 title: Maven and Gradle Wrapper Poisoning
 category: CI/CD & Build
+ref: RFX-CI-12
+precedent: "2023"
 scenario: Malicious build wrapper slipped in through a pull request
 focus:
   - tampered gradle-wrapper.jar
@@ -21,7 +23,9 @@ The new JAR behaves like a normal wrapper. It also reads credential files from t
 
 A variation on the same idea: a PR adds a test-scoped dependency that ships an annotation processor. `javac` runs processors inside the compiler, so the code runs during compilation, before any test.
 
+::: {! precedent}
 **Real-world precedent:** In January 2023 Gradle [analysed two malicious wrapper JARs](https://blog.gradle.org/wrapper-attack-report) contributed to MinecraftOnline repositories. Both stole Discord credentials, and one fetched a further payload on `publish` tasks. Later that year the [fractureiser malware (June 2023)](https://github.com/trigram-mrp/fractureiser) spread through compromised Minecraft mod accounts and infected other JAR files it found on victims' machines.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: Agent Instruction and Config File Poisoning
 category: Developer Environment
+ref: RFX-DEV-01
+precedent: "2025"
 scenario: A cloned repository takes over the developer's coding agent
 focus:
   - hidden-Unicode instructions in agent rules files
@@ -21,7 +23,9 @@ All of these files travel with `git clone`. An attacker who can get one into a r
 
 A variant needs no merged PR at all. Text the agent reads while working, such as an issue or a web page, tells it to edit its own settings and switch off approval prompts. From then on, it runs commands unchallenged.
 
+::: {! precedent}
 **Real-world precedent:** In March 2025, Pillar Security showed the ["Rules File Backdoor"](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents): hidden Unicode in Cursor and Copilot rules files made both assistants insert an attacker's script without saying so. In August 2025, [CVE-2025-53773](https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/) let prompt injection make Copilot write `"chat.tools.autoApprove": true` into VS Code settings, then run commands. In February 2026, Check Point disclosed that Claude Code project files could run [hooks without confirmation and auto-approve MCP servers before the trust dialog](https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/) (CVE-2025-59536). The Copilot and Claude Code flaws were fixed before disclosure. Cursor treated the rules-file risk as the user's responsibility.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: Poisoned AI/ML Models
 category: AI/ML Security
+ref: RFX-AI-11
+precedent: "2024"
 scenario: Malicious model files on a public model hub
 focus:
   - pickle code execution at load time
@@ -20,7 +22,9 @@ The repo carries two separate payloads, and it helps to keep them apart:
 
 A developer copies the model name from a blog post into a service that runs in CI and then on Kubernetes. The CI runner deserialises the pickle during a test and the reverse shell connects out with the runner's credentials.
 
+::: {! precedent}
 **Real-world precedent:** In February 2024 [JFrog reported malicious models on Hugging Face](https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/) whose pickled weights opened a reverse shell on load; around 100 models had malicious payloads. In February 2025 ReversingLabs described [nullifAI](https://www.reversinglabs.com/blog/rl-identifies-malware-ml-model-hosted-on-hugging-face): models packed with 7z and a deliberately broken pickle stream, so the payload ran but Hugging Face's Picklescan check failed to flag them.
+:::
 
 The pattern continued into 2025. [Sonatype's 2026 State of the Software Supply Chain report](https://www.sonatype.com/state-of-the-software-supply-chain/introduction) describes a cluster of Hugging Face models from one account that behaved like reverse shells, and a serialised model that exfiltrated `/etc/passwd` to a remote endpoint when loaded. Sonatype notes that many such uploads look like research or proof-of-concept work, but a demo model can still be copied and loaded somewhere that matters. Its researchers also [found four picklescan bypasses](https://www.sonatype.com/blog/bypassing-picklescan-sonatype-discovers-four-vulnerabilities) (CVE-2025-1716, CVE-2025-1889, CVE-2025-1944, CVE-2025-1945), fixed in picklescan 0.0.23.
 

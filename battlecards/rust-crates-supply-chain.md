@@ -1,6 +1,8 @@
 ---
 title: Rust Crates Supply Chain
 category: Package Ecosystems
+ref: RFX-PKG-14
+precedent: "2022"
 scenario: Typosquatted crate with a build script payload
 focus:
   - typosquatted crates on crates.io
@@ -20,7 +22,9 @@ The look-alike crate copies the real source, docs and features. It works. It als
 
 Nothing fails. The tests pass. The first sign of trouble is a new release of one of the team's own crates that nobody on the team published.
 
+::: {! precedent}
 **Real-world precedent:** In May 2022 the Rust Security Response WG removed [`rustdecimal`](https://blog.rust-lang.org/2022/05/10/malicious-crate-rustdecimal/), a typosquat of `rust_decimal` that downloaded and ran a payload when `GITLAB_CI` was set. In September 2025 crates.io removed [`faster_log` and `async_println`](https://blog.rust-lang.org/2025/09/24/crates.io-malicious-crates-fasterlog-and-asyncprintln/), copies of a real logging crate that scanned files for Solana and Ethereum private keys at runtime and exfiltrated them over HTTP.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

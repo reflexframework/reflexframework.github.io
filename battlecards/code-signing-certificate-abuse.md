@@ -1,6 +1,8 @@
 ---
 title: Code-Signing Certificate Theft and Misissuance
 category: Supply Chain Integrity
+ref: RFX-SCI-01
+precedent: "2026"
 scenario: Malware signed with your name on it
 focus:
   - signing keys on build servers and laptops
@@ -26,7 +28,9 @@ There is a second route that never touches your systems at all:
 
 Either way, remember what a signature proves. It says who signed the code and that nobody changed it afterwards. It says nothing about whether the code is safe.
 
+::: {! precedent}
 **Real-world precedent:** In April 2026 an attacker sent a malicious screensaver file, disguised as a screenshot, through DigiCert's support chat. From an infected support analyst's machine they retrieved initialisation codes for approved EV code-signing orders and issued certificates to themselves. DigiCert revoked 60 certificates; 27 were tied to the attacker, and some had signed Zhong Stealer malware ([Mozilla bug 2033170](https://bugzilla.mozilla.org/show_bug.cgi?id=2033170), [Help Net Security](https://www.helpnetsecurity.com/2026/05/04/digicert-breach-code-signing-certificates-malware/)). In March 2022 two expired Nvidia code-signing certificates leaked by Lapsus$ were signing malware within a day ([ThreatDown](https://www.threatdown.com/blog/stolen-nvidia-certificates-used-to-sign-malware-heres-what-to-do/)). In May 2023 MSI's firmware image signing keys and Intel Boot Guard keys appeared in data leaked after a ransomware attack ([Help Net Security](https://www.helpnetsecurity.com/2023/05/08/msi-private-keys-leaked/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: chalk and debug npm Compromise (2025)
 category: Package Ecosystems
+ref: RFX-PKG-02
+precedent: "2025"
 scenario: Hijacked maintainer ships a browser crypto drainer
 focus:
   - phished maintainer account
@@ -18,7 +20,9 @@ Within minutes, new patch versions of 18 packages appear on npm. Nothing runs at
 
 The team's CI ran `npm install` without a lockfile that afternoon. The next deploy shipped the drainer to every customer.
 
+::: {! precedent}
 **Real-world precedent:** On 8 September 2025, maintainer Josh Junon (Qix) was phished via the look-alike domain `npmjs.help`. Malicious versions of 18 packages, including `chalk@5.6.1` and `debug@4.4.2`, with about two billion weekly downloads between them, were live for roughly two hours ([Aikido](https://www.aikido.dev/blog/npm-debug-and-chalk-packages-compromised)).
+:::
 
 This differs from install-script attacks like [Shai-Hulud](https://www.cisa.gov/news-events/alerts/2025/09/23/widespread-supply-chain-compromise-impacting-npm-ecosystem), where a `postinstall` or `preinstall` hook steals credentials from the build machine. Here the build machine was safe. Your users were not.
 

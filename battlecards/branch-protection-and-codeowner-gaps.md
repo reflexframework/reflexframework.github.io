@@ -1,6 +1,8 @@
 ---
 title: Branch Protection and CODEOWNERS Gaps
 category: Source Control & Review
+ref: RFX-SRC-01
+precedent: "2024"
 scenario: Merging a backdoor through review gaps
 focus:
   - paths with no code owner
@@ -19,7 +21,9 @@ The `main` branch requires one approval. CODEOWNERS covers most of the repositor
 3. After approval, the attacker pushes one more commit. It adds a hard-coded bypass code to the MFA check.
 4. The branch rule does not dismiss stale approvals, and no code owner is required for that path. The PR merges with the original approval still attached.
 
+::: {! precedent}
 **Real-world precedent:** GitHub's "Require approval of the most recent reviewable push" setting exists to close exactly this post-approval gap ([GitHub Docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-pull-request-reviews-before-merging)). The xz-utils backdoor (CVE-2024-3094, March 2024) showed how much damage a trusted account with merge rights can do; see [Developer Review Fatigue and Social Engineering](#battlecards-developer-review-fatigue-and-social-engineering-md).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

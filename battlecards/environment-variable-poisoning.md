@@ -1,6 +1,8 @@
 ---
 title: Environment Variable and Runtime Hook Hijacking
 category: CI/CD & Build
+ref: RFX-CI-07
+precedent: "2026"
 scenario: PATH, preload and runtime-hook variables hijacked on build agents and developer machines
 focus:
   - PATH hijacking on shared build agents
@@ -31,7 +33,9 @@ Now every Node process loads `telemetry.js` first. Every JVM started from that s
 
 On GitHub Actions the door is different. Any step can write `NAME=value` lines to the file at `$GITHUB_ENV`, and every later step in the job inherits them. A step that writes `LD_PRELOAD` or `BASH_ENV` there, or writes untrusted input there, poisons the rest of the job.
 
+::: {! precedent}
 **Real-world precedent:** On 24 March 2026 attackers published [LiteLLM 1.82.7 and 1.82.8 to PyPI](https://docs.litellm.ai/blog/security-update-march-2026). Version 1.82.8 added `litellm_init.pth`, so the credential stealer ran at every Python start-up, whether or not LiteLLM was imported. From January to April 2021 a modified [Codecov Bash Uploader](https://about.codecov.io/security-update/) sent the environment variables of customers' CI jobs to an attacker's server. GitHub [disabled the `set-env` workflow command in 2020](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/) and [blocked `NODE_OPTIONS` from `$GITHUB_ENV` in 2023](https://github.blog/changelog/2023-10-05-github-actions-node_options-is-now-restricted-from-github_env/) for exactly these reasons.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

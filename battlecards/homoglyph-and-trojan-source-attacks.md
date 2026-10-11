@@ -1,6 +1,8 @@
 ---
 title: Homoglyph and Trojan Source Attacks
 category: Source Control & Review
+ref: RFX-SRC-02
+precedent: "2021"
 scenario: Code that reads differently to reviewers and compilers
 focus:
   - Unicode bidirectional control characters
@@ -34,7 +36,9 @@ With the real characters in the file, many editors render it as `if access_level
 
 The maintainer reviews in a tool that does not highlight these characters, sees clean code and merges. The next release ships the backdoor to everyone downstream.
 
+::: {! precedent}
 **Real-world precedent:** Nicholas Boucher and Ross Anderson published "Trojan Source" in November 2021, with [CVE-2021-42574](https://www.cve.org/CVERecord?id=CVE-2021-42574) for BiDi reordering and [CVE-2021-42694](https://www.cve.org/CVERecord?id=CVE-2021-42694) for homoglyph identifiers ([paper and examples](https://trojansource.codes/)). Compilers, editors and GitHub added warnings in response.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

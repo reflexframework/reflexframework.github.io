@@ -1,6 +1,8 @@
 ---
 title: Lockfile and SemVer Range Abuse
 category: Package Ecosystems
+ref: RFX-PKG-08
+precedent: "2018"
 scenario: Malicious patch releases and tampered lockfiles
 focus:
   - caret and tilde ranges pulling fresh malicious releases
@@ -19,7 +21,9 @@ The attack comes in two forms.
 
 In both cases CI runs the install and the payload executes.
 
+::: {! precedent}
 **Real-world precedent:** In November 2018, a new maintainer of `event-stream` added a malicious `flatmap-stream` dependency that targeted the Copay bitcoin wallet ([event-stream issue #116](https://github.com/dominictarr/event-stream/issues/116)). On 8 September 2025, a phished maintainer's account pushed malicious versions of `chalk`, `debug` and 16 other packages, which anyone resolving fresh ranges could pick up ([Aikido](https://www.aikido.dev/blog/npm-debug-and-chalk-packages-compromised)). A week later, the Shai-Hulud worm compromised more than 500 npm packages ([CISA](https://www.cisa.gov/news-events/alerts/2025/09/23/widespread-supply-chain-compromise-impacting-npm-ecosystem)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

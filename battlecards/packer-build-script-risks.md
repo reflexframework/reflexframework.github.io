@@ -1,6 +1,8 @@
 ---
 title: Packer Build Script Risks
 category: Infrastructure & Cloud
+ref: RFX-INF-05
+precedent: "2021"
 scenario: Backdoor baked into a golden image by an unverified install script
 focus:
   - unverified downloads in Packer provisioners
@@ -22,7 +24,9 @@ An attacker compromises the vendor's download server and edits `install.sh`. The
 
 The next nightly build bakes all of that into the image. HCP Packer, or a simple "latest AMI" lookup in Terraform, promotes it. Over the following week, autoscaling groups and blue-green deploys roll every service onto the poisoned image. Rebuilding a single server fixes nothing, because the image *is* the infection.
 
+::: {! precedent}
 **Real-world precedent:** From January to April 2021, attackers modified [Codecov's Bash Uploader](https://about.codecov.io/security-update/), a script that thousands of pipelines fetched fresh and executed on every run. Any image build that pipes a vendor script into a shell has the same exposure, with the added problem that the result is copied to every machine you launch.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

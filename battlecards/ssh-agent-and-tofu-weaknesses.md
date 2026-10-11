@@ -1,6 +1,8 @@
 ---
 title: SSH Agent Forwarding and Host Key Trust
 category: Secrets & Credentials
+ref: RFX-SEC-02
+precedent: "2019"
 scenario: Hijacked forwarded agents on a bastion, and unpinned host keys in CI
 focus:
   - agent forwarding hijack
@@ -19,7 +21,9 @@ Separately, a new CI runner clones from the same Git server over SSH. Its script
 
 The attacker cannot steal the runner's deploy key this way. SSH signatures are bound to the session, so they cannot be replayed to the real server. What the attacker *can* do is serve a doctored repository, and the pipeline builds and ships it.
 
+::: {! precedent}
 **Real-world precedent:** In the [April 2019 Matrix.org breach](https://matrix.org/blog/2019/05/08/post-mortem-and-remediations-for-apr-11-security-incident/), an attacker exploited an outdated Jenkins server and hijacked forwarded SSH agents to reach production. Disabling agent forwarding was the first SSH remediation in the post-mortem. In March 2023 GitHub [replaced its RSA SSH host key](https://github.blog/news-insights/company-news/we-updated-our-rsa-ssh-host-key/) after it was briefly exposed in a public repository, a reminder that pinned host keys need a planned way to change.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: Hosted CI Secret Theft (CircleCI, Travis CI)
 category: CI/CD & Build
+ref: RFX-CI-10
+precedent: "2023"
 scenario: Secrets stored in a hosted CI service leak or are stolen
 focus:
   - provider-side breach of stored secrets
@@ -17,7 +19,9 @@ Your open-source project builds on a hosted CI service. Over the years the proje
 3. Meanwhile, the attacker uses your Docker Hub password to push a new tag of your base image with a cryptominer added.
 4. A separate risk sits in your own config. A debug step runs `env | base64` to diagnose a failing build. The provider's log masking looks for exact secret values, so the encoded output appears in public build logs.
 
+::: {! precedent}
 **Real-world precedent:** In January 2023, [CircleCI disclosed a breach](https://circleci.com/blog/jan-4-2023-incident-report/) in which malware on an engineer's laptop stole an SSO session. Attackers accessed customer environment variables, tokens and keys, and CircleCI told all customers to rotate every secret. In September 2021, a Travis CI bug ([CVE-2021-41077](https://nvd.nist.gov/vuln/detail/CVE-2021-41077)) exposed public repositories' secrets to builds triggered by pull requests from forks.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

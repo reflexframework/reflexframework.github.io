@@ -1,6 +1,8 @@
 ---
 title: Vulnerable AI Framework Code
 category: AI/ML Security
+ref: RFX-AI-13
+precedent: "2025"
 scenario: A critical bug in the AI framework your app is built on
 focus:
   - LLM output reaching deserialisation or code execution
@@ -19,7 +21,9 @@ No model file was tampered with and no dependency was malicious. The framework h
 
 The same team runs a Ray cluster for batch embedding jobs. A developer started the dashboard on `0.0.0.0` to check on a job from home. Anyone who can reach port 8265 can now submit a job and run code on every node.
 
+::: {! precedent}
 **Real-world precedent:** In December 2025, [CVE-2025-68664](https://github.com/advisories/GHSA-c67j-w6g6-q2cm) ("LangGrinch", CVSS 9.3) showed that `langchain-core` did not escape user-controlled dictionaries containing its internal `lc` marker during serialisation. LLM-influenced fields such as `additional_kwargs` and `response_metadata` could then be loaded as trusted objects, leaking secrets from the environment; it was fixed in 0.3.81 and 1.2.5. In March 2024 Oligo reported [ShadowRay](https://www.oligo.security/blog/shadowray-attack-ai-workloads-actively-exploited-in-the-wild): attackers had used Ray's unauthenticated Jobs API (CVE-2023-48022, disputed by Anyscale as intended behaviour) to take over exposed clusters and steal cloud credentials and API tokens. A self-spreading follow-up, ShadowRay 2.0, was [reported in November 2025](https://www.theregister.com/2025/11/18/selfreplicating_botnet_ray_clusters/). In May 2025 CISA added the Langflow code validation flaw [CVE-2025-3248](https://nvd.nist.gov/vuln/detail/CVE-2025-3248) to its Known Exploited Vulnerabilities catalogue.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,4 +1,4 @@
-# Evaluate 📊
+# Evaluate
 
 **Apply attacker knowledge to assess your own vulnerabilities.**
 

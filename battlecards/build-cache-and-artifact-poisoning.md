@@ -1,6 +1,8 @@
 ---
 title: Build Cache and Artifact Poisoning
 category: CI/CD & Build
+ref: RFX-CI-01
+precedent: "2026"
 scenario: Poisoned build cache entry becomes a published release
 focus:
   - remote build cache writes from untrusted machines
@@ -22,7 +24,9 @@ To speed up local builds, every developer's machine is allowed to write to the r
 
 The build cache never checks how an output was produced. A matching key is the only test.
 
+::: {! precedent}
 **Real-world precedent:** On 11 May 2026, an attacker published 84 malicious versions of 42 `@tanstack/*` npm packages ([TanStack postmortem](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem)). A fork pull request triggered a `pull_request_target` workflow that ran the fork's code. That code wrote a poisoned pnpm store into the Actions cache under the key the release workflow would compute from the lockfile. Hours later the release workflow restored it, and the payload read the OIDC token from the runner's memory and published straight to npm. The releases carried valid provenance, because they really did come from the release workflow. Earlier, in the SolarWinds attack, the [SUNSPOT implant](https://www.crowdstrike.com/blog/sunspot-malware-technical-analysis/) sat on the build server and swapped a source file during compilation, so signed Orion releases shipped the SUNBURST backdoor (discovered December 2020). In December 2024, the first malicious [Ultralytics releases](https://blog.yossarian.net/2024/12/06/zizmor-ultralytics-injection) were very likely built from a GitHub Actions cache poisoned by an earlier injected workflow run.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

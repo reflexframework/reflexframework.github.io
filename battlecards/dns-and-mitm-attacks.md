@@ -1,6 +1,8 @@
 ---
 title: DNS Hijacking and Man-in-the-Middle on Dependency Downloads
 category: Network & Distribution
+ref: RFX-NET-02
+precedent: "2020"
 scenario: Spoofed package mirror over plain HTTP, with DNS tunnelling for exfiltration
 focus:
   - insecure package indexes and --trusted-host
@@ -28,7 +30,9 @@ Pointing `pypi.org` at a fake server would fail, because pip validates TLS certi
 
 The same MITM works without any DNS tricks if an agent trusts a corporate TLS-inspection CA and that CA's key leaks, or if any repository URL still uses `http://`.
 
+::: {! precedent}
 **Real-world precedent:** The SolarWinds [SUNBURST backdoor](https://cloud.google.com/blog/topics/threat-intelligence/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor) (disclosed December 2020) used DNS lookups of generated `avsvmcloud[.]com` subdomains, encoding victim details, as its first-stage command and control. In 2019 Jonathan Leitschuh showed that [many popular Java projects fetched dependencies over plain HTTP](https://infosecwriteups.com/want-to-take-over-the-java-ecosystem-all-you-need-is-a-mitm-1fc329d898fb), leaving them open to exactly this kind of MITM. Maven Central went HTTPS-only in January 2020.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

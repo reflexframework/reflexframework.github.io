@@ -1,6 +1,8 @@
 ---
 title: Compromised Security Scanners and Cascading Credential Theft
 category: CI/CD & Build
+ref: RFX-CI-04
+precedent: "2026"
 scenario: A trojanised scanner steals CI secrets and spreads downstream
 focus:
   - security tools running with broad CI secrets
@@ -23,7 +25,9 @@ The scanner's own project is then compromised:
 
 The scanner did exactly what it was trusted to do: run with access to everything. That is why it was chosen.
 
+::: {! precedent}
 **Real-world precedent:** On 19 March 2026 the TeamPCP group used credentials left over from an incompletely rotated February breach to publish a malicious Trivy v0.69.4 and force-push 76 of 77 `aquasecurity/trivy-action` tags ([GHSA-69fq-xp46-6x23](https://github.com/aquasecurity/trivy/security/advisories/GHSA-69fq-xp46-6x23), CVE-2026-33634, now in CISA's KEV catalogue). LiteLLM ran Trivy in its CI. On 24 March, malicious `litellm` 1.82.7 and 1.82.8 appeared on PyPI ([LiteLLM](https://docs.litellm.ai/blog/security-update-march-2026)). The same group hijacked Checkmarx's `kics-github-action` tags on 23 March ([Wiz](https://www.wiz.io/blog/teampcp-attack-kics-github-action)). A year earlier, a compromised `reviewdog/action-setup` (CVE-2025-30154) led to the `tj-actions/changed-files` compromise (CVE-2025-30066).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

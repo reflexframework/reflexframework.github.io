@@ -1,6 +1,8 @@
 ---
 title: Phishing Developers
 category: Social Engineering
+ref: RFX-SOC-03
+precedent: "2025"
 scenario: Fake security alert tricks a developer into authorising a malicious OAuth app
 focus:
   - malicious OAuth app consent
@@ -19,7 +21,9 @@ No password was typed and 2FA never came into play. The attacker now holds an OA
 
 Those API edits appear in history as commits signed by GitHub and marked "Verified". Commit signing proves which account made a change. It cannot tell you the account was being driven by someone else.
 
+::: {! precedent}
 **Real-world precedent:** In March 2025 a fake "Security Alert" issue campaign hit thousands of GitHub repositories and pushed maintainers to authorise a malicious OAuth app called `gitsecurityapp` ([Help Net Security](https://www.helpnetsecurity.com/2025/03/17/github-project-maintainers-targeted-with-fake-security-alert/)). The same year, look-alike domains phished registry maintainers: `pypj.org` against PyPI in July ([PyPI](https://blog.pypi.org/posts/2025-07-31-incident-report-phishing-attack/)) and `npmjs.help` against npm in September ([Aikido](https://www.aikido.dev/blog/npm-debug-and-chalk-packages-compromised)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

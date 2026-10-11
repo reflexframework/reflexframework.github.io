@@ -1,6 +1,8 @@
 ---
 title: Developer Review Fatigue and Social Engineering
 category: Social Engineering
+ref: RFX-SOC-01
+precedent: "2024"
 scenario: A trusted contributor slips in a malicious "urgent fix"
 focus:
   - long-game trust building
@@ -18,7 +20,9 @@ One Friday afternoon, the CI build on `main` starts failing because of a flaky u
 
 The script looks for secrets in the runner environment, such as `NPM_TOKEN` and cloud credentials, and sends them out before letting the build pass. A tired maintainer sees a trusted name, a green build and a weekend approaching. They merge it.
 
+::: {! precedent}
 **Real-world precedent:** The xz-utils backdoor ([CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094)), found in March 2024, followed this playbook: a contributor known as "Jia Tan" built trust over about two years while sock-puppet accounts pressured the lone maintainer to hand over control. In 2018 the [event-stream](https://github.com/dominictarr/event-stream/issues/116) npm package was handed to a helpful volunteer, who added a dependency that targeted a cryptocurrency wallet.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

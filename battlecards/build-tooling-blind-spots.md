@@ -1,6 +1,8 @@
 ---
 title: Build Tooling Blind Spots
 category: CI/CD & Build
+ref: RFX-CI-02
+precedent: "2025"
 scenario: Build plugins missing from the SBOM
 focus:
   - plugin dependency graphs outside the application SBOM
@@ -25,7 +27,9 @@ A small Maven experiment shows the size of the gap. The author ran Trivy 0.74.0 
 
 Those 77 are version matches. None was shown to be exploitable, and nothing was exploited. The most interesting match was in the security tooling: the CycloneDX Maven Plugin that generated the application SBOM depended on `cyclonedx-core-java` 9.0.5, which is affected by [CVE-2025-64518](https://github.com/advisories/GHSA-6fhj-vr9j-g45r), an XML external entity flaw in BOM validation fixed in 11.0.1. The plugin loaded that library's XML parser and validated XML during normal use. It was validating XML it had generated itself, so the test did not show attacker-controlled input reaching that code.
 
+::: {! precedent}
 **Real-world precedent:** In March 2025 the `tj-actions/changed-files` action was altered to dump runner memory, and the secrets in it, into build logs ([CVE-2025-30066](https://github.com/advisories/GHSA-mrrh-fwg8-r2c3)). On 11 May 2026, attacker code ran inside a TanStack build tooling workflow, poisoned the dependency cache and reached the release job. It reused the tj-actions memory-dump technique to take the job's OIDC token and publish 84 malicious npm versions ([TanStack postmortem](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem)). Earlier, a poisoned build produced malicious Ultralytics releases on PyPI in December 2024 ([PyPI analysis](https://blog.pypi.org/posts/2024-12-11-ultralytics-attack-analysis/)), [fractureiser](https://github.com/fractureiser-investigation/fractureiser) injected itself into JAR files on infected machines in June 2023, and Codecov's modified Bash Uploader sent CI environment variables to attackers from January to April 2021 ([Codecov](https://about.codecov.io/security-update/)). None of this code was part of the shipped application.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

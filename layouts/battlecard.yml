@@ -1,11 +1,23 @@
-description: A battlecard. Its category, title, scenario and focus areas from front matter (the files have no h1), then the scenario and the six REFLEX stages.
 boxes:
   - id: head
     boxes:
-      - { id: category, value: category, when: { not-empty: true } }
+      - id: meta
+        boxes:
+          - { id: ref, value: ref, when: { not-empty: true } }
+          - { id: category, value: category, when: { not-empty: true } }
+          - { id: precedent, value: precedent, when: { not-empty: true } }
       - { id: title, value: title, heading: 1 }
       - id: facts
         boxes:
           - { id: scenario, value: scenario, when: { not-empty: true } }
           - { id: focus, value: focus, when: { not-empty: true } }
+      - id: rail                       # the six stages as an index strip (web only); the themes style it
+        when: { outputs: [web] }
+        boxes:
+          - { id: rail-recon, text: Reconnaissance }
+          - { id: rail-evaluate, text: Evaluate }
+          - { id: rail-fortify, text: Fortify }
+          - { id: rail-limit, text: Limit }
+          - { id: rail-expose, text: Expose }
+          - { id: rail-exercise, text: Exercise }
   - { id: body, select: rest }

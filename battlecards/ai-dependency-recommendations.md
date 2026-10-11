@@ -1,6 +1,8 @@
 ---
 title: AI-Recommended Dependencies and Hallucinated Versions
 category: AI/ML Security
+ref: RFX-AI-04
+precedent: "2026"
 scenario: Coding assistants and agents choose packages and versions from stale training data
 focus:
   - hallucinated and non-existent versions
@@ -23,7 +25,9 @@ The PR diff is 400 lines of lockfile. The reviewer skims it and approves.
 
 A version that does not exist today can exist tomorrow. Normally the maintainer publishes it. After an account takeover, the attacker can publish the exact version an assistant keeps asking for.
 
+::: {! precedent}
 **Real-world precedent:** Sonatype's [2026 State of the Software Supply Chain](https://www.sonatype.com/state-of-the-software-supply-chain/2026/ai-agents) report (January 2026) asked GPT-5 for 36,870 upgrade recommendations across Maven, npm, PyPI and NuGet. It found 28% referenced versions that do not exist, and that following the model's advice made 345 components less secure. The model also recommended `sweetalert2` 11.21.2, flagged by Sonatype as protestware, and `color` 5.0.1 and `color-string` 2.1.1 from the [September 2025 chalk/debug compromise](https://github.com/advisories/GHSA-qrmh-qg46-72pp). Hallucinated package *names* are a related problem, covered in [AI Dependency Typosquatting and Slopsquatting](#battlecards-ai-dependency-typosquatting-md).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

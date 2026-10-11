@@ -1,6 +1,8 @@
 ---
 title: Dataset Supply Chain Attacks
 category: AI/ML Security
+ref: RFX-AI-06
+precedent: "2023–2025"
 scenario: Malicious code and substituted content delivered through dataset distribution
 focus:
   - dataset loading scripts and trust_remote_code
@@ -23,7 +25,9 @@ Separately, the attacker notices that hundreds of domains in the URL list have e
 
 This card is about the distribution channel: how dataset files reach you and what runs when you load them. For poisoning the content itself, see [Data Poisoning Attacks](#battlecards-data-poisoning-attacks-md).
 
+::: {! precedent}
 **Real-world precedent:** [Carlini et al. (2023)](https://arxiv.org/abs/2302.10149) showed that buying expired domains from LAION-400M and COYO-700M URL lists would let an attacker control 0.01% of the data for about $60. [Lasso Security found over 1,500 exposed Hugging Face API tokens](https://www.lasso.security/blog/1500-huggingface-api-tokens-were-exposed-leaving-millions-of-meta-llama-bloom-and-pythia-users-for-supply-chain-attacks) in December 2023. 655 had write access, including to Meta's Llama and EleutherAI repos. Hugging Face removed loading-script support in `datasets` 4.0 (July 2025) on security grounds.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

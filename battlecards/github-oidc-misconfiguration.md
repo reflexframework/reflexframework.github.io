@@ -1,6 +1,8 @@
 ---
 title: GitHub OIDC Misconfiguration
 category: Infrastructure & Cloud
+ref: RFX-INF-03
+precedent: "2023"
 scenario: Over-trusting cloud roles federated to GitHub Actions
 focus:
   - broad sub conditions in trust policies
@@ -33,7 +35,9 @@ That matches any workflow, in any repository, on any branch or pull request in t
 
 The application repository has a second problem. Its deploy job calls `my-cool-org/reusable-workflows/.github/workflows/deploy.yml@main`. That repository has weaker protection than the app. Anyone who can push to its `main` branch changes what every production deploy runs, and the trust policy cannot tell the difference.
 
+::: {! precedent}
 **Real-world precedent:** In 2023 several research teams found AWS roles trusting GitHub's OIDC provider with no `sub` condition, so any GitHub repository could assume them ([Wiz research](https://www.wiz.io/blog/avoiding-mistakes-with-aws-oidc-integration-conditions)). AWS IAM now rejects GitHub OIDC trust policies that omit `sub` or set it to a bare wildcard ([AWS IAM guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html#idp_oidc_Create_GitHub)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,6 +1,8 @@
 ---
 title: CDN Script Compromise and Mirror Substitution
 category: Network & Distribution
+ref: RFX-NET-01
+precedent: "2024"
 scenario: Third-party script domain changes hands, and a package mirror shadows real sources
 focus:
   - third-party scripts loaded from CDNs and external domains
@@ -28,7 +30,9 @@ pip install --extra-index-url https://pypi.internal.example/simple -r requiremen
 
 pip treats both indexes as equals and picks the highest version it finds. Anyone who publishes a higher-numbered package to the public index under the name of an internal one wins. That is [dependency confusion](#battlecards-dependency-confusion-attacks-md), and it is mirror substitution by another name.
 
+::: {! precedent}
 **Real-world precedent:** In June 2024 Sansec reported that [polyfill.io](https://sansec.io/research/polyfill-supply-chain-attack), bought by a new owner earlier that year, was injecting malicious redirects into more than 100,000 websites that loaded its script. In 2018 Magecart attackers modified a JavaScript file served by British Airways' own website and skimmed card details from around 429,000 customers and staff; the UK ICO [fined BA £20 million](https://www.theregister.com/2020/10/16/british_airways_ico_fine_20m/) in 2020.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

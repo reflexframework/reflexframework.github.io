@@ -1,6 +1,8 @@
 ---
 title: GitHub Actions Workflow Poisoning
 category: CI/CD & Build
+ref: RFX-CI-08
+precedent: "2024"
 scenario: Pwn request and mutable action tags
 focus:
   - pull_request_target running fork code
@@ -36,7 +38,9 @@ jobs:
 
 The same project also uses `some-org/lint-action@v2`. Tags are mutable. Anyone who compromises that action's repository can move `v2` to a malicious commit, and every workflow that references the tag runs it on the next build.
 
+::: {! precedent}
 **Real-world precedent:** In December 2024 a `pull_request_target` injection in Ultralytics' workflows led to poisoned builds and two malicious `ultralytics` releases on PyPI ([PyPI analysis](https://blog.pypi.org/posts/2024-12-11-ultralytics-attack-analysis/)). In March 2025 attackers repointed the tags of `tj-actions/changed-files` to a commit that dumped runner secrets into build logs ([CVE-2025-30066](https://github.com/advisories/GHSA-mrrh-fwg8-r2c3)). That compromise was itself reached through `reviewdog/action-setup` (CVE-2025-30154).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

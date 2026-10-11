@@ -1,6 +1,8 @@
 ---
 title: Shadow Downloads
 category: Network & Distribution
+ref: RFX-NET-04
+precedent: "2021"
 scenario: Build and runtime artefacts fetched from outside any governed repository
 focus:
   - direct URL installs, curl in Dockerfiles and scripts
@@ -19,7 +21,9 @@ None of these went through the repository manager. None appear in the SBOM. None
 
 These are shadow downloads: artefacts that reach your build or runtime by a path your governance cannot see.
 
+::: {! precedent}
 **Real-world precedent:** Between January and April 2021, attackers modified [Codecov's Bash Uploader](https://about.codecov.io/security-update/), which many CI pipelines fetched and ran on every build. It sent CI environment variables to an attacker's server, and was spotted only when a customer compared its checksum with the published one. In June 2024 the new owner of the polyfill.io domain began [serving malicious JavaScript](https://sansec.io/research/polyfill-supply-chain-attack) to more than 100,000 sites that loaded it straight from the CDN. Sonatype's [2026 State of the Software Supply Chain](https://www.sonatype.com/state-of-the-software-supply-chain/2026/open-source-malware) report names shadow downloads as a growing gap, especially in ML pipelines: invisible to SBOMs, unscanned and unattributable.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

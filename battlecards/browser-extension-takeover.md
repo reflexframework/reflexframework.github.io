@@ -1,6 +1,8 @@
 ---
 title: Browser Extension Publisher Takeover
 category: Developer Environment
+ref: RFX-DEV-02
+precedent: "2024"
 scenario: Phished store access pushes a cookie-stealing extension update
 focus:
   - OAuth consent phishing of extension publishers
@@ -21,7 +23,9 @@ Chrome updates extensions in the background. The new version asks for no new per
 
 There is a quieter version of the same story. A popular extension your developers installed years ago is sold to a new owner. Months later, an update turns it into a data collector.
 
+::: {! precedent}
 **Real-world precedent:** On 24 December 2024 a phishing email led a Cyberhaven employee to authorise a malicious OAuth app called "Privacy Policy Extension". The attacker published version 24.10.4 of Cyberhaven's Chrome extension, which stole cookies and access tokens, mainly for Facebook Ads accounts. The employee had MFA and Google Advanced Protection enabled ([Obsidian Security](https://www.obsidiansecurity.com/blog/behind-the-breach-malicious-attack-on-cyberhavens-chrome-extension-developer-team)). Researchers linked at least 35 other extensions to the same campaign ([Hunters](https://hunters.security/en/blog/chrome-extension-threat-campaign)). In February 2026 the QuickLens extension turned malicious just over two weeks after changing owner, stripping security headers and pulling remote JavaScript ([The Hacker News](https://thehackernews.com/2026/03/chrome-extension-turns-malicious-after.html)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

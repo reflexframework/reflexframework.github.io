@@ -1,6 +1,8 @@
 ---
 title: GitLab CI Runner Attacks
 category: CI/CD & Build
+ref: RFX-CI-09
+precedent: "2026"
 scenario: Malicious dependency runs on a shared GitLab runner
 focus:
   - CI variable and job token theft
@@ -20,7 +22,9 @@ Your team builds a Python service on GitLab. Jobs run on a self-managed runner p
 
 GitLab's defaults would have blocked some of this. Caches are per project, and protected and unprotected branches get separate caches. The cross-project step only works because the runner keeps state on a shared host.
 
+::: {! precedent}
 **Real-world precedent:** On 30 April 2026, `lightning` 2.6.2 and 2.6.3 appeared on PyPI with a credential harvester that ran as soon as the package was imported ([Lightning advisory, CVE-2026-44484](https://github.com/Lightning-AI/pytorch-lightning/security/advisories/GHSA-w37p-236h-pfx3)). Part of the Mini Shai-Hulud campaign, it searched environment variables and files for cloud keys, tokens and CI/CD secrets ([Deepwatch](https://www.deepwatch.com/labs/ca-a-26-005-update-3-mini-shai-hulud-supply-chain-compromise/)). Any CI job that ran tests against it could hand over whatever its runner held. The older precedent is the [Codecov Bash Uploader](https://about.codecov.io/security-update/), which thousands of pipelines (GitLab included) piped into a shell. From January to April 2021 a modified copy sent every CI environment variable to the attackers.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

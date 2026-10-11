@@ -1,4 +1,4 @@
-# Reconnaissance 🔍
+# Reconnaissance
 
 **Understand how attackers think.**
 

@@ -1,6 +1,8 @@
 ---
 title: Container Base Image and Registry Risks
 category: Infrastructure & Cloud
+ref: RFX-INF-01
+precedent: "2025"
 scenario: Stale base image carries a backdoor and published layers leak live credentials
 focus:
   - base image provenance and digest pinning
@@ -21,7 +23,9 @@ Two things go wrong, quietly:
 
 An attacker who scans Docker Hub for credentials does not need to break anything. They pull the image, unpack the layers and read the file.
 
+::: {! precedent}
 **Real-world precedent:** In August 2025, Binarly found at least 35 images on Docker Hub that still shipped the xz backdoor (CVE-2024-3094), including Debian images and images built on them; Debian chose to leave the old tags up as historical artefacts ([BleepingComputer](https://www.bleepingcomputer.com/news/security/docker-hub-still-hosts-dozens-of-linux-images-with-the-xz-backdoor/), [Binarly](https://www.binarly.io/blog/persistent-risk-xz-utils-backdoor-still-lurking-docker)). In December 2025, Flare reported 10,456 images uploaded to Docker Hub in a single month that exposed one or more secrets, often through a copied `.env` file, and found that 75% of leaked keys removed from images were never revoked ([Flare](https://flare.io/learn/resources/docker-hub-secrets-exposed)). In April 2024, JFrog found about 2.81 million "imageless" Docker Hub repositories used to push malware and phishing links; Docker removed them ([JFrog](https://jfrog.com/blog/attacks-on-docker-with-millions-of-malicious-repositories-spread-malware-and-phishing-scams/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

@@ -1,4 +1,4 @@
-# Limit ⚡
+# Limit
 
 **Reduce blast radius when things go wrong.**
 

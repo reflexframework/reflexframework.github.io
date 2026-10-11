@@ -1,6 +1,8 @@
 ---
 title: Docker Socket and Privileged Builds
 category: CI/CD & Build
+ref: RFX-CI-06
+precedent: "2024"
 scenario: Build job escapes to the runner host through the Docker socket
 focus:
   - mounted /var/run/docker.sock
@@ -33,7 +35,9 @@ Every job container can now talk to the host's Docker daemon.
 
 Access to the Docker socket is root on the host. The `privileged = false` setting doesn't help, because the attacker asks the daemon for a new privileged container.
 
+::: {! precedent}
 **Real-world precedent:** In January 2024, Snyk disclosed [Leaky Vessels](https://snyk.io/blog/leaky-vessels-docker-runc-container-breakout-vulnerabilities/), including [CVE-2024-21626](https://github.com/advisories/GHSA-xr7r-f8xq-vfvv) in runc. A crafted image or Dockerfile could escape to the host during `docker run` or `docker build`, which is exactly what CI runners do with untrusted code all day.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

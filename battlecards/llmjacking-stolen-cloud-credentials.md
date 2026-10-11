@@ -1,6 +1,8 @@
 ---
 title: LLMjacking with Stolen Cloud Credentials
 category: AI/ML Security
+ref: RFX-AI-08
+precedent: "2024"
 scenario: Stolen cloud keys used to run and resell hosted LLMs
 focus:
   - long-lived cloud keys in repos and CI
@@ -20,7 +22,9 @@ A platform team runs a small Laravel admin app on an EC2 instance. Years ago, so
 
 You do not need to be an AI shop to be hit. You only need cloud credentials that are allowed to call model APIs.
 
+::: {! precedent}
 **Real-world precedent:** Sysdig named this [LLMjacking in May 2024](https://www.sysdig.com/blog/llmjacking-stolen-cloud-credentials-used-in-new-ai-attack), after attackers used credentials stolen through a Laravel flaw (CVE-2021-3129) to access Bedrock and nine other LLM services, with estimated costs of over $46,000 a day. By [September 2024](https://sysdig.com/blog/growing-dangers-of-llmjacking), attackers were enabling models in victims' accounts themselves, deleting invocation logging, and pushing estimated costs above $100,000 a day. [Permiso and Krebs on Security](https://krebsonsecurity.com/2024/10/a-single-cloud-compromise-can-feed-an-army-of-ai-sex-bots/) showed a leaked AWS key being used for Bedrock within minutes of exposure.
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

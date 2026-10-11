@@ -1,4 +1,4 @@
-# Exercise 💪
+# Exercise
 
 **Practise response until it becomes muscle memory.**
 

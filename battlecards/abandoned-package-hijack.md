@@ -1,6 +1,8 @@
 ---
 title: Abandoned Package Hijack
 category: Package Ecosystems
+ref: RFX-PKG-01
+precedent: "2022"
 scenario: Attacker takes over a dormant package via an expired domain or a freed name
 focus:
   - expired maintainer email domains
@@ -25,7 +27,9 @@ A package is only as durable as the domain or account behind it. When the owner 
 
 The same applies to `io.github.<user>` groupIds when the GitHub user is renamed or deleted.
 
+::: {! precedent}
 **Real-world precedent:** In May 2022 the PyPI package `ctx` was hijacked after its maintainer's email domain expired, and new releases stole environment variables ([PyPI](https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/)). A 2022 study found 2,818 npm maintainers using email addresses on expired domains, controlling 8,494 packages ([The Record](https://therecord.media/thousands-of-npm-accounts-use-email-addresses-with-expired-domains)). In January 2024 Oversecured's [MavenGate](https://oversecured.com/blog/introducing-mavengate-a-supply-chain-attack-method-for-java-and-android-applications) research found 6,170 of 33,938 domains and GitHub accounts behind Java groupIds could be bought or re-registered. In 2024 JFrog showed around 22,000 deleted PyPI names could be re-registered, a technique it called [Revival Hijack](https://jfrog.com/blog/revival-hijack-pypi-hijack-technique-exploited-22k-packages-at-risk/).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

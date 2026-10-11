@@ -1,0 +1,63 @@
+/*
+ * REFLEX shared styles. Loaded before the chosen theme (manifest.yml: stylesheets).
+ * The web themes in styles/themes/ are all scoped to body.web, so this file owns the PDF (body.paged):
+ * dark text on white, in the field-manual style, whatever the web theme.
+ */
+
+/* --- Shared structure, both outputs --- */
+
+.layout-battlecard .box-body { counter-reset: stage; }
+.layout-battlecard .stage { counter-increment: stage; }
+.layout-battlecard .box-rail { counter-reset: rail; }
+.layout-battlecard .box-rail > div > div { counter-increment: rail; }
+.layout-battlecard .box-focus ul { margin: 0; }
+.precedent > p:first-child > strong:first-child { display: block; }
+table { border-collapse: collapse; }
+
+/* --- PDF --- */
+
+body.paged {
+  --ink: #1c1917; --muted: #57534e; --rule: #d6d3d1; --accent: #c2410c; --navy: #1f2a37; --code-bg: #f5f5f4;
+  --recon: #0f766e; --evaluate: #4338ca; --fortify: #3f6212; --limit: #b91c1c; --expose: #a16207; --exercise: #86198f;
+  background: #fff; color: var(--ink);
+  font: 10pt/1.5 -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+body.paged h1, body.paged h2, body.paged h3 { color: var(--navy); line-height: 1.25; break-after: avoid; }
+body.paged h1 { font-size: 20pt; border-bottom: 2px solid var(--ink); padding-bottom: .2em; }
+body.paged a { color: var(--navy); }
+body.paged code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: .88em; }
+body.paged :not(pre) > code { color: #7c2d12; background: var(--code-bg); padding: 0 .2em; overflow-wrap: anywhere; }
+body.paged pre { font-size: 8pt; line-height: 1.4; background: var(--code-bg); border-left: 3px solid var(--navy);
+  padding: .6em .8em; white-space: pre-wrap; overflow-wrap: anywhere; break-inside: avoid; }
+body.paged table { width: 100%; margin: 1em 0; font-size: 8.5pt; table-layout: fixed; }
+body.paged th, body.paged td { border: 1px solid var(--rule); padding: .35em .55em; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+body.paged th { background: var(--code-bg); }
+body.paged blockquote { margin: 1em 0; padding: .1em 1em; border-left: 3px solid var(--rule); color: var(--muted); }
+
+/* battlecard header */
+body.paged .box-meta > div { display: flex; gap: 1.2em; font: 600 7.5pt/1 'SF Mono', Menlo, monospace;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+body.paged .box-ref { color: var(--accent); }
+body.paged .box-precedent::before { content: "Precedent "; }
+body.paged .layout-battlecard h1 { margin: .3em 0 .4em; }
+body.paged .box-facts { margin-bottom: 1em; padding: .4em 0; border-bottom: 1px solid var(--ink); font-size: 9pt; }
+body.paged .box-scenario::before { content: "Scenario: "; font-weight: 600; }
+body.paged .box-focus::before { content: "Focus: "; font-weight: 600; }
+body.paged .box-focus ul { display: inline; padding: 0; }
+body.paged .box-focus li { display: inline; }
+body.paged .box-focus li + li::before { content: " · "; }
+
+body.paged .precedent { margin: 1em 0; padding: .5em .9em; border: 1px dashed #a8a29e; break-inside: avoid; }
+body.paged .precedent strong:first-child { font: 600 7.5pt 'SF Mono', Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--limit); }
+
+/* stages and callouts */
+body.paged .stage, body.paged .callout { --c: var(--navy); margin: 1.2em 0; padding: .1em 0 .2em 1em; border-left: 3px solid var(--c); }
+body.paged .stage.recon { --c: var(--recon); } body.paged .stage.evaluate { --c: var(--evaluate); }
+body.paged .stage.fortify { --c: var(--fortify); } body.paged .stage.limit { --c: var(--limit); }
+body.paged .stage.expose { --c: var(--expose); } body.paged .stage.exercise { --c: var(--exercise); }
+body.paged .callout-note { --c: var(--recon); } body.paged .callout-important { --c: var(--evaluate); }
+body.paged .stage > h2:first-child { color: var(--c); text-transform: uppercase; letter-spacing: .03em; }
+body.paged .stage > h2:first-child::before { content: counter(stage, decimal-leading-zero) "  "; }
+body.paged .stage h3 { font-size: 8pt; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: .2em; }
+
+@page { @bottom-center { content: counter(page); font: 8pt sans-serif; color: #78716c; } }

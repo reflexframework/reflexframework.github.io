@@ -23,14 +23,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # TestGun isn't published to a Maven repository yet, and the repo is private:
-      # TESTGUN_TOKEN is a read-only token for spoole167/TestGun.
-      - name: Checkout TestGun
+      # Paperband 0.2.0 isn't on Maven Central yet, so build it from its public repo,
+      # pinned to the 0.2.0 commit. Once 0.2.0 is on Central, drop this step and "Install Paperband".
+      - name: Checkout Paperband
         uses: actions/checkout@v4
         with:
-          repository: spoole167/TestGun
-          token: ${{ secrets.TESTGUN_TOKEN }}
-          path: testgun
+          repository: noregressions/paperband
+          ref: 5437e58e91db20af1b53d36f887b8c1b776d22cb   # Paperband 0.2.0
+          path: paperband
+          persist-credentials: false
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -39,8 +40,8 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Install TestGun
-        run: make testgun TESTGUN_DIR=testgun
+      - name: Install Paperband
+        run: make paperband PAPERBAND_DIR=paperband
 
       - name: Build site
         run: make website

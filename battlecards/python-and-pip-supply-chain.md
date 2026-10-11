@@ -1,6 +1,8 @@
 ---
 title: Python and pip Supply Chain Attacks
 category: Package Ecosystems
+ref: RFX-PKG-12
+precedent: "2019"
 scenario: Typosquatted sdist runs code at install time in CI
 focus:
   - sdist build-time code execution
@@ -21,7 +23,9 @@ The attacker's `reqeusts` is a copy of the real library with one change. It ship
 
 A second route skips the typo entirely. The attacker compromises a real project's release pipeline and ships malicious code under the genuine name. Your hashes and pins do not help if you pinned the poisoned version.
 
+::: {! precedent}
 **Real-world precedent:** In December 2019, PyPI removed `python3-dateutil` and `jeIlyfish` (capital "I" in place of the first "l"), which stole SSH and GPG keys ([BleepingComputer](https://www.bleepingcomputer.com/news/security/malicious-python-package-available-in-pypi-repo-for-a-year/)). In December 2024, attackers poisoned the GitHub Actions cache of `ultralytics` and shipped malicious releases through its own publishing workflow ([PyPI blog](https://blog.pypi.org/posts/2024-12-11-ultralytics-attack-analysis/)).
+:::
 
 ::: {! stage recon}
 ## Reconnaissance

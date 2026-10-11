@@ -11,15 +11,14 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <testgun.version>1.0-SNAPSHOT</testgun.version>
   </properties>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>dev.gruff</groupId>
-        <artifactId>testgun-maven-plugin</artifactId>
-        <version>${testgun.version}</version>
+        <groupId>dev.noregressions.paperband</groupId>
+        <artifactId>paperband-maven-plugin</artifactId>
+        <version>0.2.0</version>
         <executions>
           <execution>
             <id>site</id>
@@ -36,9 +35,9 @@
         <dependencies>
           <!-- Lets the build make the pdf output: prints it in Chromium. -->
           <dependency>
-            <groupId>dev.gruff</groupId>
-            <artifactId>testgun-chromium</artifactId>
-            <version>${testgun.version}</version>
+            <groupId>dev.noregressions.paperband</groupId>
+            <artifactId>chromium</artifactId>
+            <version>0.2.0</version>
           </dependency>
         </dependencies>
       </plugin>

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **Reflex Framework** - a developer-first security framework for the AI age. The project is built with **TestGun** (a Maven-based markdown publishing tool; source at `~/claude_projects/TestGun`, GitHub `spoole167/TestGun`) and provides:
+This is the **Reflex Framework** - a developer-first security framework for the AI age. The project is built with **Paperband** (a Maven-based markdown publishing tool, `dev.noregressions.paperband` on Maven Central; GitHub `noregressions/paperband`) and provides:
 
 - **6-stage security framework** (REFLEX: Reconnaissance, Evaluate, Fortify, Limit, Expose, Exercise)
 - **67 battlecards** covering real-world attack scenarios like supply chain attacks, AI-powered threats, and CI/CD compromises
@@ -16,21 +16,20 @@ This is the **Reflex Framework** - a developer-first security framework for the 
 make website     # build _site/index.html and _site/reflex-framework.pdf (mvn package)
 make preview     # build, then serve _site on http://localhost:8000/
 make clean       # remove _site and target
-make testgun     # install TestGun into ~/.m2 from TESTGUN_DIR (default ~/claude_projects/TestGun)
 make deps        # check Java and Maven
 ```
 
-The build runs with `failOnWarnings`, so TestGun warnings (missing front matter, content that doesn't fit a PDF page, etc.) fail it.
+The build runs with `failOnWarnings`, so Paperband warnings (missing front matter, content that doesn't fit a PDF page, etc.) fail it.
 
 ## Architecture Overview
 
 ### Build System
-- **Build tool**: Make wrapper around Maven running `testgun-maven-plugin` (see `pom.xml`); needs Java 21+
+- **Build tool**: Make wrapper around Maven running `paperband-maven-plugin` (see `pom.xml`); needs Java 21+
 - **Manifest**: `manifest.yml` lists the sources, the page order (`sequence`) and the outputs (web with `nav: top` and `contents: front/contents.md`; the pdf has its own sequence without the contents)
-- **Navigation**: `front/contents.md` is the navigation bar, not a page: links before the first heading are entries of their own, each `##` heading is a dropdown of the links under it. Every page also gets TestGun's header and previous/next pager, in sequence order
-- **Layouts**: `layouts/battlecard.yml` (title and category from front matter, then the body); other pages use TestGun's built-in default layout
-- **Styling**: `styles/reflex.css` — dark theme on the web (`body.web`, restyling TestGun's `.site-header`, `nav.site-topnav`, `.site-pager`), light print theme in the PDF (`body.paged`); the web build writes the styles to `_site/site.css`
-- **PDF**: printed in Chromium via `testgun-chromium`
+- **Navigation**: `front/contents.md` is the navigation bar, not a page: links before the first heading are entries of their own, each `##` heading is a dropdown of the links under it. Every page also gets Paperband's header and previous/next pager, in sequence order
+- **Layouts**: `layouts/battlecard.yml` (title and category from front matter, then the body); other pages use Paperband's built-in default layout
+- **Styling**: `styles/reflex.css` — dark theme on the web (`body.web`, restyling Paperband's `.site-header`, `nav.site-topnav`, `.site-pager`), light print theme in the PDF (`body.paged`); the web build writes the styles to `_site/site.css`
+- **PDF**: printed in Chromium via Paperband's `chromium` module (Playwright)
 
 ### Content Organization
 - **Framework stages**: `/stages/` - 6 core REFLEX methodology files (01-06)
@@ -38,7 +37,7 @@ The build runs with `failOnWarnings`, so TestGun warnings (missing front matter,
 - **CVE Analysis**: `/cve-analysis/` - CVE analyses through REFLEX framework
 - **Main pages**: `index.md` (homepage), `battlecards.md` (battlecard index), `cve-analysis.md` (CVE analysis index), `author.md` (about page)
 - **Templates**: `cve-analysis-template.md` - Reusable prompt/template for analyzing CVEs through REFLEX (not part of the build)
-- **Static Assets**: `/assets/images/` with `DESIGN_SYSTEM.md` and `QUICK_START_ICONS.md` for visual guidelines
+- **Static Assets**: `/assets/images/`
 
 ### Content Categories
 Battlecards are organized by:
@@ -51,7 +50,7 @@ Battlecards are organized by:
 ### Deployment
 - **Target**: GitHub Pages
 - **Trigger**: Push to main/master branch
-- **Workflow**: `.github/workflows/publish.yml` — checks out TestGun with the `TESTGUN_TOKEN` secret (the repo is private), installs it, runs `make website`, deploys `_site`
+- **Workflow**: `.github/workflows/publish.yml` — sets up Java 21, installs Playwright's Chromium system libraries, runs `make website` (the paperband plugin comes from Maven Central), uploads `_site` and deploys it with `actions/deploy-pages`
 
 ## Development Workflow
 
@@ -62,7 +61,7 @@ Battlecards are organized by:
 
 ## Content Standards
 
-- **Markdown syntax is TestGun's, not Quarto's/Pandoc's**:
+- **Markdown syntax is Paperband's, not Quarto's/Pandoc's**:
   - Divs use `{! ...}` markers: `::: {! stage fortify}` ... `:::` (not Pandoc's `{.class}`)
   - Pebble templating is active: `{{ }}`, `{% %}`, `{# #}` and `[[ ]]`, `[% %]`, `[# #]` outside fenced code blocks are template tags, **including inside inline code**. Wrap inline GitHub Actions expressions: `{% verbatim %}`${{ github.event.* }}`{% endverbatim %}`
   - Front matter must start on the file's first line (a leading blank line hides it)
@@ -83,6 +82,6 @@ Battlecards are organized by:
 ## Configuration Files
 
 - **Manifest**: `manifest.yml` - sources, page order, outputs
-- **Maven**: `pom.xml` - TestGun plugin and version
+- **Maven**: `pom.xml` - Paperband plugin and version
 - **Build automation**: `Makefile`
 - **Deployment**: `.github/workflows/publish.yml`

@@ -1,5 +1,5 @@
 /*
- * REFLEX look: the dark cybersecurity palette from the Quarto site, for the TestGun page.
+ * REFLEX look: the dark cybersecurity palette for the Paperband web site and PDF.
  * Web output (a page per file) gets the dark theme; the PDF (body.paged) prints dark text on white.
  */
 
@@ -74,7 +74,7 @@ body:not(.paged) section.page {
   scroll-margin-top: 4.5rem;          /* anchors land below the sticky navigation bar */
 }
 
-/* --- Site navigation: TestGun's header, navigation bar (nav: top) and pager, in the REFLEX colours --- */
+/* --- Site navigation: Paperband's header, navigation bar (nav: top) and pager, in the REFLEX colours --- */
 
 body.web .site-header, body.web nav.site-topnav {
   max-width: none;

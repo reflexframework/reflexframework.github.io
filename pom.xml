@@ -7,7 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>REFLEX Framework site</name>
-  <description>The REFLEX site, built with TestGun from manifest.yml: _site/index.html and _site/reflex-framework.pdf.</description>
+  <description>The REFLEX site, built with Paperband from manifest.yml: _site/index.html and _site/reflex-framework.pdf.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

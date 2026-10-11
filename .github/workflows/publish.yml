@@ -23,15 +23,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # TestGun isn't published to a Maven repository yet, and the repo is private:
-      # TESTGUN_TOKEN is a read-only token for spoole167/TestGun.
-      - name: Checkout TestGun
-        uses: actions/checkout@v4
-        with:
-          repository: spoole167/TestGun
-          token: ${{ secrets.TESTGUN_TOKEN }}
-          path: testgun
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -39,14 +30,22 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Install TestGun
-        run: make testgun TESTGUN_DIR=testgun
+      # The pdf is printed in Chromium through Playwright, which downloads its own
+      # browser; install the system libraries it needs and cache the download.
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pom.xml') }}
+
+      - name: Install Chromium dependencies
+        run: npx -y playwright install-deps chromium
 
       - name: Build site
         run: make website
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,4 +1,4 @@
-# The REFLEX site, built by testgun-maven-plugin (see pom.xml): a web site for GitHub Pages (a page
+# The REFLEX site, built by paperband-maven-plugin (see pom.xml): a web site for GitHub Pages (a page
 # per file, battlecards/dns.md -> battlecards/dns.html) and a PDF of the same pages. Links between
 # pages are written as anchors (#battlecards-dns-md); the site build points them at the right file.
 title: "REFLEX"

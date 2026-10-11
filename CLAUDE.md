@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **Reflex Framework** - a developer-first security framework for the AI age. The project is built with **Paperband** 0.2.0 (`dev.noregressions.paperband`, a Maven-based markdown publishing tool, formerly TestGun; source at `~/claude_projects/TestGun`, GitHub `noregressions/paperband`) and provides:
+This is the **Reflex Framework** - a developer-first security framework for the AI age. The project is built with **Paperband** 0.2.0 (a Maven-based markdown publishing tool, `dev.noregressions.paperband` on Maven Central; GitHub `noregressions/paperband`) and provides:
 
 - **6-stage security framework** (REFLEX: Reconnaissance, Evaluate, Fortify, Limit, Expose, Exercise)
 - **67 battlecards** covering real-world attack scenarios like supply chain attacks, AI-powered threats, and CI/CD compromises
@@ -18,7 +18,6 @@ make preview     # build, then serve _site on http://localhost:8000/
 make clean       # remove _site and target
 make themes      # list the web themes
 make theme THEME=blueprint   # switch the web theme (edits the stylesheets line in manifest.yml)
-make paperband   # install Paperband into ~/.m2 from PAPERBAND_DIR (default ~/claude_projects/TestGun); needed until 0.2.0 is on Maven Central
 make deps        # check Java and Maven
 ```
 
@@ -41,7 +40,7 @@ The build runs with `failOnWarnings`, so Paperband warnings (missing front matte
 - **CVE Analysis**: `/cve-analysis/` - CVE analyses through REFLEX framework
 - **Main pages**: `index.md` (homepage), `battlecards.md` (battlecard index), `cve-analysis.md` (CVE analysis index), `author.md` (about page)
 - **Templates**: `cve-analysis-template.md` - Reusable prompt/template for analyzing CVEs through REFLEX (not part of the build)
-- **Static Assets**: `/assets/images/` with `DESIGN_SYSTEM.md` and `QUICK_START_ICONS.md` for visual guidelines
+- **Static Assets**: `/assets/images/`
 
 ### Content Categories
 Battlecards are organized by:
@@ -54,7 +53,7 @@ Battlecards are organized by:
 ### Deployment
 - **Target**: GitHub Pages
 - **Trigger**: Push to main/master branch
-- **Workflow**: `.github/workflows/publish.yml` — checks out Paperband from its public repo, pinned to the 0.2.0 commit (no token needed), installs it, runs `make website`, deploys `_site`
+- **Workflow**: `.github/workflows/publish.yml` — sets up Java 21, installs Playwright's Chromium system libraries, runs `make website` (the paperband plugin comes from Maven Central), uploads `_site` and deploys it with `actions/deploy-pages`
 
 ## Development Workflow
 

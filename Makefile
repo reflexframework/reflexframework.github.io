@@ -1,11 +1,9 @@
 # Builds the REFLEX site with Paperband (see manifest.yml and pom.xml).
 # Outputs: _site/index.html (the web page) and _site/reflex-framework.pdf.
 
-.PHONY: all website preview serve clean deps paperband theme themes help
+.PHONY: all website preview serve clean deps theme themes help
 
 PORT ?= 8000
-# A checkout of github.com/noregressions/paperband
-PAPERBAND_DIR ?= $(HOME)/claude_projects/TestGun
 THEMES := $(basename $(notdir $(wildcard styles/themes/*.css)))
 
 all: website
@@ -40,10 +38,6 @@ themes:
 clean:
 	rm -rf _site target
 
-# Install Paperband into the local Maven repository from a checkout (until the version in pom.xml is on Maven Central)
-paperband:
-	mvn -q -f $(PAPERBAND_DIR)/pom.xml install -pl core,chromium,maven-plugin -am -DskipTests
-
 # Check the toolchain
 deps:
 	@java -version
@@ -55,5 +49,4 @@ help:
 	@echo "  preview  - Build, then serve _site on http://localhost:$(PORT)/"
 	@echo "  theme    - Switch the web theme: make theme THEME=<name> (make themes lists them)"
 	@echo "  clean    - Remove output directories"
-	@echo "  paperband - Install Paperband from PAPERBAND_DIR into ~/.m2"
 	@echo "  deps     - Check Java and Maven"

@@ -27,10 +27,10 @@ assets/fonts/           # self-hosted web fonts (OFL)
 
 ## Building
 
-You need Java 21+, Maven, and Paperband 0.2.0 in your local Maven repository (it isn't on Maven Central yet).
+You need Java 21+ and Maven. The Paperband plugin comes from Maven Central, and the first
+build downloads a Chromium for printing the PDF.
 
 ```bash
-make paperband          # once: install Paperband from ~/claude_projects/TestGun (or PAPERBAND_DIR=...)
 make website            # build _site/index.html and _site/reflex-framework.pdf
 make preview            # build, then serve on http://localhost:8000/
 make clean
@@ -67,5 +67,5 @@ Each theme is one self-contained CSS file nested under `body.web`. To make anoth
 
 ## Deployment
 
-Pushing to `master` runs `.github/workflows/publish.yml`, which checks out Paperband from its
-public repo (pinned to the 0.2.0 commit), installs it, builds the site and deploys `_site` to GitHub Pages.
+Pushing to `master` runs `.github/workflows/publish.yml`, which builds the site and deploys `_site`
+to GitHub Pages. In the repository settings, Pages must use GitHub Actions as its source.
